@@ -1,33 +1,58 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import heroBg from "../assets/hero-bg.png";
+import logoHorizontal from "../assets/logo_horizontal.webp";
 ---
 
-<Layout title="AIS | Artificial Intelligence Society" description="Liderando la vanguardia científica de la inteligencia artificial en el Perú.">
-	
+<Layout
+	title="AIS | Artificial Intelligence Society"
+	description="Liderando la vanguardia científica de la inteligencia artificial en el Perú."
+>
 	<!-- Header -->
-	<header class="sticky top-0 z-50 bg-[#0B0F19]/80 backdrop-blur-md border-b border-gray-800/60 transition-all duration-300">
-		<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+	<header
+		class="sticky top-0 z-50 bg-[#0B0F19]/80 backdrop-blur-md border-b border-gray-800/60 transition-all duration-300"
+	>
+		<div
+			class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+		>
 			<!-- Logo -->
-			<a href="/" class="flex items-center gap-3 group">
-				<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-					AI
-				</div>
-				<span class="font-semibold text-lg tracking-wider text-white group-hover:text-blue-400 transition-colors duration-300">
-					Artificial Intelligence Society
-				</span>
+			<a href="/">
+				<img
+					src={logoHorizontal.src}
+					alt="Artificial Intelligence Society Logo"
+					class="h-10 object-contain"
+				/>
 			</a>
 
-			<!-- Navigation -->
-			<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-				<a href="/" class="text-white border-b-2 border-blue-500 pb-1 px-1 transition-all">Inicio</a>
-				<a href="/areas" class="hover:text-white pb-1 px-1 transition-colors">Áreas</a>
-				<a href="/projects" class="hover:text-white pb-1 px-1 transition-colors">Proyectos</a>
-				<a href="/call" class="hover:text-white pb-1 px-1 transition-colors">Convocatorias</a>
+			<!-- Navigation (Without 'Inicio' link as requested) -->
+			<nav
+				class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300"
+			>
+				<a
+					href="/areas"
+					class="hover:text-white pb-1 px-1 transition-colors"
+					>Áreas</a
+				>
+				<a
+					href="/projects"
+					class="hover:text-white pb-1 px-1 transition-colors"
+					>Proyectos</a
+				>
+				<a
+					href="/call"
+					class="hover:text-white pb-1 px-1 transition-colors"
+					>Convocatorias</a
+				>
 			</nav>
 
 			<!-- CTA Button -->
-			<a href="/call" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-semibold text-white rounded-lg group bg-gradient-to-br from-blue-600 to-cyan-500 group-hover:from-blue-600 group-hover:to-cyan-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-800 transition-all duration-300 mt-2">
-				<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-[#0B0F19] rounded-md group-hover:bg-opacity-0">
+			<a
+				href="/call"
+				class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-semibold text-white rounded-lg group bg-gradient-to-br from-blue-600 to-cyan-500 group-hover:from-blue-600 group-hover:to-cyan-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-800 transition-all duration-300"
+			>
+				<span
+					class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-[#0B0F19] rounded-md group-hover:bg-opacity-0"
+				>
 					Únete a AIS
 				</span>
 			</a>
@@ -36,220 +61,606 @@ import Layout from '../layouts/Layout.astro';
 
 	<main class="relative overflow-hidden">
 		<!-- Background Glows -->
-		<div class="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -z-10 animate-pulse duration-[6s]"></div>
-		<div class="absolute top-1/2 right-1/10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10 animate-pulse duration-[8s]"></div>
+		<div
+			class="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -z-10 animate-pulse duration-[6s]"
+		>
+		</div>
+		<div
+			class="absolute top-1/2 right-1/10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10 animate-pulse duration-[8s]"
+		>
+		</div>
 
 		<!-- Hero Section -->
-		<section class="max-w-7xl mx-auto px-6 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-			<!-- Hero Left -->
-			<div class="lg:col-span-7 flex flex-col space-y-6">
-				<span class="text-xs font-bold tracking-widest text-cyan-400 uppercase">Nuestra Identidad</span>
-				<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
-					Liderando la vanguardia científica en el Perú.
-				</h1>
-				<p class="text-gray-400 text-lg leading-relaxed max-w-2xl">
-					La Artificial Intelligence Society (AIS) se consolida como el organismo científico y profesional referente en la investigación, desarrollo y aplicación ética de la inteligencia artificial. Nuestra organización reúne a mentes brillantes del sector académico e industrial para impulsar el ecosistema tecnológico nacional con estándares globales de excelencia.
-				</p>
-				<blockquote class="border-l-2 border-cyan-400 pl-4 py-1">
-					<p class="text-gray-300 italic font-mono text-sm tracking-wide">
-						— Rigurosidad, Ética y Desarrollo.
+		<section
+			class="relative min-h-[85vh] flex items-center py-20 lg:py-32 overflow-hidden border-b border-gray-900"
+		>
+			<!-- Background Image with Overlay -->
+			<div class="absolute inset-0 z-0">
+				<img
+					src={heroBg.src}
+					alt="Workspace background"
+					class="w-full h-full object-cover opacity-25"
+				/>
+				<div
+					class="absolute inset-0 bg-gradient-to-b from-[#0B0F19]/90 via-[#0B0F19]/80 to-[#0B0F19]"
+				>
+				</div>
+			</div>
+
+			<div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+				<div class="max-w-4xl space-y-6">
+					<h1
+						class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight"
+					>
+						Liderando el avance de la <span
+							class="italic font-serif text-blue-400">IA</span
+						>
+					</h1>
+					<p
+						class="text-gray-300 text-lg md:text-xl leading-relaxed max-w-3xl"
+					>
+						AIS (Artificial Intelligence Society) es una
+						organización profesional, científica y técnica
+						constituida como el organismo regulador y de
+						convergencia para profesionales, investigadores,
+						ingenieros y académicos en el campo de la Inteligencia
+						Artificial.
 					</p>
-				</blockquote>
-			</div>
-
-			<!-- Hero Right (Mision / Vision Cards) -->
-			<div class="lg:col-span-5 flex flex-col space-y-6">
-				<!-- Mision Card -->
-				<div class="p-8 rounded-2xl bg-gray-900/40 border border-gray-800/80 backdrop-blur-md relative overflow-hidden group hover:border-blue-500/30 transition-all duration-300">
-					<div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl group-hover:bg-blue-500/10 transition-colors duration-300"></div>
-					<div class="flex gap-4">
-						<div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0 text-blue-400 group-hover:scale-110 transition-transform duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-							</svg>
-						</div>
-						<div>
-							<h3 class="text-lg font-bold text-white mb-2">Misión</h3>
-							<p class="text-gray-400 text-sm leading-relaxed">
-								Promover el avance y la democratización del conocimiento en Inteligencia Artificial, fomentando la investigación de alto impacto y la formación de profesionales capaces de resolver desafíos complejos en beneficio de la sociedad peruana.
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- Vision Card -->
-				<div class="p-8 rounded-2xl bg-gray-900/40 border border-gray-800/80 backdrop-blur-md relative overflow-hidden group hover:border-cyan-500/30 transition-all duration-300">
-					<div class="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-full blur-xl group-hover:bg-cyan-500/10 transition-colors duration-300"></div>
-					<div class="flex gap-4">
-						<div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center flex-shrink-0 text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-							</svg>
-						</div>
-						<div>
-							<h3 class="text-lg font-bold text-white mb-2">Visión</h3>
-							<p class="text-gray-400 text-sm leading-relaxed">
-								Ser el epicentro de la innovación tecnológica en América Latina, transformando al Perú en un hub regional de excelencia científica que lidera el desarrollo ético y sostenible de sistemas inteligentes.
-							</p>
-						</div>
+					<div class="flex flex-wrap gap-4 pt-4">
+						<a
+							href="#about"
+							class="px-8 py-3.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-all shadow-lg shadow-blue-500/20 transform hover:-translate-y-0.5"
+						>
+							Conócenos
+						</a>
+						<a
+							href="/call"
+							class="px-8 py-3.5 text-sm font-bold text-gray-300 border border-gray-700 rounded-xl hover:text-white hover:border-gray-500 transition-all backdrop-blur-sm"
+						>
+							Ver Convocatorias
+						</a>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Areas Section -->
-		<section class="max-w-7xl mx-auto px-6 py-20 border-t border-gray-800/40">
-			<div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-				<span class="text-xs font-bold tracking-widest text-blue-400 uppercase">Nuestras Áreas</span>
-				<h2 class="text-3xl md:text-4xl font-extrabold text-white">Explora nuestras áreas de trabajo</h2>
-				<div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full"></div>
-			</div>
-
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				<!-- Area 1 -->
-				<div class="p-8 rounded-2xl bg-[#0F1423]/40 border border-gray-800/80 backdrop-blur-md group hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between">
-					<div class="space-y-4">
-						<div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 9.172V5L8 4z" />
-							</svg>
-						</div>
-						<h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Investigación e Innovación</h3>
-						<p class="text-gray-400 text-sm leading-relaxed">
-							Desarrollamos proyectos de vanguardia y publicaciones científicas que expanden los límites del estado del arte en modelos generativos y predictivos.
-						</p>
+		<!-- Statistics Counter Banner -->
+		<section
+			class="border-b border-gray-800/60 bg-gray-950/40 backdrop-blur-sm py-12 relative z-10"
+		>
+			<div
+				class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+			>
+				<div class="space-y-1">
+					<div
+						class="text-4xl font-extrabold text-white tracking-tight"
+					>
+						500+
+					</div>
+					<div
+						class="text-[10px] md:text-xs font-bold tracking-widest text-gray-400 uppercase"
+					>
+						Miembros Activos
 					</div>
 				</div>
-
-				<!-- Area 2 -->
-				<div class="p-8 rounded-2xl bg-[#0F1423]/40 border border-gray-800/80 backdrop-blur-md group hover:-translate-y-1 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/5 transition-all duration-300 flex flex-col justify-between">
-					<div class="space-y-4">
-						<div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-							</svg>
-						</div>
-						<h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Ética y Gobernanza de IA</h3>
-						<p class="text-gray-400 text-sm leading-relaxed">
-							Definimos marcos normativos y principios éticos para asegurar que los sistemas de IA operen con transparencia, justicia y responsabilidad social.
-						</p>
+				<div class="space-y-1">
+					<div
+						class="text-4xl font-extrabold text-white tracking-tight"
+					>
+						48+
+					</div>
+					<div
+						class="text-[10px] md:text-xs font-bold tracking-widest text-gray-400 uppercase"
+					>
+						Proyectos Completados
 					</div>
 				</div>
-
-				<!-- Area 3 -->
-				<div class="p-8 rounded-2xl bg-[#0F1423]/40 border border-gray-800/80 backdrop-blur-md group hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between">
-					<div class="space-y-4">
-						<div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-							</svg>
-						</div>
-						<h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Educación y Capacitación</h3>
-						<p class="text-gray-400 text-sm leading-relaxed">
-							Formación especializada para dotar a la próxima generación de ingenieros y científicos de sólidas bases técnicas y de investigación.
-						</p>
+				<div class="space-y-1">
+					<div
+						class="text-4xl font-extrabold text-white tracking-tight"
+					>
+						15+
+					</div>
+					<div
+						class="text-[10px] md:text-xs font-bold tracking-widest text-gray-400 uppercase"
+					>
+						Eventos Anuales
 					</div>
 				</div>
-
-				<!-- Area 4 -->
-				<div class="p-8 rounded-2xl bg-[#0F1423]/40 border border-gray-800/80 backdrop-blur-md group hover:-translate-y-1 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/5 transition-all duration-300 flex flex-col justify-between">
-					<div class="space-y-4">
-						<div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-							</svg>
-						</div>
-						<h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">Vinculación Institucional</h3>
-						<p class="text-gray-400 text-sm leading-relaxed">
-							Alianzas estratégicas con gobiernos, universidades de primer nivel y la empresa privada para cocrear proyectos y transferir conocimiento de IA.
-						</p>
+				<div class="space-y-1">
+					<div
+						class="text-4xl font-extrabold text-white tracking-tight"
+					>
+						5+
 					</div>
-				</div>
-
-				<!-- Area 5 -->
-				<div class="p-8 rounded-2xl bg-[#0F1423]/40 border border-gray-800/80 backdrop-blur-md group hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between">
-					<div class="space-y-4">
-						<div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-							</svg>
-						</div>
-						<h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Comunicación y Difusión</h3>
-						<p class="text-gray-400 text-sm leading-relaxed">
-							Divulgación científica rigurosa pero accesible para educar y desmitificar la inteligencia artificial en la sociedad peruana.
-						</p>
+					<div
+						class="text-[10px] md:text-xs font-bold tracking-widest text-gray-400 uppercase"
+					>
+						Áreas de Investigación
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Call to Action Section -->
-		<section class="max-w-7xl mx-auto px-6 py-20">
-			<div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-blue-900/60 to-cyan-900/60 border border-blue-500/20 p-12 lg:p-20 text-center space-y-8 backdrop-blur-md shadow-2xl">
-				<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent -z-10"></div>
-				<h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-					Únete a la élite científica del país.
-				</h2>
-				<p class="text-gray-300 text-lg max-w-xl mx-auto leading-relaxed">
-					Buscamos mentes apasionadas y rigurosas que deseen marcar un hito en la investigación de la Inteligencia Artificial en el Perú.
-				</p>
+		<!-- Misión & Visión Section -->
+		<section
+			id="about"
+			class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-gray-800/40"
+		>
+			<!-- Misión Panel -->
+			<div
+				class="p-8 md:p-12 rounded-3xl bg-gray-900/10 border border-gray-800/80 backdrop-blur-md flex flex-col justify-between hover:border-blue-500/20 transition-all duration-300"
+			>
 				<div>
-					<a href="/call" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[#0B0F19] bg-gradient-to-r from-blue-400 to-cyan-300 rounded-xl hover:from-blue-500 hover:to-cyan-400 focus:ring-4 focus:ring-blue-800 transition-all duration-300 shadow-lg shadow-blue-500/10 transform hover:scale-105">
-						Ver Convocatorias
-					</a>
+					<div
+						class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-8"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+						</svg>
+					</div>
+					<h3 class="text-2xl md:text-3xl font-bold text-white mb-6">
+						Misión
+					</h3>
+					<p class="text-gray-300 leading-relaxed text-base">
+						Liderar el avance global de la inteligencia artificial y
+						la competencia de sus profesionales; conectando a la
+						comunidad para intercambiar conocimientos técnicos,
+						establecer los más altos estándares éticos y
+						científicos, y garantizar que la tecnología se
+						desarrolle para el beneficio, bienestar y equidad de la
+						humanidad.
+					</p>
+				</div>
+			</div>
+
+			<!-- Visión Panel -->
+			<div
+				class="p-8 md:p-12 rounded-3xl bg-gray-900/10 border border-gray-800/80 backdrop-blur-md flex flex-col justify-between hover:border-cyan-500/20 transition-all duration-300"
+			>
+				<div>
+					<div
+						class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-8"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+							></path>
+						</svg>
+					</div>
+					<h3 class="text-2xl md:text-3xl font-bold text-white mb-6">
+						Visión
+					</h3>
+					<p class="text-gray-300 leading-relaxed text-base">
+						Ser reconocida como una organización profesional de
+						referencia en inteligencia artificial, estableciendo
+						altos estándares de práctica, investigación y ética en
+						el campo, con especial vocación de servicio en el Perú
+						y, conforme crezca de manera sostenida, en América
+						Latina y el mundo en desarrollo.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Proyectos Destacados Section -->
+		<section
+			class="max-w-7xl mx-auto px-6 py-20 border-t border-gray-800/40"
+		>
+			<div
+				class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4"
+			>
+				<div>
+					<span
+						class="text-xs font-bold tracking-widest text-blue-400 uppercase"
+						>Trabajo Científico</span
+					>
+					<h2
+						class="text-3xl md:text-4xl font-extrabold text-white mt-2"
+					>
+						Proyectos Destacados
+					</h2>
+				</div>
+				<a
+					href="/projects"
+					class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors"
+				>
+					Ver todos los proyectos
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-4 w-4"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M9 5l7 7-7 7"></path>
+					</svg>
+				</a>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+				<!-- Project 1 (Large Grid - spans 2 columns on lg) -->
+				<div
+					class="lg:col-span-2 p-8 md:p-10 rounded-3xl bg-[#0F1423]/30 border border-gray-800/80 backdrop-blur-md group hover:border-blue-500/30 transition-all duration-300 flex flex-col justify-between"
+				>
+					<div>
+						<span
+							class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 mb-6"
+							>Machine Learning</span
+						>
+						<h3
+							class="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors"
+						>
+							Neural Odyssey: Optimización Industrial
+						</h3>
+						<p
+							class="text-gray-400 leading-relaxed text-sm max-w-xl"
+						>
+							Implementación de arquitectura Transformer para la
+							optimización de procesos de manufactura, permitiendo
+							un 28% más de eficiencia en plantas automatizadas.
+						</p>
+					</div>
+					<div
+						class="mt-8 pt-6 border-t border-gray-850 flex items-center justify-between"
+					>
+						<span class="text-xs text-gray-500"
+							>Publicado: Enero 2026</span
+						>
+						<a
+							href="/projects"
+							class="text-xs font-bold text-white group-hover:underline"
+							>Leer Caso de Estudio →</a
+						>
+					</div>
+				</div>
+
+				<!-- Small Projects Column -->
+				<div class="flex flex-col gap-6">
+					<!-- Small Project 1 -->
+					<div
+						class="p-6 rounded-2xl bg-[#0F1423]/25 border border-gray-800/80 hover:border-blue-500/20 transition-all duration-300"
+					>
+						<h4 class="text-base font-bold text-white mb-2">
+							Framework Ético 1.0
+						</h4>
+						<p class="text-gray-400 text-xs leading-relaxed">
+							Lineamientos de gobernanza para el desarrollo
+							responsable de la inteligencia artificial.
+						</p>
+					</div>
+
+					<!-- Small Project 2 -->
+					<div
+						class="p-6 rounded-2xl bg-[#0F1423]/25 border border-gray-800/80 hover:border-blue-500/20 transition-all duration-300"
+					>
+						<h4 class="text-base font-bold text-white mb-2">
+							IA en Salud Pública
+						</h4>
+						<p class="text-gray-400 text-xs leading-relaxed">
+							Modelos de detección temprana de anomalías
+							pulmonares en imágenes médicas utilizando CNNs.
+						</p>
+					</div>
+
+					<!-- Small Project 3 -->
+					<div
+						class="p-6 rounded-2xl bg-[#0F1423]/25 border border-gray-800/80 hover:border-blue-500/20 transition-all duration-300"
+					>
+						<h4 class="text-base font-bold text-white mb-2">
+							Uso de Redes Clónicas
+						</h4>
+						<p class="text-gray-400 text-xs leading-relaxed">
+							Investigación de transferencia de aprendizaje para
+							optimizar modelos de lenguaje en español.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Membership Request Form Section -->
+		<section
+			class="max-w-7xl mx-auto px-6 py-20 border-t border-gray-800/40"
+		>
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+				<!-- Form Left Text -->
+				<div class="lg:col-span-6 space-y-6">
+					<span
+						class="text-xs font-bold tracking-widest text-cyan-400 uppercase"
+						>Convocatoria Activa</span
+					>
+					<h2 class="text-3xl md:text-4xl font-extrabold text-white">
+						Forma parte de la élite de la IA.
+					</h2>
+					<p class="text-gray-300 leading-relaxed">
+						Buscamos mentes brillantes apasionadas por la tecnología
+						y la ética. Al unirte a AIS, accedes a recursos de
+						primer nivel, mentorías exclusivas y la oportunidad de
+						trabajar en proyectos de impacto global.
+					</p>
+
+					<!-- Bullet list from screenshot -->
+					<ul class="space-y-3 pt-2 text-sm text-gray-300">
+						<li class="flex items-center gap-3">
+							<svg
+								class="h-5 w-5 text-blue-400 flex-shrink-0"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2.5"
+									d="M5 13l4 4L19 7"></path>
+							</svg>
+							Acceso a laboratorios de cómputo GPU
+						</li>
+						<li class="flex items-center gap-3">
+							<svg
+								class="h-5 w-5 text-blue-400 flex-shrink-0"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2.5"
+									d="M5 13l4 4L19 7"></path>
+							</svg>
+							Networking con líderes internacionales
+						</li>
+						<li class="flex items-center gap-3">
+							<svg
+								class="h-5 w-5 text-blue-400 flex-shrink-0"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2.5"
+									d="M5 13l4 4L19 7"></path>
+							</svg>
+							Certificaciones internacionales avaladas
+						</li>
+					</ul>
+				</div>
+
+				<!-- Form Right Card -->
+				<div class="lg:col-span-6">
+					<div
+						class="p-8 rounded-3xl bg-[#0F1423]/40 border border-gray-800/80 backdrop-blur-md shadow-2xl"
+					>
+						<h3 class="text-xl font-bold text-white mb-6">
+							Solicitud de Membresía
+						</h3>
+						<form class="space-y-4">
+							<div>
+								<label
+									class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2"
+									>Nombre Completo</label
+								>
+								<input
+									type="text"
+									placeholder="Tu nombre"
+									class="w-full px-4 py-3 rounded-xl bg-gray-950/60 border border-gray-800 text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 text-sm transition-all"
+								/>
+							</div>
+							<div>
+								<label
+									class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2"
+									>Email</label
+								>
+								<input
+									type="email"
+									placeholder="tu@email.com"
+									class="w-full px-4 py-3 rounded-xl bg-gray-950/60 border border-gray-800 text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 text-sm transition-all"
+								/>
+							</div>
+							<div>
+								<label
+									class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2"
+									>Área de interés</label
+								>
+								<select
+									class="w-full px-4 py-3 rounded-xl bg-gray-950/60 border border-gray-800 text-white focus:outline-none focus:border-blue-500 text-sm transition-all"
+								>
+									<option
+										value=""
+										disabled
+										selected
+										class="bg-gray-950 text-gray-500"
+										>Seleccione un área</option
+									>
+									<option
+										value="research"
+										class="bg-gray-950 text-white"
+										>Investigación e Innovación</option
+									>
+									<option
+										value="ethics"
+										class="bg-gray-950 text-white"
+										>Ética y Gobernanza</option
+									>
+									<option
+										value="education"
+										class="bg-gray-950 text-white"
+										>Educación y Capacitación</option
+									>
+								</select>
+							</div>
+							<div>
+								<label
+									class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2"
+									>¿Por qué te unes?</label
+								>
+								<textarea
+									rows="3"
+									placeholder="Cuéntanos sobre tu motivación..."
+									class="w-full px-4 py-3 rounded-xl bg-gray-950/60 border border-gray-800 text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 text-sm transition-all resize-none"
+								></textarea>
+							</div>
+							<button
+								type="submit"
+								class="w-full py-3.5 text-sm font-bold text-[#0B0F19] bg-gradient-to-r from-blue-400 to-cyan-300 hover:from-blue-500 hover:to-cyan-400 rounded-xl transition-all shadow-lg shadow-blue-500/10 transform hover:scale-[1.01]"
+							>
+								Enviar Solicitud
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</section>
 	</main>
 
 	<!-- Footer -->
-	<footer class="bg-gray-950/80 border-t border-gray-900 py-16">
-		<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm text-gray-400">
+	<footer class="bg-gray-950/80 border-t border-gray-900/60 py-16">
+		<div
+			class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm text-gray-400"
+		>
 			<!-- Column 1 -->
 			<div class="space-y-4">
-				<span class="font-bold text-white text-lg tracking-wider">AIS</span>
+				<div class="flex items-center gap-3">
+					<img
+						src={logoHorizontal.src}
+						alt="AIS Logo"
+						class="h-8 object-contain"
+					/>
+				</div>
 				<p class="leading-relaxed">
-					Impulsando el ecosistema de IA en el Perú con excelencia científica y compromiso ético.
+					Impulsando la frontera de la Inteligencia Artificial a
+					través de la investigación rigurosa, la práctica ética y la
+					colaboración interdisciplinaria.
 				</p>
 			</div>
 
 			<!-- Column 2 -->
 			<div class="space-y-4">
-				<span class="font-semibold text-white">Navegación</span>
+				<span
+					class="font-semibold text-white uppercase tracking-wider text-xs"
+					>Organización</span
+				>
 				<ul class="space-y-2">
-					<li><a href="/" class="hover:text-white transition-colors">Inicio</a></li>
-					<li><a href="/areas" class="hover:text-white transition-colors">Áreas</a></li>
-					<li><a href="/projects" class="hover:text-white transition-colors">Proyectos</a></li>
-					<li><a href="/call" class="hover:text-white transition-colors">Convocatorias</a></li>
+					<li>
+						<a
+							href="/areas"
+							class="hover:text-white transition-colors">Áreas</a
+						>
+					</li>
+					<li>
+						<a
+							href="/projects"
+							class="hover:text-white transition-colors"
+							>Proyectos</a
+						>
+					</li>
+					<li>
+						<a
+							href="/call"
+							class="hover:text-white transition-colors"
+							>Convocatorias</a
+						>
+					</li>
 				</ul>
 			</div>
 
 			<!-- Column 3 -->
 			<div class="space-y-4">
-				<span class="font-semibold text-white">Legal</span>
+				<span
+					class="font-semibold text-white uppercase tracking-wider text-xs"
+					>Recursos</span
+				>
 				<ul class="space-y-2">
-					<li><a href="/privacy" class="hover:text-white transition-colors">Privacidad</a></li>
-					<li><a href="/terms" class="hover:text-white transition-colors">Contacto</a></li>
+					<li>
+						<a
+							href="/privacy"
+							class="hover:text-white transition-colors"
+							>Políticas de Privacidad</a
+						>
+					</li>
+					<li>
+						<a
+							href="/terms"
+							class="hover:text-white transition-colors"
+							>Términos de Servicio</a
+						>
+					</li>
 				</ul>
 			</div>
 
-			<!-- Column 4 -->
+			<!-- Column 4 (Newsletter like in screenshot) -->
 			<div class="space-y-4">
-				<span class="font-semibold text-white">Social</span>
-				<div class="flex gap-4">
-					<a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500 transition-colors">
-						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-					</a>
-					<a href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-400 transition-colors">
-						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-					</a>
-				</div>
+				<span
+					class="font-semibold text-white uppercase tracking-wider text-xs"
+					>Mantente al Día</span
+				>
+				<p class="text-xs">
+					Suscríbete a nuestro boletín para recibir publicaciones
+					científicas y noticias.
+				</p>
+				<form class="flex gap-2">
+					<input
+						type="email"
+						placeholder="tu@email.com"
+						class="px-3 py-2 rounded-lg bg-gray-900 border border-gray-800 text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 text-xs w-full"
+					/>
+					<button
+						class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center justify-center"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+						</svg>
+					</button>
+				</form>
 			</div>
 		</div>
-		<div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-gray-900 text-center text-xs text-gray-500">
-			&copy; 2026 Artificial Intelligence Society. Todos los derechos reservados.
+		<div
+			class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-gray-900/60 text-center text-xs text-gray-500"
+		>
+			&copy; 2026 Artificial Intelligence Society. Todos los derechos
+			reservados.
 		</div>
 	</footer>
-
 </Layout>
