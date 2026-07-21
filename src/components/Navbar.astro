@@ -1,0 +1,56 @@
+---
+import logoHorizontal from "../assets/logo_horizontal.webp";
+---
+
+<header
+	class="sticky top-0 z-50 bg-[#0B0F19]/80 backdrop-blur-md border-b border-gray-800/60 transition-all duration-300"
+>
+	<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+		<!-- Logo -->
+		<a href="/">
+			<img
+				src={logoHorizontal.src}
+				alt="Artificial Intelligence Society Logo"
+				class="h-10 object-contain"
+			/>
+		</a>
+
+		<!-- Navigation (Without 'Inicio' link as requested) -->
+		<nav
+			class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300"
+		>
+			<a
+				href="/#about"
+				class="hover:text-blue-300 pb-1 px-1 transition-colors"
+				>CONÓCENOS</a
+			>
+			<a
+				href="/areas"
+				class="hover:text-blue-300 pb-1 px-1 transition-colors">ÁREAS</a
+			>
+			<a
+				href="/projects"
+				class="hover:text-blue-300 pb-1 px-1 transition-colors"
+				>PROYECTOS</a
+			>
+			<a
+				href="/events"
+				class="hover:text-blue-300 pb-1 px-1 transition-colors"
+				>EVENTOS</a
+			>
+			<a
+				href="/call"
+				class="hover:text-blue-300 pb-1 px-1 transition-colors"
+				>CONVOCATORIA</a
+			>
+		</nav>
+
+		<!-- CTA Button -->
+		<a
+			href="/call"
+			class="px-5 py-2.5 text-xs font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(96,165,250,0.8)]"
+		>
+			ÚNETE A AIS
+		</a>
+	</div>
+</header>

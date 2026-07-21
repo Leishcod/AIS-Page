@@ -1,0 +1,330 @@
+---
+// 24 Hexagons grid coordinate system (mixed outlines and filled glowing ones)
+const hexagons = [
+	// Col 1 (x = 20)
+	{ x: 20, y: 20, filled: false },
+	{ x: 20, y: 56, filled: true },
+	{ x: 20, y: 92, filled: false },
+	{ x: 20, y: 128, filled: false },
+	// Col 2 (x = 44)
+	{ x: 44, y: 38, filled: false },
+	{ x: 44, y: 74, filled: true },
+	{ x: 44, y: 110, filled: false },
+	{ x: 44, y: 146, filled: true },
+	// Col 3 (x = 68)
+	{ x: 68, y: 20, filled: true },
+	{ x: 68, y: 56, filled: false },
+	{ x: 68, y: 92, filled: false },
+	{ x: 68, y: 128, filled: true },
+	// Col 4 (x = 92)
+	{ x: 92, y: 38, filled: false },
+	{ x: 92, y: 74, filled: true },
+	{ x: 92, y: 110, filled: false },
+	{ x: 92, y: 146, filled: false },
+	// Col 5 (x = 116)
+	{ x: 116, y: 20, filled: false },
+	{ x: 116, y: 56, filled: true },
+	{ x: 116, y: 92, filled: false },
+	{ x: 116, y: 128, filled: false },
+	// Col 6 (x = 140)
+	{ x: 140, y: 38, filled: true },
+	{ x: 140, y: 74, filled: false },
+	{ x: 140, y: 110, filled: false },
+	{ x: 140, y: 146, filled: false },
+];
+---
+
+<!-- Statistics Counter Banner -->
+<section
+	class="bg-[#233B4E] py-12 relative z-10 border-y border-gray-900/60 overflow-hidden"
+>
+	<!-- Left Hexagons Background decoration (Dense Honeycomb Network) -->
+	<div
+		class="absolute left-0 top-0 bottom-0 w-[45%] pointer-events-none overflow-hidden flex items-center pl-0 z-0"
+	>
+		<div
+			class="w-64 h-48 md:w-80 md:h-56 lg:w-96 lg:h-64 animate-hex-left select-none -ml-10 md:-ml-14 lg:-ml-18"
+		>
+			<svg
+				class="w-full h-full text-cyan-300"
+				viewBox="0 0 160 160"
+				fill="none"
+				stroke="currentColor"
+				stroke-linejoin="round"
+			>
+				<defs>
+					<filter
+						id="hex-glow"
+						x="-30%"
+						y="-30%"
+						width="160%"
+						height="160%"
+					>
+						<feGaussianBlur stdDeviation="4" result="blur"
+						></feGaussianBlur>
+						<feMerge>
+							<feMergeNode in="blur"></feMergeNode>
+							<feMergeNode in="SourceGraphic"
+							></feMergeNode>
+						</feMerge>
+					</filter>
+				</defs>
+				{
+					hexagons.map((hex, index) => {
+						const points = `${hex.x},${hex.y - 18} ${hex.x + 16},${hex.y - 9} ${hex.x + 16},${hex.y + 9} ${hex.x},${hex.y + 18} ${hex.x - 16},${hex.y + 9} ${hex.x - 16},${hex.y - 9}`;
+						const delayClass = `hex-poly-${(index % 6) + 1}`;
+						if (hex.filled) {
+							return (
+								<polygon
+									points={points}
+									class={`hex-poly ${delayClass} fill-cyan-400/35 stroke-cyan-300 stroke-[2]`}
+									filter="url(#hex-glow)"
+								/>
+							);
+						} else {
+							return (
+								<polygon
+									points={points}
+									class={`hex-poly ${delayClass} stroke-cyan-300/15 stroke-[1.2] fill-none`}
+								/>
+							);
+						}
+					})
+				}
+			</svg>
+		</div>
+		<!-- Gradient fade-out mask towards the center -->
+		<div
+			class="absolute inset-0 bg-gradient-to-r from-transparent to-[#233B4E] w-full h-full"
+		>
+		</div>
+	</div>
+
+	<!-- Right Hexagons Background decoration (Dense Honeycomb Network, mirrored) -->
+	<div
+		class="absolute right-0 top-0 bottom-0 w-[45%] pointer-events-none overflow-hidden flex items-center pl-0 z-0 scale-x-[-1]"
+	>
+		<div
+			class="w-64 h-48 md:w-80 md:h-56 lg:w-96 lg:h-64 animate-hex-right select-none -ml-10 md:-ml-14 lg:-ml-18"
+		>
+			<svg
+				class="w-full h-full text-cyan-300"
+				viewBox="0 0 160 160"
+				fill="none"
+				stroke="currentColor"
+				stroke-linejoin="round"
+			>
+				<defs>
+					<filter
+						id="hex-glow-right"
+						x="-30%"
+						y="-30%"
+						width="160%"
+						height="160%"
+					>
+						<feGaussianBlur stdDeviation="4" result="blur"
+						></feGaussianBlur>
+						<feMerge>
+							<feMergeNode in="blur"></feMergeNode>
+							<feMergeNode in="SourceGraphic"
+							></feMergeNode>
+						</feMerge>
+					</filter>
+				</defs>
+				{
+					hexagons.map((hex, index) => {
+						const points = `${hex.x},${hex.y - 18} ${hex.x + 16},${hex.y - 9} ${hex.x + 16},${hex.y + 9} ${hex.x},${hex.y + 18} ${hex.x - 16},${hex.y + 9} ${hex.x - 16},${hex.y - 9}`;
+						const delayClass = `hex-poly-${(index % 6) + 1}`;
+						if (hex.filled) {
+							return (
+								<polygon
+									points={points}
+									class={`hex-poly ${delayClass} fill-cyan-400/35 stroke-cyan-300 stroke-[2]`}
+									filter="url(#hex-glow-right)"
+								/>
+							);
+						} else {
+							return (
+								<polygon
+									points={points}
+									class={`hex-poly ${delayClass} stroke-cyan-300/15 stroke-[1.2] fill-none`}
+								/>
+							);
+						}
+					})
+				}
+			</svg>
+		</div>
+		<!-- Gradient fade-out mask towards the center -->
+		<div
+			class="absolute inset-0 bg-gradient-to-r from-transparent to-[#233B4E] w-full h-full"
+		>
+		</div>
+	</div>
+
+	<div
+		class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 divide-y divide-white/10 md:divide-y-0 md:divide-x divide-white/10 text-center items-center text-white relative z-10"
+	>
+		<div class="space-y-1 py-4 md:py-0">
+			<div
+				class="text-5xl font-extrabold tracking-tight text-white"
+			>
+				<span class="stat-number" data-target="67">0</span>+
+			</div>
+			<div
+				class="text-[12px] md:text-xs font-bold tracking-widest text-blue-100/90 uppercase"
+			>
+				Miembros Activos
+			</div>
+		</div>
+		<div class="space-y-1 py-4 md:py-0">
+			<div
+				class="text-5xl font-extrabold tracking-tight text-white"
+			>
+				<span class="stat-number" data-target="67">0</span>+
+			</div>
+			<div
+				class="text-[12px] md:text-xs font-bold tracking-widest text-blue-100/90 uppercase"
+			>
+				Proyectos Completados
+			</div>
+		</div>
+		<div class="space-y-1 py-4 md:py-0">
+			<div
+				class="text-5xl font-extrabold tracking-tight text-white"
+			>
+				<span class="stat-number" data-target="67">0</span>+
+			</div>
+			<div
+				class="text-[12px] md:text-xs font-bold tracking-widest text-blue-100/90 uppercase"
+			>
+				Eventos Anuales
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	// Animation for stats counters
+	function initStatsAnimation() {
+		const statElements = document.querySelectorAll(".stat-number");
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const target = entry.target as HTMLElement;
+						const targetValue = parseInt(
+							target.getAttribute("data-target") || "0",
+							10,
+						);
+
+						if (targetValue === 0) {
+							target.textContent = "0";
+							return;
+						}
+
+						const duration = 1500; // 1.5 seconds
+						const startTime = performance.now();
+
+						function updateNumber(now: number) {
+							const progress = Math.min(
+								(now - startTime) / duration,
+								1,
+							);
+							const easeProgress = progress * (2 - progress); // easeOutQuad
+							const currentValue = Math.floor(
+								easeProgress * targetValue,
+							);
+
+							target.textContent = currentValue.toString();
+
+							if (progress < 1) {
+								requestAnimationFrame(updateNumber);
+							} else {
+								target.textContent = targetValue.toString();
+							}
+						}
+
+						requestAnimationFrame(updateNumber);
+						observer.unobserve(target);
+					}
+				});
+			},
+			{ threshold: 0.2 },
+		);
+
+		statElements.forEach((el) => observer.observe(el));
+	}
+
+	// Run after page load
+	initStatsAnimation();
+	document.addEventListener("astro:page-load", initStatsAnimation);
+</script>
+
+<style>
+	@keyframes float-hex-left {
+		0%,
+		100% {
+			transform: translateY(0px) scale(0.98);
+		}
+		50% {
+			transform: translateY(-6px) scale(1.02);
+		}
+	}
+	@keyframes float-hex-right {
+		0%,
+		100% {
+			transform: translateY(0px) scale(1.02);
+		}
+		50% {
+			transform: translateY(6px) scale(0.98);
+		}
+	}
+	.animate-hex-left {
+		animation: float-hex-left 8s ease-in-out infinite;
+	}
+	.animate-hex-right {
+		animation: float-hex-right 9s ease-in-out infinite;
+	}
+
+	/* Asymmetric pulse animation for individual hexagons */
+	.hex-poly {
+		animation: pulse-async 5s ease-in-out infinite;
+		will-change: opacity;
+	}
+	.hex-poly-1 {
+		animation-delay: 0.1s;
+		animation-duration: 4s;
+	}
+	.hex-poly-2 {
+		animation-delay: 1.3s;
+		animation-duration: 5.2s;
+	}
+	.hex-poly-3 {
+		animation-delay: 0.6s;
+		animation-duration: 4.5s;
+	}
+	.hex-poly-4 {
+		animation-delay: 2.1s;
+		animation-duration: 5.8s;
+	}
+	.hex-poly-5 {
+		animation-delay: 0.9s;
+		animation-duration: 4.8s;
+	}
+	.hex-poly-6 {
+		animation-delay: 2.8s;
+		animation-duration: 6.2s;
+	}
+
+	@keyframes pulse-async {
+		0%,
+		100% {
+			opacity: 0.08;
+		}
+		50% {
+			opacity: 0.85;
+		}
+	}
+</style>
