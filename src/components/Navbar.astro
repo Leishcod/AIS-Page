@@ -1,56 +1,129 @@
 ---
 import logoHorizontal from "../assets/logo_horizontal.webp";
+const pathname = Astro.url.pathname;
+const isActive = (path: string) => {
+	if (path === "/") return pathname === "/";
+	return pathname.startsWith(path);
+};
 ---
 
-<header
-	class="sticky top-0 z-50 bg-[#0B0F19]/80 backdrop-blur-md border-b border-gray-800/60 transition-all duration-300"
+<nav
+	class="w-full bg-[#0B0F19]/95 backdrop-blur-sm fixed top-0 z-50 border-b border-gray-800/60"
 >
-	<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-		<!-- Logo -->
-		<a href="/">
-			<img
-				src={logoHorizontal.src}
-				alt="Artificial Intelligence Society Logo"
-				class="h-10 object-contain"
-			/>
-		</a>
+	<div class="max-w-7xl mx-auto px-6">
+		<div class="flex items-center justify-between h-20">
+			<!-- Logo -->
+			<a href="/" class="shrink-0">
+				<img
+					src={logoHorizontal.src}
+					alt="Artificial Intelligence Society Logo"
+					class="h-10 object-contain"
+				/>
+			</a>
 
-		<!-- Navigation (Without 'Inicio' link as requested) -->
-		<nav
-			class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300"
-		>
-			<a
-				href="/#about"
-				class="hover:text-blue-300 pb-1 px-1 transition-colors"
-				>CONÓCENOS</a
-			>
-			<a
-				href="/areas"
-				class="hover:text-blue-300 pb-1 px-1 transition-colors">ÁREAS</a
-			>
-			<a
-				href="/projects"
-				class="hover:text-blue-300 pb-1 px-1 transition-colors"
-				>PROYECTOS</a
-			>
-			<a
-				href="/events"
-				class="hover:text-blue-300 pb-1 px-1 transition-colors"
-				>EVENTOS</a
-			>
-			<a
-				href="/call"
-				class="hover:text-blue-300 pb-1 px-1 transition-colors"
-				>CONVOCATORIA</a
-			>
-		</nav>
+			<!-- Desktop Links -->
+			<div class="hidden md:flex items-center gap-8 text-sm font-medium">
+				<a
+					href="/about"
+					class={`transition-colors pb-1 px-1 ${isActive("/about") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
+				>CONÓCENOS</a>
+				<a
+					href="/areas"
+					class={`transition-colors pb-1 px-1 ${isActive("/areas") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
+				>ÁREAS</a>
+				<a
+					href="/projects"
+					class={`transition-colors pb-1 px-1 ${isActive("/projects") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
+				>PROYECTOS</a>
+				<a
+					href="/events"
+					class={`transition-colors pb-1 px-1 ${isActive("/events") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
+				>EVENTOS</a>
+				<a
+					href="/call"
+					class={`transition-colors pb-1 px-1 ${isActive("/call") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
+				>CONVOCATORIA</a>
+			</div>
 
-		<!-- CTA Button -->
+			<!-- Desktop CTA + Mobile Hamburger -->
+			<div class="flex items-center gap-3">
+				<!-- CTA (desktop only) -->
+				<a
+					href="/call"
+					class="hidden md:inline-block px-5 py-2.5 text-xs font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(96,165,250,0.8)]"
+				>
+					ÚNETE A AIS
+				</a>
+
+				<!-- Hamburger (mobile only) -->
+				<div class="md:hidden flex items-center">
+					<button
+						id="mobile-menu-btn"
+						class="group relative w-10 h-10 text-gray-300 hover:text-white focus:outline-none flex flex-col justify-center items-center gap-[6px]"
+						aria-label="Abrir menú"
+					>
+						<span class="block w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center group-[.is-active]:translate-y-[8px] group-[.is-active]:rotate-45"></span>
+						<span class="block w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center group-[.is-active]:opacity-0 group-[.is-active]:scale-0"></span>
+						<span class="block w-6 h-[2px] bg-current rounded-full transition-all duration-300 origin-center group-[.is-active]:-translate-y-[8px] group-[.is-active]:-rotate-45"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mobile Dropdown -->
+	<div
+		id="mobile-menu"
+		class="hidden md:hidden bg-[#0B0F19]/98 border-t border-gray-800/60 px-4 pt-2 pb-6 space-y-1 text-center shadow-xl"
+	>
+		<a
+			href="/about"
+			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/about") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+		>CONÓCENOS</a>
+		<a
+			href="/areas"
+			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/areas") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+		>ÁREAS</a>
+		<a
+			href="/projects"
+			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/projects") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+		>PROYECTOS</a>
+		<a
+			href="/events"
+			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/events") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+		>EVENTOS</a>
 		<a
 			href="/call"
-			class="px-5 py-2.5 text-xs font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(96,165,250,0.8)]"
-		>
-			ÚNETE A AIS
-		</a>
+			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/call") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+		>CONVOCATORIA</a>
+
+		<div class="pt-4">
+			<a
+				href="/call"
+				class="inline-block px-8 py-3 text-xs font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all duration-300"
+			>
+				ÚNETE A AIS
+			</a>
+		</div>
 	</div>
-</header>
+</nav>
+
+<!-- Spacer to push content below the fixed navbar -->
+<div class="h-20"></div>
+
+<script>
+	function setupMobileMenu() {
+		const btn = document.getElementById("mobile-menu-btn");
+		const menu = document.getElementById("mobile-menu");
+
+		if (btn && menu) {
+			btn.onclick = () => {
+				menu.classList.toggle("hidden");
+				btn.classList.toggle("is-active");
+			};
+		}
+	}
+
+	setupMobileMenu();
+	document.addEventListener("astro:after-swap", setupMobileMenu);
+</script>

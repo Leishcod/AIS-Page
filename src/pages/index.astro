@@ -4,8 +4,38 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import heroBg from "../assets/hero-bg.webp";
 import logoBlanco from "../assets/logo_blanco.webp";
-import communityWorkspace from "../assets/community_workspace.png";
+import communityWorkspace from "../assets/community_workspace.webp";
+import congressBanner from "../assets/congress-banner.webp";
 import StatsBanner from "../components/home/StatsBanner.astro";
+import CategoryCard from "../components/home/CategoryCard.astro";
+
+// Thematic groups data from Chapter IX of Statute
+const categories = [
+	{
+		title: "Aprendizaje Automático",
+		description:
+			"Desarrollo de modelos predictivos y optimización a partir de grandes volúmenes de datos.",
+		iconName: "cpu" as const,
+	},
+	{
+		title: "Procesamiento de Lenguaje",
+		description:
+			"Investigación y entrenamiento de arquitecturas de lenguaje para la interacción humano-máquina.",
+		iconName: "chat" as const,
+	},
+	{
+		title: "Visión Artificial",
+		description:
+			"Modelado de algoritmos de detección, segmentación y reconocimiento visual avanzado.",
+		iconName: "eye" as const,
+	},
+	{
+		title: "Ética y Gobernanza de la IA",
+		description:
+			"Desarrollo seguro, auditable y alineado con el bienestar social de la humanidad.",
+		iconName: "scale" as const,
+	},
+];
 ---
 
 <Layout
@@ -38,17 +68,19 @@ import StatsBanner from "../components/home/StatsBanner.astro";
 				<div class="lg:col-span-7 space-y-6">
 					<!-- Top Overline / Subtitle (Reference: line indicator with overline text) -->
 					<div
-						class="flex items-center gap-3 text-xs font-bold tracking-widest text-blue-300 uppercase"
+						class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
 					>
 						<span class="w-8 h-[2px] bg-blue-300"></span>
-						ARTIFICIAL INTELLIGENCE SOCIETY
+						INTELLIGENCE FOR HUMANITY
 					</div>
 
 					<h1
-						class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tighter"
+						class="text-[50px] md:text-[62px] lg:text-[74px] font-black text-white leading-[1.1] tracking-tighter"
 					>
 						Liderando el avance <br />
-						de la <span class="text-blue-300">IA</span>
+						de la <span class="text-blue-300 text-glow-blue"
+							>IA</span
+						>
 					</h1>
 
 					<!-- Description Container with detailed specification placeholder -->
@@ -64,9 +96,25 @@ import StatsBanner from "../components/home/StatsBanner.astro";
 						</p>
 					</div>
 
+					<!-- Mobile-only logo symbol displayed before buttons -->
+					<div class="block lg:hidden flex justify-center py-4">
+						<div class="relative flex items-center justify-center">
+							<!-- Ambient backlight glow in color #1E4371 -->
+							<div
+								class="absolute w-48 h-48 bg-[#1E4371] opacity-75 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+							>
+							</div>
+							<img
+								src={logoBlanco.src}
+								alt="AIS Logo Blanco (Móvil)"
+								class="w-40 object-contain opacity-95 relative z-10 filter drop-shadow-[0_0_20px_rgba(30,67,113,0.7)]"
+							/>
+						</div>
+					</div>
+
 					<div class="flex flex-wrap gap-4 pt-4">
 						<a
-							href="#about"
+							href="/about"
 							class="px-8 py-3.5 text-sm font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all transform hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(96,165,250,0.8)]"
 						>
 							CONÓCENOS
@@ -80,7 +128,7 @@ import StatsBanner from "../components/home/StatsBanner.astro";
 					</div>
 				</div>
 				<div
-					class="lg:col-span-5 flex justify-center lg:justify-end py-8"
+					class="hidden lg:flex lg:col-span-5 justify-center lg:justify-end py-8"
 				>
 					<div class="relative flex items-center justify-center">
 						<!-- Ambient backlight glow in color #1E4371 -->
@@ -117,17 +165,21 @@ import StatsBanner from "../components/home/StatsBanner.astro";
 				<div class="lg:col-span-7 space-y-6">
 					<!-- Top Overline / Subtitle -->
 					<div
-						class="flex items-center gap-3 text-xs font-bold tracking-widest text-blue-300 uppercase"
+						class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
 					>
 						<span class="w-8 h-[2px] bg-blue-300"></span>
 						¿QUÉ ES AIS?
 					</div>
 
 					<h2
-						class="text-4xl md:text-5xl font-black text-white leading-tight tracking-tighter"
+						class="text-[38px] md:text-[50px] font-black text-white leading-tight tracking-tighter"
 					>
-						Una comunidad que impulsa <br />
-						la <span class="text-blue-300">IA</span>
+						Una comunidad que <span
+							class="text-blue-300 text-glow-blue"
+						>
+							impulsa
+						</span><br />
+						<span class="text-blue-300 text-glow-blue">la IA</span>
 					</h2>
 
 					<!-- Description Container with detailed specification placeholder -->
@@ -171,27 +223,162 @@ import StatsBanner from "../components/home/StatsBanner.astro";
 			</div>
 		</section>
 
+		<!--Se importan el bannersito de stats-->
 		<StatsBanner />
 
-		<!-- Construction Banner -->
-		<div
-			class="py-16 md:py-24 flex flex-col items-center justify-center gap-3 relative z-10"
+		<!-- Ejes temáticos Section -->
+		<section
+			id="rubros"
+			class="max-w-7xl mx-auto px-6 py-20 md:py-28 relative z-10 border-t border-gray-900/60"
 		>
-			<div
-				class="flex items-center gap-2 text-xs font-bold tracking-widest text-blue-300 uppercase"
-			>
-				<span class="relative flex h-2 w-2">
-					<span
-						class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"
-					></span>
-					<span
-						class="relative inline-flex rounded-full h-2 w-2 bg-blue-300"
-					></span>
-				</span>
-				PÁGINA EN CONSTRUCCIÓN
+			<div class="reveal">
+				<!-- Top Overline / Subtitle (Uniform Style with Line) -->
+				<div
+					class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
+				>
+					<span class="w-8 h-[2px] bg-blue-300"></span>
+					EJES TEMÁTICOS
+				</div>
+				<h2
+					class="text-[38px] md:text-[50px] font-black text-white leading-tight tracking-tight mt-4"
+				>
+					Campos de <span class="text-blue-300 text-glow-blue"
+						>Dominio e Impacto</span
+					>
+				</h2>
+				<p
+					class="text-gray-400 text-base md:text-lg font-light leading-relaxed mt-4"
+				>
+					Nuestros miembros se organizan voluntariamente en Grupos de
+					Interés en torno a las áreas más prioritarias de la
+					Inteligencia Artificial.
+				</p>
 			</div>
-			<p class="text-xs text-gray-500 font-medium">Seguimos diseñando</p>
-		</div>
+
+			<!-- 2x2 Grid Layout utilizing modular CategoryCard component -->
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
+				{
+					categories.map((cat) => (
+						<CategoryCard
+							title={cat.title}
+							description={cat.description}
+							iconName={cat.iconName}
+						/>
+					))
+				}
+			</div>
+		</section>
+
+		<hr class="border-t border-gray-800 w-full" />
+
+		<!-- I Congreso Internacional de IA Section -->
+		<section
+			id="congreso"
+			class="max-w-7xl mx-auto px-6 py-20 md:py-28 relative z-10"
+		>
+			<!-- Top Overline -->
+			<div
+				class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase mb-4"
+			>
+				<span class="w-8 h-[2px] bg-blue-300"></span>
+				EVENTO INSIGNIA
+			</div>
+
+			<!-- Banner Card -->
+			<div
+				class="relative overflow-hidden rounded-2xl border border-blue-500/20 min-h-[340px] md:min-h-[420px] flex items-end"
+			>
+				<!-- Background image -->
+				<img
+					src={congressBanner.src}
+					alt="I Congreso Internacional de IA 2027"
+					class="absolute inset-0 w-full h-full object-cover opacity-60"
+				/>
+				<!-- Gradient overlay -->
+				<div
+					class="absolute inset-0 bg-gradient-to-r from-[#0B0F19]/95 via-[#0B0F19]/60 to-transparent"
+				>
+				</div>
+				<div
+					class="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/80 via-transparent to-transparent"
+				>
+				</div>
+
+				<!-- Content -->
+				<div class="relative z-10 p-8 md:p-12 max-w-2xl space-y-5">
+					<!-- Event badge -->
+					<div
+						class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-400/40 bg-blue-500/10 text-blue-300 text-xs font-bold tracking-widest uppercase"
+					>
+						<span
+							class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"
+						></span>
+						Próximamente
+					</div>
+
+					<h2
+						class="text-[32px] md:text-[46px] font-black text-white leading-tight tracking-tight"
+					>
+						I Congreso <span class="text-blue-300 text-glow-blue"
+							>Internacional</span
+						><br />
+						de Inteligencia Artificial
+					</h2>
+
+					<div
+						class="flex flex-wrap items-center gap-4 text-sm text-gray-400 font-medium"
+					>
+						<span class="flex items-center gap-1.5">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="w-4 h-4 text-blue-400"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+								></path>
+							</svg>
+							Agosto 2027
+						</span>
+						<span class="flex items-center gap-1.5">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="w-4 h-4 text-blue-400"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								stroke-width="2"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+								></path>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+							</svg>
+							Lima, Perú
+						</span>
+					</div>
+
+					<p
+						class="text-gray-400 text-base md:text-lg font-light leading-relaxed"
+					>
+						El mayor encuentro científico y profesional de
+						Inteligencia Artificial en el Perú, organizado por la
+						AIS para conectar investigadores, profesionales y
+						estudiantes con la vanguardia global de la disciplina.
+					</p>
+				</div>
+			</div>
+		</section>
 	</main>
 
 	<Footer />
