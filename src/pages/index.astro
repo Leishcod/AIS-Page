@@ -127,7 +127,7 @@ import StatsBanner from "../components/home/StatsBanner.astro";
 						class="text-4xl md:text-5xl font-black text-white leading-tight tracking-tighter"
 					>
 						Una comunidad que impulsa <br />
-						la <span class="text-blue-300">IA</span> en el Perú
+						la <span class="text-blue-300">IA</span>
 					</h2>
 
 					<!-- Description Container with detailed specification placeholder -->
@@ -173,210 +173,25 @@ import StatsBanner from "../components/home/StatsBanner.astro";
 
 		<StatsBanner />
 
-		<!-- Misión & Visión Section -->
-		<section
-			id="about"
-			class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-gray-800/40"
-		>
-			<!-- Misión Panel -->
-			<div
-				class="p-8 md:p-12 rounded-3xl bg-gray-900/10 border border-gray-800/80 backdrop-blur-md flex flex-col justify-between hover:border-blue-500/20 transition-all duration-300"
-			>
-				<div>
-					<div
-						class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-8"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-6 w-6"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-						</svg>
-					</div>
-					<h3 class="text-2xl md:text-3xl font-bold text-white mb-6">
-						Misión
-					</h3>
-					<p class="text-gray-300 leading-relaxed text-base">
-						Liderar el avance global de la inteligencia artificial y
-						la competencia de sus profesionales; conectando a la
-						comunidad para intercambiar conocimientos técnicos,
-						establecer los más altos estándares éticos y
-						científicos, y garantizar que la tecnología se
-						desarrolle para el beneficio, bienestar y equidad de la
-						humanidad.
-					</p>
-				</div>
-			</div>
-
-			<!-- Visión Panel -->
-			<div
-				class="p-8 md:p-12 rounded-3xl bg-gray-900/10 border border-gray-800/80 backdrop-blur-md flex flex-col justify-between hover:border-cyan-500/20 transition-all duration-300"
-			>
-				<div>
-					<div
-						class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-8"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-6 w-6"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-							></path>
-						</svg>
-					</div>
-					<h3 class="text-2xl md:text-3xl font-bold text-white mb-6">
-						Visión
-					</h3>
-					<p class="text-gray-300 leading-relaxed text-base">
-						Ser reconocida como una organización profesional de
-						referencia en inteligencia artificial, estableciendo
-						altos estándares de práctica, investigación y ética en
-						el campo, con especial vocación de servicio en el Perú
-						y, conforme crezca de manera sostenida, en América
-						Latina y el mundo en desarrollo.
-					</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- Proyectos Destacados Section -->
-		<section
-			class="max-w-7xl mx-auto px-6 py-20 border-t border-gray-800/40"
+		<!-- Construction Banner -->
+		<div
+			class="py-16 md:py-24 flex flex-col items-center justify-center gap-3 relative z-10"
 		>
 			<div
-				class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4"
+				class="flex items-center gap-2 text-xs font-bold tracking-widest text-blue-300 uppercase"
 			>
-				<div>
+				<span class="relative flex h-2 w-2">
 					<span
-						class="text-xs font-bold tracking-widest text-blue-400 uppercase"
-						>Trabajo Científico</span
-					>
-					<h2
-						class="text-3xl md:text-4xl font-extrabold text-white mt-2"
-					>
-						Proyectos Destacados
-					</h2>
-				</div>
-				<a
-					href="/projects"
-					class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors"
-				>
-					Ver todos los proyectos
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-4 w-4"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M9 5l7 7-7 7"></path>
-					</svg>
-				</a>
+						class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"
+					></span>
+					<span
+						class="relative inline-flex rounded-full h-2 w-2 bg-blue-300"
+					></span>
+				</span>
+				PÁGINA EN CONSTRUCCIÓN
 			</div>
-
-			<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-				<!-- Project 1 (Large Grid - spans 2 columns on lg) -->
-				<div
-					class="lg:col-span-2 p-8 md:p-10 rounded-3xl bg-[#0F1423]/30 border border-gray-800/80 backdrop-blur-md group hover:border-blue-500/30 transition-all duration-300 flex flex-col justify-between"
-				>
-					<div>
-						<span
-							class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 mb-6"
-							>Machine Learning</span
-						>
-						<h3
-							class="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors"
-						>
-							Neural Odyssey: Optimización Industrial
-						</h3>
-						<p
-							class="text-gray-400 leading-relaxed text-sm max-w-xl"
-						>
-							Implementación de arquitectura Transformer para la
-							optimización de procesos de manufactura, permitiendo
-							un 28% más de eficiencia en plantas automatizadas.
-						</p>
-					</div>
-					<div
-						class="mt-8 pt-6 border-t border-gray-850 flex items-center justify-between"
-					>
-						<span class="text-xs text-gray-500"
-							>Publicado: Enero 2026</span
-						>
-						<a
-							href="/projects"
-							class="text-xs font-bold text-white group-hover:underline"
-							>Leer Caso de Estudio →</a
-						>
-					</div>
-				</div>
-
-				<!-- Small Projects Column -->
-				<div class="flex flex-col gap-6">
-					<!-- Small Project 1 -->
-					<div
-						class="p-6 rounded-2xl bg-[#0F1423]/25 border border-gray-800/80 hover:border-blue-500/20 transition-all duration-300"
-					>
-						<h4 class="text-base font-bold text-white mb-2">
-							Framework Ético 1.0
-						</h4>
-						<p class="text-gray-400 text-xs leading-relaxed">
-							Lineamientos de gobernanza para el desarrollo
-							responsable de la inteligencia artificial.
-						</p>
-					</div>
-
-					<!-- Small Project 2 -->
-					<div
-						class="p-6 rounded-2xl bg-[#0F1423]/25 border border-gray-800/80 hover:border-blue-500/20 transition-all duration-300"
-					>
-						<h4 class="text-base font-bold text-white mb-2">
-							IA en Salud Pública
-						</h4>
-						<p class="text-gray-400 text-xs leading-relaxed">
-							Modelos de detección temprana de anomalías
-							pulmonares en imágenes médicas utilizando CNNs.
-						</p>
-					</div>
-
-					<!-- Small Project 3 -->
-					<div
-						class="p-6 rounded-2xl bg-[#0F1423]/25 border border-gray-800/80 hover:border-blue-500/20 transition-all duration-300"
-					>
-						<h4 class="text-base font-bold text-white mb-2">
-							Uso de Redes Clónicas
-						</h4>
-						<p class="text-gray-400 text-xs leading-relaxed">
-							Investigación de transferencia de aprendizaje para
-							optimizar modelos de lenguaje en español.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
+			<p class="text-xs text-gray-500 font-medium">Seguimos diseñando</p>
+		</div>
 	</main>
 
 	<Footer />
