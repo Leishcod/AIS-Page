@@ -1,0 +1,90 @@
+---
+interface Props {
+	imageSrc: string;
+	date: string;
+	location: string;
+	description: string;
+}
+
+const { imageSrc, date, location, description } = Astro.props as Props;
+---
+
+<article
+	class="relative overflow-hidden rounded-2xl border border-gray-800 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_35px_rgba(96,165,250,0.15)] group min-h-[360px] md:min-h-[440px] flex items-center p-8 md:p-12"
+>
+	<!-- Background image with scale on hover -->
+	<img
+		src={imageSrc}
+		alt="Congreso Background"
+		class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-[1.02] transition-transform duration-500 pointer-events-none"
+	/>
+	<!-- Gradients overlay for legibility -->
+	<div
+		class="absolute inset-0 bg-gradient-to-r from-[#0B0F19]/95 via-[#0B0F19]/70 to-[#0B0F19]/20 pointer-events-none"
+	>
+	</div>
+	<div
+		class="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/90 via-transparent to-transparent pointer-events-none"
+	>
+	</div>
+
+	<!-- Content container: max-w-2xl so text does not occupy the entire card -->
+	<div class="relative z-10 w-full max-w-2xl space-y-5">
+		<!-- Title inside card -->
+		<h2
+			class="text-[32px] md:text-[46px] lg:text-[50px] font-black text-white leading-tight tracking-tight"
+		>
+			<span class="text-blue-300 text-glow-blue"
+				>1er Congreso Internacional</span
+			> de Inteligencia Artificial
+		</h2>
+
+		<!-- Metadata (Date & Location) -->
+		<div class="flex flex-wrap items-center gap-5 text-[14px] md:text-[16px] text-gray-300 font-semibold">
+			<span class="flex items-center gap-2">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="w-5 h-5 text-blue-400"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2.5"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+					></path>
+				</svg>
+				{date}
+			</span>
+			<span class="flex items-center gap-2">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="w-5 h-5 text-blue-400"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2.5"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+					></path>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+					></path>
+				</svg>
+				{location}
+			</span>
+		</div>
+
+		<!-- Description -->
+		<p class="text-gray-400 text-[14px] md:text-[16px] lg:text-[18px] font-light leading-relaxed">
+			{description}
+		</p>
+	</div>
+</article>

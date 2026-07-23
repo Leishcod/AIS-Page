@@ -22,7 +22,7 @@ const isActive = (path: string) => {
 			</a>
 
 			<!-- Desktop Links -->
-			<div class="hidden md:flex items-center gap-8 text-sm font-medium">
+			<div class="hidden md:flex items-center gap-8 text-[14px] font-medium">
 				<a
 					href="/about"
 					class={`transition-colors pb-1 px-1 ${isActive("/about") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
@@ -40,21 +40,17 @@ const isActive = (path: string) => {
 					class={`transition-colors pb-1 px-1 ${isActive("/events") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
 				>EVENTOS</a>
 				<a
+					href="/chapters"
+					class={`transition-colors pb-1 px-1 ${isActive("/chapters") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
+				>CAPÍTULOS</a>
+				<a
 					href="/call"
 					class={`transition-colors pb-1 px-1 ${isActive("/call") ? "text-blue-300" : "text-gray-300 hover:text-blue-300"}`}
 				>CONVOCATORIA</a>
 			</div>
 
-			<!-- Desktop CTA + Mobile Hamburger -->
-			<div class="flex items-center gap-3">
-				<!-- CTA (desktop only) -->
-				<a
-					href="/call"
-					class="hidden md:inline-block px-5 py-2.5 text-xs font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(96,165,250,0.8)]"
-				>
-					ÚNETE A AIS
-				</a>
-
+			<!-- Mobile Hamburger only (CTA removed as requested) -->
+			<div class="flex items-center gap-3 md:hidden">
 				<!-- Hamburger (mobile only) -->
 				<div class="md:hidden flex items-center">
 					<button
@@ -78,33 +74,28 @@ const isActive = (path: string) => {
 	>
 		<a
 			href="/about"
-			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/about") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+			class={`block px-3 py-4 text-[16px] font-medium transition-colors rounded-lg ${isActive("/about") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
 		>CONÓCENOS</a>
 		<a
 			href="/areas"
-			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/areas") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+			class={`block px-3 py-4 text-[16px] font-medium transition-colors rounded-lg ${isActive("/areas") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
 		>ÁREAS</a>
 		<a
 			href="/projects"
-			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/projects") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+			class={`block px-3 py-4 text-[16px] font-medium transition-colors rounded-lg ${isActive("/projects") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
 		>PROYECTOS</a>
 		<a
 			href="/events"
-			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/events") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+			class={`block px-3 py-4 text-[16px] font-medium transition-colors rounded-lg ${isActive("/events") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
 		>EVENTOS</a>
 		<a
+			href="/chapters"
+			class={`block px-3 py-4 text-[16px] font-medium transition-colors rounded-lg ${isActive("/chapters") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+		>CAPÍTULOS</a>
+		<a
 			href="/call"
-			class={`block px-3 py-4 text-base font-medium transition-colors rounded-lg ${isActive("/call") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
+			class={`block px-3 py-4 text-[16px] font-medium transition-colors rounded-lg ${isActive("/call") ? "text-blue-300" : "text-gray-300 hover:text-blue-300 hover:bg-blue-500/5"}`}
 		>CONVOCATORIA</a>
-
-		<div class="pt-4">
-			<a
-				href="/call"
-				class="inline-block px-8 py-3 text-xs font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all duration-300"
-			>
-				ÚNETE A AIS
-			</a>
-		</div>
 	</div>
 </nav>
 
