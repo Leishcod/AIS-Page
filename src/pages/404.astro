@@ -1,0 +1,125 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ConsoleScreen from "../components/404/ConsoleScreen.astro";
+---
+
+<Layout title="404: Nodo no encontrado - AIS">
+	<Navbar />
+
+	<main
+		class="relative min-h-[calc(100vh-80px)] flex flex-col justify-center items-center px-6 py-16 overflow-hidden"
+	>
+		<!-- Futuristic ambient glow effects -->
+		<div
+			class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"
+		>
+		</div>
+		<div
+			class="absolute bottom-10 right-10 w-[250px] h-[250px] bg-indigo-500/5 rounded-full blur-[80px] pointer-events-none"
+		>
+		</div>
+
+		<!-- Main 404 Container -->
+		<div
+			class="relative z-10 text-center max-w-xl mx-auto flex flex-col items-center"
+		>
+			<!-- Título 404 de fuente SANS-->
+			<div
+				class="relative w-full flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px]"
+				style="margin-bottom: 2.5rem !important;"
+			>
+				<h1
+					id="glitch-title"
+					class="absolute font-black text-blue-300 text-glow-blue select-none cursor-default font-sans drop-shadow-[0_0_60px_rgba(96,165,250,0.6)]"
+					style="font-size: clamp(120px, 20vw, 240px) !important; line-height: 1 !important; text-align: center !important;"
+				>
+					404
+				</h1>
+			</div>
+
+			<!-- AI Glitch Console Screen Component -->
+			<ConsoleScreen />
+
+			<!-- CTA Button with transition-all transform hover:-translate-y-0.5 hover:shadow -->
+			<div
+				class="w-full flex justify-center"
+				style="margin-top: 1rem !important;"
+			>
+				<a
+					href="/"
+					class="px-8 py-3.5 text-sm font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all transform hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(96,165,250,0.8)]"
+					style="display: inline-flex !important; align-items: center !important; justify-content: center !important; height: auto !important; min-height: 52px !important; width: auto !important;"
+				>
+					VOLVER AL INICIO
+				</a>
+			</div>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+
+<script>
+	let glitchTimer: any = null;
+
+	function initGlitch() {
+		const titleEl = document.getElementById("glitch-title");
+
+		// If we are not on the 404 page, clear the timer and stop
+		if (!titleEl) {
+			if (glitchTimer) {
+				clearInterval(glitchTimer);
+				glitchTimer = null;
+			}
+			return;
+		}
+
+		// Clear any existing timer to avoid duplicates
+		if (glitchTimer) {
+			clearInterval(glitchTimer);
+		}
+
+		const originalText = "404";
+		const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ#@$%&*";
+
+		function triggerGlitch() {
+			let count = 0;
+			const interval = setInterval(() => {
+				if (titleEl) {
+					titleEl.innerText = originalText
+						.split("")
+						.map(
+							() =>
+								chars[Math.floor(Math.random() * chars.length)],
+						)
+						.join("");
+				}
+
+				count++;
+				if (count >= 6) {
+					clearInterval(interval);
+					if (titleEl) {
+						titleEl.innerText = originalText;
+					}
+				}
+			}, 75);
+		}
+
+		// Glitch periodically every 3.5 seconds
+		glitchTimer = setInterval(() => {
+			if (Math.random() > 0.3) {
+				triggerGlitch();
+			}
+		}, 3500);
+
+		// Glitch on hover
+		titleEl.addEventListener("mouseenter", triggerGlitch);
+	}
+
+	// Initialize on page load
+	initGlitch();
+	// Re-initialize after Astro View Transitions swap
+	document.addEventListener("astro:after-swap", initGlitch);
+</script>
