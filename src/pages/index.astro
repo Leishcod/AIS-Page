@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import heroBg from "../assets/hero-bg.webp";
 import logoBlanco from "../assets/logo_blanco.webp";
-import communityWorkspace from "../assets/community_workspace.webp";
+import communityWorkspace from "../assets/community_workspace.png";
 import congressBanner from "../assets/congress-banner.webp";
 import StatsBanner from "../components/home/StatsBanner.astro";
 import CategoryCard from "../components/home/CategoryCard.astro";
@@ -208,15 +208,11 @@ const categories = [
 						<img
 							src={communityWorkspace.src}
 							alt="AIS Community Research Lab"
-							class="w-full h-full object-cover grayscale opacity-90 transition-all duration-500 group-hover:scale-105"
+							class="w-full h-full object-cover opacity-95 transition-all duration-500 group-hover:scale-105"
 						/>
-						<!-- Premium blue multiply blending overlay matching reference image style -->
+						<!-- Gradient fade at the bottom for background blending -->
 						<div
-							class="absolute inset-0 bg-blue-950/40 mix-blend-multiply pointer-events-none"
-						>
-						</div>
-						<div
-							class="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-80 pointer-events-none"
+							class="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-70 pointer-events-none"
 						>
 						</div>
 					</div>
