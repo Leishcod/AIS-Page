@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import EventStatsBanner from "../components/events/EventStatsBanner.astro";
+---
+<Layout
+    title="Eventos - AIS">
+    <Navbar/>
+    <main class="relative overflow-hidden w-full">
+        <section>
+            <div class="mx-auto min-h-svh flex items-center justify-center">
+                <h1 class="text-blue-300 text-glow-blue font-extrabold text-7xl">Eventos</h1>
+            </div>
+        </section>
+        <EventStatsBanner/>
+    </main>
+    <Footer/>
+</Layout>
