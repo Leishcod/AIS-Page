@@ -1,0 +1,154 @@
+---
+import type { Project } from '../../types/proyectos';
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div id="project-drawer-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<div id="project-drawer" class="fixed top-0 right-0 h-full w-full md:w-[500px] lg:w-[600px] bg-slate-950 border-l border-slate-800 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl">
+  
+  <!-- Header -->
+  <div class="p-6 md:p-8 flex justify-between items-center border-b border-slate-800/50 bg-slate-900/50">
+    <h2 class="text-xl md:text-2xl font-bold font-outfit text-white">Detalle del Proyecto</h2>
+    <button id="drawer-close" class="p-2 hover:bg-slate-800 text-slate-400 hover:text-white rounded-full transition-colors">
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Scrollable Content -->
+  <div class="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
+    <div id="drawer-content" class="text-slate-300 flex flex-col gap-6">
+      <!-- The JS will inject content here -->
+    </div>
+  </div>
+</div>
+
+<!-- Inject projects data as a JSON script for the client-side JS to read -->
+<script id="projects-data" type="application/json" set:html={JSON.stringify(projects)}></script>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #1e293b;
+    border-radius: 10px;
+  }
+</style>
+
+<script>
+  const backdrop = document.getElementById('project-drawer-backdrop');
+  const drawer = document.getElementById('project-drawer');
+  const closeBtn = document.getElementById('drawer-close');
+  const projectCards = document.querySelectorAll('[data-project-id]');
+  const drawerContent = document.getElementById('drawer-content');
+  
+  // Parse the JSON data passed from Astro
+  const projectsDataElement = document.getElementById('projects-data');
+  const projectsData = projectsDataElement ? JSON.parse(projectsDataElement.textContent || '[]') : [];
+  
+  let startX = 0;
+  
+  function getStatusBadge(status: string) {
+    let colorClass = 'bg-slate-800 text-slate-300 border-slate-700';
+    if (status === 'En desarrollo') colorClass = 'bg-blue-900/50 text-blue-300 border-blue-700/50';
+    if (status === 'Próximamente') colorClass = 'bg-purple-900/50 text-purple-300 border-purple-700/50';
+    if (status === 'Culminado') colorClass = 'bg-emerald-900/50 text-emerald-300 border-emerald-700/50';
+    
+    return `<span class="inline-block border text-xs px-3 py-1.5 rounded-full font-medium ${colorClass}">${status}</span>`;
+  }
+  
+  function openDrawer(projectId: string) {
+    const project = projectsData.find((p: any) => p.id === projectId);
+    
+    if (project && drawerContent) {
+      // Build HTML string
+      let html = `
+        <div class="flex flex-col gap-2 mb-2">
+          ${getStatusBadge(project.status)}
+          <h3 class="text-3xl font-bold font-outfit text-white mt-2">${project.title}</h3>
+        </div>
+      `;
+
+      if (project.startDate) {
+        html += `<p class="text-blue-400 font-medium">Fecha: ${project.startDate}</p>`;
+      }
+
+      html += `
+        <div class="h-px w-full bg-slate-800/80 my-2"></div>
+        <div class="text-slate-300 leading-relaxed text-lg">
+          ${project.fullDescription || project.shortDescription}
+        </div>
+      `;
+      
+      if (project.members && project.members.length > 0) {
+        html += `
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold text-white mb-4 uppercase tracking-wider text-sm">Miembros del Proyecto</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        `;
+        
+        project.members.forEach((member: any) => {
+          html += `
+            <div class="flex flex-col p-3 rounded-lg bg-slate-900/50 border border-slate-800/80">
+              <span class="text-white font-medium">${member.name}</span>
+              <span class="text-slate-400 text-sm">${member.role}</span>
+            </div>
+          `;
+        });
+        
+        html += `</div></div>`;
+      }
+
+      drawerContent.innerHTML = html;
+    }
+
+    if (backdrop && drawer) {
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden'; 
+    }
+  }
+
+  function closeDrawer() {
+    if (backdrop && drawer) {
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = ''; 
+    }
+  }
+
+  projectCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const id = target.getAttribute('data-project-id');
+      if (id) openDrawer(id);
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeDrawer);
+  backdrop?.addEventListener('click', closeDrawer);
+  
+  drawer?.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+  
+  drawer?.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const diffX = endX - startX;
+    
+    if (diffX > 50) {
+      closeDrawer();
+    }
+  }, { passive: true });
+</script>
