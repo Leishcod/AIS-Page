@@ -1,0 +1,79 @@
+---
+import type { AreaInfo } from "../../data/areas";
+import { Image } from "astro:assets";
+
+interface Props {
+	area: AreaInfo;
+	isActive?: boolean;
+}
+
+const { area, isActive = false } = Astro.props as Props;
+---
+
+<div 
+    id={`showcase-${area.id}`} 
+    data-showcase={area.id}
+    data-active={isActive ? "true" : "false"}
+    class="showcase-item col-start-1 row-start-1 transition-all duration-700 ease-in-out"
+>
+    <div class="grid grid-cols-1 lg:grid-cols-12 h-full">
+        <!-- Imagen (Izquierda) -->
+        <div class="relative lg:col-span-6 h-[300px] lg:h-full overflow-hidden bg-[#0B0F19]">
+            <Image 
+                src={area.image} 
+                alt={area.imageAlt} 
+                class="w-full h-full object-cover opacity-80 mix-blend-screen filter contrast-125"
+                quality="high"
+            />
+            <!-- Degradado para mezclar la imagen con la parte derecha -->
+            <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#0B0F19] via-[#0B0F19]/40 to-transparent"></div>
+        </div>
+
+        <!-- Contenido (Derecha) -->
+        <div class="lg:col-span-6 flex flex-col justify-center p-8 lg:p-12 xl:p-16 bg-[#0B0F19] relative overflow-hidden">
+            <!-- Patrón de fondo (Watermark) -->
+            <div class="absolute -right-20 -top-20 opacity-5 pointer-events-none w-96 h-96 text-blue-300">
+                <svg viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0L100 25V75L50 100L0 75V25L50 0Z" opacity="0.3" />
+                    <path d="M50 10L90 30V70L50 90L10 70V30L50 10Z" />
+                </svg>
+            </div>
+
+            <!-- Título Principal Neón -->
+            <h2 class="text-[40px] lg:text-[54px] font-black text-blue-300 text-glow-blue mb-6 tracking-tight leading-[1.1] max-w-[90%] relative z-10">
+                {area.title}
+            </h2>
+            
+            <div class="space-y-4 relative z-10">
+                <h3 class="text-xl lg:text-2xl text-white font-bold tracking-wide">
+                    {area.subtitle}
+                </h3>
+                <p class="text-gray-400 text-base md:text-lg font-light leading-relaxed mb-8 max-w-lg">
+                    {area.mission}
+                </p>
+                
+                <div class="pt-6">
+                    <a 
+                        href={`/proyectos?area=${area.id}`} 
+                        class="inline-flex items-center gap-3 px-8 py-4 text-sm md:text-base font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 transition-all w-fit rounded-none hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(96,165,250,0.6)]"
+                    >
+                        VER PROYECTOS 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @reference "../../styles/global.css";
+    .showcase-item {
+        @apply opacity-0 translate-y-8 z-0 pointer-events-none;
+    }
+    .showcase-item[data-active="true"] {
+        @apply opacity-100 translate-y-0 z-10 pointer-events-auto;
+    }
+</style>

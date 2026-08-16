@@ -10,20 +10,20 @@ Este documento detalla las fases y tareas necesarias para la construcción de la
 - [x] Crear la base de datos local o archivo de configuración con la info de las 6 áreas.
 
 ## Fase 2: Desarrollo de Componentes UI (Astro)
-- [ ] Crear layout o página `src/pages/areas/index.astro` reutilizando Navbar y Footer.
-- [ ] Crear componente `AreaShowcase.astro` para la vista detallada (Imagen destacada, Título Neón, Misión, Botón).
-- [ ] Crear componente `AreaSelector.astro` y `AreaCard.astro` para la grilla inferior de selección.
+- [x] Crear layout o página `src/pages/areas/index.astro` reutilizando Navbar y Footer.
+- [x] Crear componente `AreaShowcase.astro` para la vista detallada (Imagen destacada, Título Neón, Misión, Botón).
+- [x] Crear componente `AreaSelector.astro` y `AreaCard.astro` para la grilla inferior de selección.
 
 ## Fase 3: Estilos y Sistema de Diseño
-- [ ] Configurar variables HSL (fondos oscuros, acento cyan neón).
-- [ ] Estilizar `AreaShowcase` asegurando el glassmorphism y legibilidad.
-- [ ] Estilizar `AreaCard` con estados inactivos, hover y activos (borde neón para el área seleccionada).
-- [ ] Adaptabilidad (Responsive Design) para móviles y tablets.
+- [x] Configurar variables HSL (fondos oscuros, acento cyan neón).
+- [x] Estilizar `AreaShowcase` asegurando el glassmorphism y legibilidad.
+- [x] Estilizar `AreaCard` con estados inactivos, hover y activos (borde neón para el área seleccionada).
+- [x] Adaptabilidad (Responsive Design) para móviles y tablets.
 
 ## Fase 4: Interactividad y Animaciones (Client-side)
-- [ ] Implementar script en Vanilla JS dentro de Astro para manejar el cambio de área mostrada sin recargar la página.
-- [ ] Aplicar transiciones fluidas de entrada (fade-in, transformaciones suaves) al cambiar el contenido.
-- [ ] Micro-animaciones en tarjetas al hacer hover.
+- [x] Implementar script en Vanilla JS dentro de Astro para manejar el cambio de área mostrada sin recargar la página.
+- [x] Aplicar transiciones fluidas de entrada (fade-in, transformaciones suaves) al cambiar el contenido usando atributos de estado CSS (`data-active`).
+- [x] Micro-animaciones en tarjetas al hacer hover y glows internos.
 
 ## Fase 5: Revisión y Testing
 - [ ] Validación de buenas prácticas (aislamiento CSS, limpieza HTML).
