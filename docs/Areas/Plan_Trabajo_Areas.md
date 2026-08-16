@@ -5,9 +5,9 @@ Este documento detalla las fases y tareas necesarias para la construcción de la
 ## Fase 1: Preparación y Estructura Base
 - [x] Crear rama `feat/areas`.
 - [x] Crear estructura de carpetas (`Areas`, `Areas/assets`) y documentos de planificación.
-- [ ] Recopilar y optimizar recursos gráficos e introducirlos en `Areas/assets`.
-- [ ] Definir la interfaz (Typescript) para los datos de las áreas (`AreaInfo`).
-- [ ] Crear la base de datos local o archivo de configuración con la info de las 6 áreas.
+- [x] Recopilar y optimizar recursos gráficos e introducirlos en `src/assets/Areas/`.
+- [x] Definir la interfaz (Typescript) para los datos de las áreas (`AreaInfo`).
+- [x] Crear la base de datos local o archivo de configuración con la info de las 6 áreas.
 
 ## Fase 2: Desarrollo de Componentes UI (Astro)
 - [ ] Crear layout o página `src/pages/areas/index.astro` reutilizando Navbar y Footer.
