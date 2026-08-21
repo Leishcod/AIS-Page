@@ -1,22 +1,67 @@
 ---
+import type { EventStat } from "../../types/events";
 
+const stats: EventStat[] = [
+  { label: "Eventos", value: 7 },
+  { label: "Asistentes", value: 324 }
+];
 ---
 
-<article>
-    <div class="rounded-md border-blue-500/20 flex justify-center items-center text-center object-center mx-auto
-     w-200 h-fit">
-        <h2>Eventos en números</h2>
-        <br>
-        <div>
-            <div>
-                <p datatarget="0">0</p>
-                <p>Eventos</p>
-            </div>
-            <div>
-                <p datatarget="0">0</p>
-                <p>Asistentes</p>
-            </div>
-        </div>
+<div class="flex flex-col items-center mt-12 w-full">
+  <h2 class="text-[24px] md:text-[32px] font-bold text-white mb-8">Eventos en números</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl" id="event-stats-container">
+    {stats.map((stat, index) => (
+      <div class="bg-[#172033] rounded-xl p-10 flex flex-col items-center justify-center border border-gray-800 shadow-lg relative overflow-hidden group">
+        <div class="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <span class="text-[64px] md:text-[80px] leading-none font-black text-white mb-2 stat-number select-text relative z-10" data-target={stat.value}>0</span>
+        <span class="text-lg text-gray-400 font-medium select-text relative z-10">{stat.label}</span>
+      </div>
+    ))}
+  </div>
+</div>
 
-    </div>
-</article>
+<script>
+  function animateValue(obj: HTMLElement, start: number, end: number, duration: number) {
+    let startTimestamp: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const easeProgress = 1 - Math.pow(1 - progress, 5); 
+      obj.innerHTML = Math.floor(easeProgress * (end - start) + start).toString();
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counters = entry.target.querySelectorAll('.stat-number');
+        counters.forEach((counter) => {
+          const target = parseInt(counter.getAttribute('data-target') || '0', 10);
+          animateValue(counter as HTMLElement, 0, target, 2000);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const statsContainer = document.getElementById('event-stats-container');
+  if (statsContainer) {
+    observer.observe(statsContainer);
+  }
+</script>
+
+<style>
+  .card-gradient {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 1) 0%, rgba(30, 41, 59, 0.8) 100%);
+  }
+</style>
