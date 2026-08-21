@@ -3,17 +3,69 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import EventStatsBanner from "../components/events/EventStatsBanner.astro";
+import EventSponsors from "../components/events/EventSponsors.astro";
+import UpcomingEvents from "../components/events/UpcomingEvents.astro";
+import EventDirectory from "../components/events/EventDirectory.astro";
+import type { Event } from "../types/events";
+
+const eventsData: Event[] = [
+  {
+    id: "1",
+    title: "AI Summit 2026",
+    description: "Congreso anual sobre los últimos avances en inteligencia artificial generativa y su impacto en la industria tecnológica local e internacional.",
+    date: "Jueves, 27 de agosto del 2026",
+    time: "5 pm",
+    tags: ["CONFERENCIA", "NETWORKING"],
+    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCln1DvlLjYf41OS6j0e46Oh0mQ8MNdnLYpjJFnB3a4efEAtb49V2s9y3QRmoKt_JUY5l-ZaHW36s-erv15tJ2W1XrtgDD1ZMFwqwFUP7OtHcrH_5kzitJ00Z--MqqKl0jM1SY5APxkJkbZNjwbZoGuP1iMPunAzeHJqvHnez7AOJ2sD2xjr5zojsNh1eFWf8nhOGEWkAyrxG7PjLqy9Cd5RPacrHisKia6sqNPSKTDyOEdKoCd7YBe",
+    imageAlt: "Abstract visualization of a neural network with glowing blue nodes and connections in a dark void. Represents the cutting edge of AI research. High contrast, technical aesthetic.",
+    status: "upcoming",
+    link: "https://ejemplo.com/registro-ai-summit"
+  },
+  {
+    id: "2",
+    title: "Taller: NLP Avanzado",
+    description: "Una sesión práctica sobre el procesamiento de lenguaje natural y el entrenamiento de modelos fundacionales para aplicaciones específicas.",
+    date: "Martes, 15 de marzo del 2026",
+    time: "6 pm",
+    tags: ["TALLER", "NLP"],
+    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuA1faK_p-MasmfBzxh2ruXtYrLMLVrZJfJtQnNrx6xuelyf9QtAyoRuLd5QR2aioAPIQ7-9CYtAPcCUAXTsOxbBAJAYj1BN-CvNaCPSmAMxtafhwgUNOB4hzqp3JcEwf0ZHOBgODKwRU94dG_X5JDSlFB4VmLCQAN5CQYBdip1rxcGaq0VyXGdKbNQtmIPxrHl-II879uRmYUg7RaLz7G1Xoo-Tgo956CSj-b6ZM6YnEyM9fmb3AnvH",
+    status: "past",
+    link: "https://ejemplo.com/info-taller"
+  },
+  {
+    id: "3",
+    title: "Hackathon: Robótica",
+    description: "Competencia intensiva de 48 horas para desarrollar soluciones de robótica autónoma e integración de IA física en entornos reales.",
+    date: "Viernes, 10 de enero del 2026",
+    time: "9 am",
+    tags: ["HACKATHON", "COMPETENCIA"],
+    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuA6wcGHAIDcn1SGFFHHnomzVeAZFDEP7vD6w3AYgvrHmnTn5JuxakPxrTTid4M7hzI3SB8577T4OZVqiXN4Z7FhISIICBnsTkh8ChH5zCjW85eR5muKlNy1HziTYfEydbWzfHeY2VYh85ETYMoWaT4kn6bdB9DX9fgLKIqPO14fVa6K5qyVMjkCgBfPPGIr7SSjsqNAVz6onMG0hOswbAFGBM8ZPFLo9fP9Gjz72tR3h2l9ewT-fqK1",
+    imageAlt: "A robotic arm assembling a delicate component in a sterile, high-tech lab environment. Clinical white and cyan lighting. Focus on precision and automation.",
+    status: "past"
+    // Este evento no tiene link, por lo tanto no mostrará botón
+  }
+];
 ---
-<Layout
-    title="Eventos - AIS">
+<Layout title="Eventos - AIS">
     <Navbar/>
-    <main class="relative overflow-hidden w-full">
-        <section>
-            <div class="mx-auto min-h-svh flex items-center justify-center">
-                <h1 class="text-blue-300 text-glow-blue font-extrabold text-7xl">Eventos</h1>
-            </div>
+    <main class="relative overflow-hidden w-full flex flex-col pt-12 pb-24">
+        <section class="flex flex-col items-center text-center space-y-4 relative z-10 max-w-7xl mx-auto px-6 pt-20">
+            <h1 class="text-[50px] md:text-[62px] lg:text-[74px] font-black text-white leading-[1.1] tracking-tighter text-glow-blue mb-8">Eventos</h1>
+            
+            <EventStatsBanner/>
         </section>
-        <EventStatsBanner/>
+
+        <UpcomingEvents events={eventsData} />
+        
+        <EventDirectory events={eventsData.filter(e => e.status !== 'upcoming')} />
+        
+        <EventSponsors />
     </main>
     <Footer/>
 </Layout>
+
+<style>
+    .glow-text {
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+    }
+</style>
