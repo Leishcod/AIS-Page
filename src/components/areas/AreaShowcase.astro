@@ -14,7 +14,7 @@ const { area, isActive = false } = Astro.props as Props;
     id={`showcase-${area.id}`} 
     data-showcase={area.id}
     data-active={isActive ? "true" : "false"}
-    class="showcase-item col-start-1 row-start-1 transition-all duration-700 ease-in-out"
+    class="showcase-item col-start-1 row-start-1 w-full h-full bg-[#0B0F19] isolate rounded-[1.5rem] transition-all duration-700 ease-in-out"
 >
     <div class="grid grid-cols-1 lg:grid-cols-12 h-full">
         <!-- Imagen (Izquierda) -->
