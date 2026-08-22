@@ -12,7 +12,7 @@ Este documento detalla las fases y tareas necesarias para la construcción de la
 ## Fase 2: Desarrollo de Componentes UI (Astro)
 - [x] Crear layout o página `src/pages/areas/index.astro` reutilizando Navbar y Footer.
 - [x] Crear componente `AreaShowcase.astro` para la vista detallada (Imagen destacada, Título Neón, Misión, Botón).
-- [x] Crear componente `AreaSelector.astro` y `AreaCard.astro` para la grilla inferior de selección.
+- [x] Crear componente `AreaCard.astro` para la barra de selección de áreas (tabs).
 
 ## Fase 3: Estilos y Sistema de Diseño
 - [x] Configurar variables HSL (fondos oscuros, acento cyan neón).
@@ -26,6 +26,6 @@ Este documento detalla las fases y tareas necesarias para la construcción de la
 - [x] Micro-animaciones en tarjetas al hacer hover y glows internos.
 
 ## Fase 5: Revisión y Testing
-- [ ] Validación de buenas prácticas (aislamiento CSS, limpieza HTML).
-- [ ] Validación estricta de TypeScript.
-- [ ] Revisión de contraste y accesibilidad.
+- [x] Validación de buenas prácticas (aislamiento CSS, limpieza HTML).
+- [x] Validación estricta de TypeScript.
+- [x] Revisión de contraste y accesibilidad.

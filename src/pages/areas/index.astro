@@ -65,7 +65,9 @@ const totalAreas = areasData.length;
 
                 // 1. Actualizar estado de los botones
                 buttons.forEach(b => {
-                    b.setAttribute('data-active', b === btn ? "true" : "false");
+                    const isSelected = b === btn ? "true" : "false";
+                    b.setAttribute('data-active', isSelected);
+                    b.setAttribute('aria-pressed', isSelected);
                 });
 
                 // 2. Actualizar estado de los showcases
