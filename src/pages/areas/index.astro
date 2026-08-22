@@ -10,13 +10,13 @@ import AreaCard from "../../components/areas/AreaCard.astro";
 <Layout title="Nuestras Áreas | AIS" description="Conoce las direcciones y comités que impulsan la investigación, formación y proyectos dentro de la AIS.">
     <Navbar />
     
-    <main class="min-h-screen pt-24 pb-12 bg-[#0B0F19] relative overflow-hidden">
+    <main class="min-h-screen pt-20 pb-8 bg-[#0B0F19] relative overflow-hidden">
         <!-- Decoraciones de fondo premium (Auras difusas) -->
         <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none"></div>
 
-        <div class="max-w-[1400px] mx-auto px-6 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
             <!-- Encabezado de la Sección -->
-            <div class="mb-6 text-center lg:text-left flex flex-col items-center lg:items-start max-w-3xl">
+            <div class="mb-5 text-center lg:text-left flex flex-col items-center lg:items-start max-w-3xl">
                 <div class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase mb-2">
                     <span class="w-8 h-[2px] bg-blue-300"></span>
                     ESTRUCTURA ORGANIZACIONAL
@@ -30,9 +30,9 @@ import AreaCard from "../../components/areas/AreaCard.astro";
             </div>
 
             <!-- Contenedor Principal -->
-            <div class="space-y-5">
+            <div class="space-y-4">
                 <!-- Zona de Exhibición (Showcase) -->
-                <div class="grid rounded-3xl overflow-hidden border border-gray-800/80 bg-[#151F32]/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] min-h-[350px] lg:min-h-[400px]">
+                <div class="grid rounded-[1.5rem] overflow-hidden border border-gray-800/80 bg-[#151F32]/50 shadow-[0_20px_50px_rgba(0,0,0,0.4)] min-h-[300px] lg:min-h-[340px]">
                     {areasData.map((area, index) => (
                         <AreaShowcase area={area} isActive={index === 0} />
                     ))}
