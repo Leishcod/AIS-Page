@@ -1,0 +1,385 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+import AreaCard from "../components/call/AreaCard.astro";
+import BenefitCard from "../components/call/BenefitCard.astro";
+import ProcessStep from "../components/call/ProcessStep.astro";
+import RequirementItem from "../components/call/RequirementItem.astro";
+
+import { callAreas, benefits, processSteps, requirements } from "../data/call";
+---
+
+<Layout
+  title="Convocatoria | Artificial Intelligence Society"
+  description="Forma parte de Artificial Intelligence Society y desarrolla proyectos, investigación e iniciativas relacionadas con Inteligencia Artificial."
+>
+  <Navbar />
+
+  <main class="relative overflow-hidden">
+    <!-- HERO -->
+    <section
+      class="relative min-h-[78vh] flex items-center border-b border-gray-900 overflow-hidden"
+    >
+      <div
+        class="absolute top-1/2 right-[8%] w-[420px] h-[420px] bg-[#1E4371]/20 rounded-full blur-[120px] pointer-events-none"
+      >
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 py-24 lg:py-32 w-full relative z-10">
+        <div class="max-w-4xl">
+          <div
+            class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
+          >
+            <span class="w-8 h-[2px] bg-blue-300"></span>
+            INTELLIGENCE FOR HUMANITY
+          </div>
+
+          <h1
+            class="mt-7 text-[48px] md:text-[62px] lg:text-[72px] font-black text-white leading-[1.05] tracking-tighter"
+          >
+            Construye el futuro de la
+            <span class="text-blue-300 text-glow-blue"> IA </span>
+            con nosotros
+          </h1>
+
+          <p
+            class="mt-7 text-base md:text-lg text-gray-400 font-light leading-relaxed max-w-2xl"
+          >
+            Forma parte de una comunidad de estudiantes que investiga,
+            desarrolla proyectos y crea iniciativas relacionadas con
+            Inteligencia Artificial, tecnología e innovación.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm">
+            <div class="flex items-center gap-2 text-blue-300 font-semibold">
+              <span class="w-2 h-2 bg-blue-300"></span>
+              CONVOCATORIA 2026-II
+            </div>
+
+            <span class="text-gray-500"> Postulaciones abiertas </span>
+          </div>
+
+          <div class="mt-9 flex flex-wrap gap-4">
+            <a
+              href="#postular"
+              class="px-8 py-3.5 text-sm font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 transition-all transform hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(96,165,250,0.6)]"
+            >
+              POSTULA AHORA
+            </a>
+
+            <a
+              href="#areas"
+              class="px-8 py-3.5 text-sm font-bold text-white border border-white hover:border-blue-300 hover:text-blue-300 transition-all transform hover:-translate-y-0.5"
+            >
+              CONOCE LAS ÁREAS
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AREAS -->
+    <section
+      id="areas"
+      class="max-w-7xl mx-auto px-6 py-20 md:py-28 border-b border-gray-900"
+    >
+      <div class="max-w-3xl mb-12 md:mb-16">
+        <div
+          class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
+        >
+          <span class="w-8 h-[2px] bg-blue-300"></span>
+          ENCUENTRA TU LUGAR
+        </div>
+
+        <h2
+          class="mt-6 text-[36px] md:text-[50px] font-black text-white leading-tight tracking-tighter"
+        >
+          ¿Dónde quieres generar
+          <span class="text-blue-300 text-glow-blue"> impacto? </span>
+        </h2>
+
+        <p class="mt-5 text-gray-400 text-base md:text-lg leading-relaxed">
+          Explora nuestras áreas y encuentra aquella que mejor se ajuste a tus
+          intereses, habilidades y objetivos.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {
+          callAreas.map((area) => (
+            <AreaCard
+              id={area.id}
+              name={area.name}
+              description={area.shortDescription}
+              icon={area.icon}
+            />
+          ))
+        }
+      </div>
+
+      <!-- AREA DETAIL -->
+      <div
+        id="area-detail"
+        class="mt-8 md:mt-12 border border-gray-800/80 bg-[#0F1423]/25 p-7 md:p-10 rounded-2xl"
+      >
+        <div
+          class="flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-blue-300 uppercase"
+        >
+          ÁREA SELECCIONADA
+        </div>
+
+        <h3
+          id="detail-title"
+          class="mt-4 text-2xl md:text-3xl font-bold text-white"
+        >
+          {callAreas[0].name}
+        </h3>
+
+        <p
+          id="detail-description"
+          class="mt-4 text-gray-400 leading-relaxed max-w-3xl"
+        >
+          {callAreas[0].description}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-9">
+          <div>
+            <h4 class="font-semibold text-white">Qué hacemos</h4>
+
+            <ul id="detail-activities" class="mt-4 space-y-3">
+              {
+                callAreas[0].activities.map((item) => (
+                  <li class="flex gap-3 text-gray-400">
+                    <span class="text-blue-300">→</span>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-white">Qué buscamos</h4>
+
+            <ul id="detail-profile" class="mt-4 space-y-3">
+              {
+                callAreas[0].profile.map((item) => (
+                  <li class="flex gap-3 text-gray-400">
+                    <span class="text-blue-300">→</span>
+                    {item}
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section
+      class="max-w-7xl mx-auto px-6 py-20 md:py-28 border-b border-gray-900"
+    >
+      <div class="max-w-3xl">
+        <div
+          class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
+        >
+          <span class="w-8 h-[2px] bg-blue-300"></span>
+          PROCESO DE SELECCIÓN
+        </div>
+
+        <h2
+          class="mt-6 text-[36px] md:text-[50px] font-black text-white leading-tight tracking-tighter"
+        >
+          Tu camino para formar parte de
+          <span class="text-blue-300 text-glow-blue"> AIS </span>
+        </h2>
+      </div>
+
+      <div class="relative mt-14">
+        <div
+          class="hidden md:block absolute top-[22px] left-[5%] right-[5%] h-px bg-gray-800"
+        >
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-8 relative">
+          {
+            processSteps.map((step, index) => (
+              <ProcessStep
+                number={step.number}
+                title={step.title}
+                description={step.description}
+                last={index === processSteps.length - 1}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section
+      class="max-w-7xl mx-auto px-6 py-20 md:py-28 border-b border-gray-900"
+    >
+      <div class="max-w-3xl mb-12">
+        <div
+          class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
+        >
+          <span class="w-8 h-[2px] bg-blue-300"></span>
+          CRECE CON NOSOTROS
+        </div>
+
+        <h2
+          class="mt-6 text-[36px] md:text-[50px] font-black text-white leading-tight tracking-tighter"
+        >
+          Mucho más que formar parte de una
+          <span class="text-blue-300 text-glow-blue"> organización </span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {
+          benefits.map((benefit) => (
+            <BenefitCard
+              title={benefit.title}
+              description={benefit.description}
+              icon={benefit.icon}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- REQUIREMENTS -->
+    <section
+      class="max-w-7xl mx-auto px-6 py-20 md:py-28 border-b border-gray-900"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <div class="lg:col-span-5">
+          <div
+            class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
+          >
+            <span class="w-8 h-[2px] bg-blue-300"></span>
+            ANTES DE POSTULAR
+          </div>
+
+          <h2
+            class="mt-6 text-[36px] md:text-[50px] font-black text-white leading-tight tracking-tighter"
+          >
+            ¿Es AIS para
+            <span class="text-blue-300 text-glow-blue"> ti? </span>
+          </h2>
+
+          <p class="mt-5 text-gray-400 leading-relaxed">
+            No buscamos únicamente experiencia técnica. Valoramos especialmente
+            la curiosidad, iniciativa y ganas de aprender.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7">
+          <ul class="space-y-5">
+            {
+              requirements.map((requirement) => (
+                <RequirementItem text={requirement} />
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="postular" class="relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-blue-500/5"
+      >
+      </div>
+
+      <div
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[260px] bg-[#1E4371]/20 rounded-full blur-[100px]"
+      >
+      </div>
+
+      <div
+        class="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center relative z-10"
+      >
+        <div class="text-sm font-bold tracking-widest text-blue-300 uppercase">
+          CONVOCATORIA AIS
+        </div>
+
+        <h2
+          class="mt-6 text-[40px] md:text-[58px] font-black text-white leading-tight tracking-tighter"
+        >
+          ¿Listo para construir
+          <span class="text-blue-300 text-glow-blue"> lo que sigue? </span>
+        </h2>
+
+        <p
+          class="mt-6 text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+        >
+          Investiga, crea, aprende y construye junto a una comunidad que
+          comparte tu interés por la Inteligencia Artificial.
+        </p>
+
+        <a
+          href="#"
+          class="inline-flex items-center gap-3 mt-9 px-9 py-4 text-sm font-bold bg-blue-300 text-gray-950 hover:bg-blue-200 transition-all hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(96,165,250,0.55)]"
+        >
+          POSTULA AHORA
+          <span>→</span>
+        </a>
+
+        <p class="mt-5 text-xs text-gray-500">Convocatoria 2026-II</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script define:vars={{ callAreas }}>
+  const cards = document.querySelectorAll(".area-card");
+
+  const title = document.getElementById("detail-title");
+  const description = document.getElementById("detail-description");
+  const activities = document.getElementById("detail-activities");
+  const profile = document.getElementById("detail-profile");
+
+  function renderList(container, values) {
+    if (!container) return;
+
+    container.innerHTML = values
+      .map(
+        (value) => `
+					<li class="flex gap-3 text-gray-400">
+						<span class="text-blue-300">→</span>
+						${value}
+					</li>
+				`,
+      )
+      .join("");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const id = card.dataset.area;
+      const area = callAreas.find((item) => item.id === id);
+
+      if (!area) return;
+
+      title.textContent = area.name;
+      description.textContent = area.description;
+
+      renderList(activities, area.activities);
+      renderList(profile, area.profile);
+
+      cards.forEach((item) => {
+        item.classList.remove("border-blue-400/50", "bg-blue-500/10");
+      });
+
+      card.classList.add("border-blue-400/50", "bg-blue-500/10");
+    });
+  });
+</script>
