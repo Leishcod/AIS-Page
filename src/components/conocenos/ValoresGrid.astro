@@ -1,0 +1,39 @@
+---
+import ValorCard from './ValorCard.astro';
+
+const valoresFila1 = [
+	{ title: "Excelencia Técnica", icon: "medal" },
+	{ title: "Ética e Integridad", icon: "ethics" },
+	{ title: "Inclusión y Diversidad", icon: "diversity" },
+	{ title: "Colaboración", icon: "collaboration" },
+];
+
+const valoresFila2 = [
+	{ title: "Innovación Responsable", icon: "innovation" },
+	{ title: "Transparencia", icon: "transparency" },
+	{ title: "Accesibilidad al Conocimiento", icon: "knowledge" },
+];
+---
+
+<section class="mb-20 relative z-10">
+	<!-- Título de Sección -->
+	<h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-10 tracking-tight">
+		<span class="bg-gradient-to-r from-cyan-200 via-cyan-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+			Valores constitucionales
+		</span>
+	</h2>
+
+	<!-- Grid de Valores: Fila 1 (4 columnas en Desktop) -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+		{valoresFila1.map((valor) => (
+			<ValorCard title={valor.title} icon={valor.icon} />
+		))}
+	</div>
+
+	<!-- Grid de Valores: Fila 2 (3 columnas centradas en Desktop) -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+		{valoresFila2.map((valor) => (
+			<ValorCard title={valor.title} icon={valor.icon} />
+		))}
+	</div>
+</section>
