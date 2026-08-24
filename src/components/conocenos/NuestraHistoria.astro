@@ -4,7 +4,7 @@ import nuestraHistoriaImg from '../../assets/Conocenos/nuestra_historia.png';
 
 <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-16 relative z-10">
 	<!-- Columna Izquierda: Imagen del Laboratorio AI -->
-	<div class="lg:col-span-6 relative group rounded-2xl overflow-hidden border border-cyan-500/20 bg-[#0E1626] shadow-xl min-h-[320px] lg:min-h-[400px]">
+	<div class="lg:col-span-6 relative group rounded-2xl overflow-hidden border border-cyan-500/20 bg-[#0E1626] shadow-xl aspect-[4/3] w-full">
 		<!-- Aura Glow sutil tras la imagen -->
 		<div class="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition duration-500"></div>
 		
@@ -20,23 +20,25 @@ import nuestraHistoriaImg from '../../assets/Conocenos/nuestra_historia.png';
 		</div>
 	</div>
 
-	<!-- Columna Derecha: Tarjeta Informativa Nuestra Historia -->
-	<div class="lg:col-span-6 flex flex-col justify-center bg-[#0D1829]/90 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-cyan-500/25 shadow-[0_0_30px_rgba(11,15,25,0.8)] relative">
-		<!-- Título del bloque con luz neón celeste -->
-		<h2 class="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-3">
-			<span class="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]">
-				Nuestra Historia
-			</span>
-		</h2>
+	<!-- Columna Derecha: Tarjeta Informativa Nuestra Historia (mismo diseño y efectos que Misión y Visión) -->
+	<div class="group lg:col-span-6 flex flex-col justify-center relative bg-[#0D1829]/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 lg:p-10 border border-cyan-500/20 hover:border-cyan-400/60 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(34,211,238,0.2)] hover:-translate-y-1">
+		<div>
+			<!-- Título Centrado y Más Grande -->
+			<h2 class="text-3xl sm:text-4xl lg:text-4xl font-extrabold text-center mb-6 tracking-tight">
+				<span class="bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(34,211,238,0.5)]">
+					Nuestra Historia
+				</span>
+			</h2>
 
-		<!-- Párrafos descriptivos -->
-		<div class="space-y-4 text-gray-300 text-sm md:text-base leading-relaxed">
-			<p>
-				La <strong class="text-cyan-200 font-semibold">Artificial Intelligence Society (AIS)</strong> fue fundada en la <strong class="text-cyan-200 font-semibold">Universidad Nacional de Ingeniería (UNI)</strong> en Lima, Perú. Nacimos de la visión compartida de un grupo de estudiantes e investigadores apasionados por el potencial transformador de la Inteligencia Artificial.
-			</p>
-			<p>
-				Desde nuestros inicios, nos hemos dedicado a construir una comunidad interdisciplinaria enfocada en la excelencia académica, la investigación de vanguardia y el desarrollo de soluciones tecnológicas que impacten positivamente en la sociedad latinoamericana y global.
-			</p>
+			<!-- Texto descriptivo -->
+			<div class="space-y-4 text-gray-300 text-sm sm:text-base leading-relaxed">
+				<p>
+					La <strong class="text-cyan-200 font-semibold">Artificial Intelligence Society (AIS)</strong> fue fundada en la <strong class="text-cyan-200 font-semibold">Universidad Nacional de Ingeniería (UNI)</strong> en Lima, Perú. Nacimos de la visión compartida de un grupo de estudiantes e investigadores apasionados por el potencial transformador de la Inteligencia Artificial.
+				</p>
+				<p>
+					Desde nuestros inicios, nos hemos dedicado a construir una comunidad interdisciplinaria enfocada en la excelencia académica, la investigación de vanguardia y el desarrollo de soluciones tecnológicas que impacten positivamente en la sociedad latinoamericana y global.
+				</p>
+			</div>
 		</div>
 	</div>
 </section>
