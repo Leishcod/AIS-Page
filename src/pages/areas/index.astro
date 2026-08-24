@@ -57,30 +57,72 @@ const totalAreas = areasData.length;
         const buttons = document.querySelectorAll<HTMLButtonElement>('.area-btn');
         const showcases = document.querySelectorAll<HTMLDivElement>('.showcase-item');
         const counter = document.getElementById('area-counter');
+        
+        let currentIndex = 0;
+        let autoplayInterval: number | ReturnType<typeof setInterval>;
+        const AUTOPLAY_DELAY = 6000; // 6 segundos por slide
 
+        // Función central para cambiar el área activa
+        const activateArea = (index: number) => {
+            if (index < 0 || index >= buttons.length) return;
+            currentIndex = index;
+            const btn = buttons[currentIndex];
+            const targetId = btn.getAttribute('data-area-btn');
+            
+            if (!targetId) return;
+
+            // 1. Actualizar estado de los botones
+            buttons.forEach(b => {
+                const isSelected = b === btn ? "true" : "false";
+                b.setAttribute('data-active', isSelected);
+                b.setAttribute('aria-pressed', isSelected);
+            });
+
+            // 2. Actualizar estado de los showcases
+            showcases.forEach(showcase => {
+                const showcaseId = showcase.getAttribute('data-showcase');
+                showcase.setAttribute('data-active', showcaseId === targetId ? "true" : "false");
+            });
+
+            // 3. Actualizar contador de posición
+            if (counter) {
+                counter.textContent = `${currentIndex + 1} / ${buttons.length}`;
+            }
+        };
+
+        // Avanzar a la siguiente área
+        const nextArea = () => {
+            const nextIndex = (currentIndex + 1) % buttons.length;
+            activateArea(nextIndex);
+        };
+
+        // Iniciar el autoplay
+        const startAutoplay = () => {
+            stopAutoplay();
+            autoplayInterval = setInterval(nextArea, AUTOPLAY_DELAY);
+        };
+
+        // Detener el autoplay (útil cuando el usuario interactúa manualmente)
+        const stopAutoplay = () => {
+            if (autoplayInterval) clearInterval(autoplayInterval);
+        };
+
+        // Escuchar clics manuales
         buttons.forEach((btn, btnIndex) => {
             btn.addEventListener('click', () => {
-                const targetId = btn.getAttribute('data-area-btn');
-                if (!targetId) return;
-
-                // 1. Actualizar estado de los botones
-                buttons.forEach(b => {
-                    const isSelected = b === btn ? "true" : "false";
-                    b.setAttribute('data-active', isSelected);
-                    b.setAttribute('aria-pressed', isSelected);
-                });
-
-                // 2. Actualizar estado de los showcases
-                showcases.forEach(showcase => {
-                    const showcaseId = showcase.getAttribute('data-showcase');
-                    showcase.setAttribute('data-active', showcaseId === targetId ? "true" : "false");
-                });
-
-                // 3. Actualizar contador de posición
-                if (counter) {
-                    counter.textContent = `${btnIndex + 1} / ${buttons.length}`;
-                }
+                activateArea(btnIndex);
+                startAutoplay(); // Reiniciar el temporizador al hacer clic
             });
         });
+
+        // Pausar si el usuario tiene el ratón encima del showcase (opcional pero recomendado para buena UX)
+        const mainContainer = document.querySelector('main');
+        if (mainContainer) {
+            mainContainer.addEventListener('mouseenter', stopAutoplay);
+            mainContainer.addEventListener('mouseleave', startAutoplay);
+        }
+
+        // Iniciar ruleta
+        startAutoplay();
     });
 </script>
