@@ -85,7 +85,7 @@ export const areasData: AreaInfo[] = [
 	},
 	{
 		id: "proyectos",
-		title: "Dirección de Proyectos",
+		title: "Proyectos",
 		subtitle: "Dirección de Proyectos",
 		mission:
 			"Coordinar y supervisar la planificación, ejecución y entrega de los proyectos estratégicos de la AIS, asegurando el cumplimiento de objetivos y plazos.",
