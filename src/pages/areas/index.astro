@@ -9,42 +9,77 @@ import AreaCard from "../../components/areas/AreaCard.astro";
 const totalAreas = areasData.length;
 ---
 
-<Layout title="Nuestras Áreas | AIS" description="Conoce las direcciones y comités que impulsan la investigación, formación y proyectos dentro de la AIS.">
+<Layout
+    title="Nuestras Áreas | AIS"
+    description="Conoce las direcciones y comités que impulsan la investigación, formación y proyectos dentro de la AIS."
+>
     <Navbar />
-    
-    <main class="min-h-screen pt-20 pb-8 bg-[#0B0F19] relative overflow-hidden">
-        <!-- Decoraciones de fondo premium (Auras difusas) -->
-        <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none"></div>
+
+    <main
+        class="min-h-screen pt-6 md:pt-10 pb-8 bg-[#0B0F19] relative overflow-hidden"
+    >
+        <!-- Decoraciones de fondo premium -->
+        <div
+            class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none"
+        >
+        </div>
 
         <div class="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
             <!-- Encabezado compacto: eyebrow + título en línea -->
-            <div class="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
+            <div
+                class="mb-6 md:mb-6 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3"
+            >
                 <div>
-                    <div class="flex items-center gap-3 text-xs font-bold tracking-widest text-blue-300 uppercase mb-1.5">
+                    <div
+                        class="flex items-center gap-3 text-xs font-bold tracking-widest text-blue-300 uppercase mb-1.5"
+                    >
                         <span class="w-6 h-[2px] bg-blue-300"></span>
                         ESTRUCTURA ORGANIZACIONAL
                     </div>
-                    <h1 class="text-[36px] md:text-[50px] font-black text-white leading-tight tracking-tighter">
-                        Nuestras Áreas de <span class="text-blue-300 text-glow-blue">Impacto</span>
+                    <h1
+                        class="text-[36px] md:text-[50px] font-black text-white leading-tight tracking-tighter"
+                    >
+                        Nuestras Áreas de <span
+                            class="text-blue-300 text-glow-blue">Impacto</span
+                        >
                     </h1>
                 </div>
-                <p class="text-gray-500 text-sm font-light leading-relaxed max-w-md lg:text-right">
-                    Direcciones y comités que impulsan la investigación, formación y proyectos de la AIS.
+                <p
+                    class="text-gray-500 text-sm font-light leading-relaxed max-w-md lg:text-right"
+                >
+                    Direcciones y comités que impulsan la investigación,
+                    formación y proyectos de la AIS.
                 </p>
             </div>
 
             <!-- Tarjetas Selectoras (ARRIBA de la tarjeta de detalle) -->
             <div class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3 mb-4">
-                {areasData.map((area, index) => (
-                    <AreaCard id={area.id} title={area.title} iconName={area.iconName} isActive={index === 0} />
-                ))}
+                {
+                    areasData.map((area, index) => (
+                        <AreaCard
+                            id={area.id}
+                            title={area.title}
+                            iconName={area.iconName}
+                            isActive={index === 0}
+                        />
+                    ))
+                }
             </div>
 
             <!-- Zona de Exhibición (Showcase) -->
-            <div class="grid rounded-[1.25rem] overflow-hidden border border-gray-800/80 bg-[#151F32]/50 shadow-[0_20px_50px_rgba(0,0,0,0.4)] min-h-[320px] lg:min-h-[380px]">
-                {areasData.map((area, index) => (
-                    <AreaShowcase area={area} isActive={index === 0} index={index} total={totalAreas} />
-                ))}
+            <div
+                class="grid rounded-[1.25rem] overflow-hidden border border-gray-800/80 bg-[#151F32]/50 shadow-[0_20px_50px_rgba(0,0,0,0.4)] min-h-[320px] lg:min-h-[380px]"
+            >
+                {
+                    areasData.map((area, index) => (
+                        <AreaShowcase
+                            area={area}
+                            isActive={index === 0}
+                            index={index}
+                            total={totalAreas}
+                        />
+                    ))
+                }
             </div>
         </div>
     </main>
@@ -53,35 +88,40 @@ const totalAreas = areasData.length;
 </Layout>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const buttons = document.querySelectorAll<HTMLButtonElement>('.area-btn');
-        const showcases = document.querySelectorAll<HTMLDivElement>('.showcase-item');
-        const counter = document.getElementById('area-counter');
-        
+    document.addEventListener("DOMContentLoaded", () => {
+        const buttons =
+            document.querySelectorAll<HTMLButtonElement>(".area-btn");
+        const showcases =
+            document.querySelectorAll<HTMLDivElement>(".showcase-item");
+        const counter = document.getElementById("area-counter");
+
         let currentIndex = 0;
         let autoplayInterval: number | ReturnType<typeof setInterval>;
-        const AUTOPLAY_DELAY = 6000; // 6 segundos por slide
+        const AUTOPLAY_DELAY = 5000;
 
         // Función central para cambiar el área activa
         const activateArea = (index: number) => {
             if (index < 0 || index >= buttons.length) return;
             currentIndex = index;
             const btn = buttons[currentIndex];
-            const targetId = btn.getAttribute('data-area-btn');
-            
+            const targetId = btn.getAttribute("data-area-btn");
+
             if (!targetId) return;
 
             // 1. Actualizar estado de los botones
-            buttons.forEach(b => {
+            buttons.forEach((b) => {
                 const isSelected = b === btn ? "true" : "false";
-                b.setAttribute('data-active', isSelected);
-                b.setAttribute('aria-pressed', isSelected);
+                b.setAttribute("data-active", isSelected);
+                b.setAttribute("aria-pressed", isSelected);
             });
 
             // 2. Actualizar estado de los showcases
-            showcases.forEach(showcase => {
-                const showcaseId = showcase.getAttribute('data-showcase');
-                showcase.setAttribute('data-active', showcaseId === targetId ? "true" : "false");
+            showcases.forEach((showcase) => {
+                const showcaseId = showcase.getAttribute("data-showcase");
+                showcase.setAttribute(
+                    "data-active",
+                    showcaseId === targetId ? "true" : "false",
+                );
             });
 
             // 3. Actualizar contador de posición
@@ -109,17 +149,17 @@ const totalAreas = areasData.length;
 
         // Escuchar clics manuales
         buttons.forEach((btn, btnIndex) => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener("click", () => {
                 activateArea(btnIndex);
                 startAutoplay(); // Reiniciar el temporizador al hacer clic
             });
         });
 
         // Pausar si el usuario tiene el ratón encima del showcase (opcional pero recomendado para buena UX)
-        const mainContainer = document.querySelector('main');
+        const mainContainer = document.querySelector("main");
         if (mainContainer) {
-            mainContainer.addEventListener('mouseenter', stopAutoplay);
-            mainContainer.addEventListener('mouseleave', startAutoplay);
+            mainContainer.addEventListener("mouseenter", stopAutoplay);
+            mainContainer.addEventListener("mouseleave", startAutoplay);
         }
 
         // Iniciar ruleta
