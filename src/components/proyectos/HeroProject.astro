@@ -8,7 +8,10 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<article class="relative overflow-hidden rounded-2xl border border-gray-800 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_35px_rgba(96,165,250,0.15)] group min-h-[400px] md:min-h-[500px] flex items-center p-8 md:p-12">
+<article 
+  class="relative overflow-hidden rounded-2xl border border-gray-800 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_35px_rgba(96,165,250,0.15)] group min-h-[400px] md:min-h-[500px] flex items-center p-8 md:p-12 cursor-pointer"
+  data-project-id={project.id}
+>
   <!-- Background image with scale on hover -->
   <div class="absolute inset-0 w-full h-full bg-slate-950 group-hover:scale-[1.02] transition-transform duration-500 pointer-events-none">
     <!-- If you have a real image in project.image, use it here. For now, an abstract background. -->
@@ -52,6 +55,7 @@ const { project } = Astro.props;
       <div class="pt-4">
         <a 
           href="#grilla-proyectos" 
+          onclick="event.stopPropagation()"
           class="inline-block px-8 py-3.5 text-sm font-bold text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none transition-all transform hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(96,165,250,0.8)]"
         >
           VER MÁS PROYECTOS
