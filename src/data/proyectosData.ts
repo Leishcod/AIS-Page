@@ -35,20 +35,6 @@ export const projectsList: Project[] = [
       { name: 'Alejandro Velarde', role: 'Miembro' },
       { name: 'Jeferson Yataco', role: 'Miembro' }
     ]
-  },
-  {
-    id: 'taller-ia-basico',
-    title: 'Taller de IA Básico',
-    status: 'Próximamente',
-    shortDescription: 'Introducción a los conceptos fundamentales de inteligencia artificial para el público general.',
-    members: []
-  },
-  {
-    id: 'hackathon-ais',
-    title: 'Hackathon AIS 2026',
-    status: 'Culminado',
-    shortDescription: 'Evento de programación intensiva de 48 horas resolviendo retos de la industria con IA.',
-    members: []
   }
 ];
 
