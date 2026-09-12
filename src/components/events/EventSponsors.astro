@@ -1,0 +1,40 @@
+---
+import type { Sponsor } from "../../types/events";
+
+const sponsors: Sponsor[] = [
+  { name: "Corporate", logoSvg: "/icons/sponsors/example.svg" },
+  { name: "Memory", logoSvg: "/icons/sponsors/example.svg" },
+  { name: "Cloud", logoSvg: "/icons/sponsors/example.svg" },
+  { name: "Terminal", logoSvg: "/icons/sponsors/example.svg" },
+  { name: "Hub", logoSvg: "/icons/sponsors/example.svg" },
+  { name: "DNS", logoSvg: "/icons/sponsors/example.svg" },
+  { name: "Network", logoSvg: "/icons/sponsors/example.svg" },
+  { name: "Manufacturing", logoSvg: "/icons/sponsors/example.svg" }
+];
+---
+
+<section class="flex flex-col items-center space-y-12 mt-24 mb-16 w-full max-w-7xl mx-auto px-6">
+  <h2 class="text-[32px] md:text-[40px] font-black text-blue-300 text-glow-blue text-center">Nuestros auspiciadores</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
+    {sponsors.map(sponsor => {
+      const content = (
+        <div class="bg-[#172033] h-32 rounded-xl flex items-center justify-center p-6 border border-gray-800 hover:border-blue-500/30 hover:bg-[#1e293b] transition-colors group grayscale hover:grayscale-0 w-full" title={sponsor.name}>
+          {sponsor.logoSvg ? (
+            <img src={sponsor.logoSvg} alt={`Logo de ${sponsor.name}`} class="h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity" />
+          ) : (
+            <span class="material-symbols-outlined text-4xl text-gray-400 group-hover:text-white transition-colors">{sponsor.logoIcon}</span>
+          )}
+        </div>
+      );
+      
+      return sponsor.websiteUrl ? (
+        <a href={sponsor.websiteUrl} target="_blank" rel="noopener noreferrer" class="block w-full">
+          {content}
+        </a>
+      ) : content;
+    })}
+  </div>
+</section>
+
+<style>
+</style>
