@@ -1,0 +1,86 @@
+---
+import type { Event } from "../../types/events";
+import EventCard from "./EventCard.astro";
+
+interface Props {
+  events: Event[];
+}
+
+const { events } = Astro.props;
+const allTags = Array.from(new Set(events.flatMap(e => e.tags)));
+---
+
+<section class="flex flex-col space-y-8 mt-16 relative z-10 w-full max-w-7xl mx-auto px-6">
+  <div class="flex flex-col md:flex-row justify-between items-center mb-8 border-b border-gray-800 pb-4">
+    <h2 class="text-[32px] md:text-[40px] font-black text-white">Nuestros eventos</h2>
+    
+    <div class="flex items-center gap-4 mt-6 md:mt-0">
+      <label class="font-medium text-sm text-gray-400 tracking-wider">Filtrar por etiquetas:</label>
+      <div class="relative">
+        <select id="event-tag-filter" class="appearance-none bg-[#172033] border border-gray-700 text-white font-medium py-2 pl-4 pr-10 rounded-md focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors cursor-pointer text-sm">
+          <option value="all">Seleccionar</option>
+          {allTags.map(tag => (
+            <option value={tag}>{tag}</option>
+          ))}
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+          <img src="/icons/expand_more.svg" alt="Expand More" class="w-[12px] h-[12px]" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="events-grid">
+    {events.map(event => (
+      <EventCard event={event} />
+    ))}
+  </div>
+  
+  <div id="no-events-msg" class="hidden flex flex-col items-center justify-center py-12 text-on-surface-variant">
+    <span class="material-symbols-outlined text-4xl mb-4 opacity-50">search_off</span>
+    <p class="font-body-md">No se encontraron eventos con la etiqueta seleccionada.</p>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterSelect = document.getElementById('event-tag-filter') as HTMLSelectElement;
+    const eventsGrid = document.getElementById('events-grid');
+    const noEventsMsg = document.getElementById('no-events-msg');
+
+    if (filterSelect && eventsGrid && noEventsMsg) {
+      const eventCards = eventsGrid.querySelectorAll('.event-card');
+      filterSelect.addEventListener('change', (e) => {
+        const selectedTag = (e.target as HTMLSelectElement).value;
+        let visibleCount = 0;
+
+        eventCards.forEach((card) => {
+          const cardElement = card as HTMLElement;
+          const tagsStr = cardElement.getAttribute('data-tags') || '';
+          const tags = tagsStr.split(',');
+
+          if (selectedTag === 'all' || tags.includes(selectedTag)) {
+            cardElement.style.display = 'flex';
+            // Trigger a reflow to restart transition if we want fade-in effect
+            cardElement.style.opacity = '0';
+            requestAnimationFrame(() => {
+              cardElement.style.transition = 'opacity 0.3s ease-in-out';
+              cardElement.style.opacity = '1';
+            });
+            visibleCount++;
+          } else {
+            cardElement.style.display = 'none';
+          }
+        });
+
+        if (visibleCount === 0) {
+          eventsGrid.style.display = 'none';
+          noEventsMsg.classList.remove('hidden');
+        } else {
+          eventsGrid.style.display = 'grid';
+          noEventsMsg.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>
