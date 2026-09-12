@@ -1,0 +1,43 @@
+---
+import type { Project } from '../../types/proyectos';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+// Determine badge color based on status
+const statusColorMap: Record<string, string> = {
+  'En desarrollo': 'bg-blue-900/50 text-blue-300 border-blue-700/50',
+  'Próximamente': 'bg-purple-900/50 text-purple-300 border-purple-700/50',
+  'Culminado': 'bg-emerald-900/50 text-emerald-300 border-emerald-700/50',
+};
+
+const badgeClass = statusColorMap[project.status] || 'bg-slate-800 text-slate-300 border-slate-700';
+---
+
+<button 
+  class="text-left group border border-slate-800/80 hover:border-blue-500/50 bg-slate-900/40 hover:bg-slate-800/60 transition-all duration-300 rounded-xl overflow-hidden flex flex-col h-full min-h-[320px] transform hover:-translate-y-1 hover:shadow-[0_0_30px_-10px_rgba(59,130,246,0.3)]" 
+  data-project-id={project.id}
+>
+  <div class="h-40 bg-slate-950 w-full relative flex items-center justify-center overflow-hidden">
+     <!-- Gradient Overlay -->
+     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/90 z-10"></div>
+     
+     <div class={`absolute top-3 right-3 z-20 border text-xs px-3 py-1.5 rounded-full font-medium ${badgeClass}`}>
+       {project.status}
+     </div>
+     
+     <span class="text-slate-800 group-hover:text-slate-700 transition-colors font-black text-4xl z-0 select-none">AIS</span>
+  </div>
+  
+  <div class="p-6 flex-1 flex flex-col bg-gradient-to-b from-slate-900/90 to-transparent">
+    <h3 class="text-xl font-bold mb-3 font-outfit text-white group-hover:text-blue-400 transition-colors duration-300">
+      {project.title}
+    </h3>
+    <p class="text-slate-400 text-sm leading-relaxed line-clamp-3">
+      {project.shortDescription}
+    </p>
+  </div>
+</button>

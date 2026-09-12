@@ -1,0 +1,42 @@
+---
+import type { FAQ } from '../../types/proyectos';
+
+interface Props {
+  faqs: FAQ[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<div class="flex flex-col gap-4">
+  {faqs.map(faq => (
+    <details class="group border border-slate-800 bg-slate-900/30 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden transition-all duration-300">
+      <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer font-medium hover:text-blue-400 transition-colors">
+        <span class="text-base md:text-lg pr-4">{faq.question}</span>
+        <div class="rounded-full bg-slate-800/50 p-2 group-hover:bg-blue-900/30 transition-colors flex-shrink-0">
+          <svg class="w-5 h-5 transition-transform duration-300 group-open:rotate-180 text-slate-400 group-hover:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </summary>
+      <div class="px-5 md:px-6 pb-6 pt-0 text-slate-400 text-sm md:text-base leading-relaxed">
+        <div class="h-px w-full bg-slate-800 mb-4"></div>
+        <p>{faq.answer}</p>
+      </div>
+    </details>
+  ))}
+</div>
+
+<script>
+  // Script para asegurar que solo un acordeón esté abierto a la vez (comportamiento solicitado)
+  const details = document.querySelectorAll('details');
+  details.forEach((targetDetail) => {
+    targetDetail.addEventListener('click', () => {
+      details.forEach((detail) => {
+        if (detail !== targetDetail) {
+          detail.removeAttribute('open');
+        }
+      });
+    });
+  });
+</script>
