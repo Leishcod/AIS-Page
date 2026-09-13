@@ -2,36 +2,39 @@
 import nuestraHistoriaImg from '../../assets/Conocenos/nuestra_historia.png';
 ---
 
-<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-16 relative z-10">
-	<!-- Columna Izquierda: Imagen del Laboratorio AI -->
-	<div class="lg:col-span-6 relative group rounded-2xl overflow-hidden border border-gray-800/80 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(96,165,250,0.15)] min-h-[320px] lg:min-h-[400px]">
-		<img 
-			src={nuestraHistoriaImg.src} 
-			alt="Investigadores de AIS en laboratorio de Inteligencia Artificial" 
-			class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-			loading="eager"
-		/>
-		<!-- Gradient Overlays idénticos a Home -->
-		<div class="absolute inset-0 bg-gradient-to-r from-[#0B0F19]/80 via-[#0B0F19]/40 to-transparent pointer-events-none"></div>
-		<div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/90 via-transparent to-transparent pointer-events-none"></div>
-	</div>
+<section class="mb-24 md:mb-32 relative z-10">
+	<!-- Contenedor único unificado para Nuestra Historia (Estructura idéntica al boceto) -->
+	<div class="group relative rounded-2xl bg-[#0F1423]/20 hover:bg-blue-500/10 border border-gray-800/80 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(96,165,250,0.15)] overflow-hidden">
+		<div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+			<!-- Columna Izquierda: Imagen Referencial del Laboratorio AI -->
+			<div class="lg:col-span-5 relative min-h-[280px] sm:min-h-[350px] lg:min-h-full lg:border-r border-gray-800/80 overflow-hidden">
+				<img 
+					src={nuestraHistoriaImg.src} 
+					alt="Investigadores de AIS en laboratorio de Inteligencia Artificial" 
+					class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+					loading="eager"
+				/>
+				<!-- Gradient Overlays para integración armónica -->
+				<div class="absolute inset-0 bg-gradient-to-r from-[#0B0F19]/50 via-transparent to-transparent pointer-events-none"></div>
+				<div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/80 via-transparent to-transparent lg:hidden pointer-events-none"></div>
+			</div>
 
-	<!-- Columna Derecha: Tarjeta Informativa Nuestra Historia (Armonizada con Home) -->
-	<div class="group lg:col-span-6 flex flex-col justify-center relative rounded-2xl bg-[#0F1423]/20 hover:bg-blue-500/10 border border-gray-800/80 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(96,165,250,0.15)] p-6 sm:p-8 lg:p-10">
-		<div>
-			<!-- Título de Tarjeta con iluminación idéntica a Home -->
-			<h2 class="text-2xl md:text-3xl font-bold text-white group-hover:text-blue-300 transition-colors mb-6 tracking-tight">
-				Nuestra <span class="text-blue-300 text-glow-blue">Historia</span>
-			</h2>
+			<!-- Columna Derecha: Tarjeta Informativa Nuestra Historia -->
+			<div class="lg:col-span-7 flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+				<!-- Título de Tarjeta con tamaño idéntico a Misión y Visión (text-xl md:text-2xl) -->
+				<h2 class="text-xl md:text-2xl font-bold text-white group-hover:text-blue-300 transition-colors mb-6 tracking-tight">
+					Nuestra <span class="text-blue-300 text-glow-blue">Historia</span>
+				</h2>
 
-			<!-- Párrafos descriptivos con clases exactas de Home -->
-			<div class="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed">
-				<p>
-					La <strong class="text-white font-semibold">Artificial Intelligence Society (AIS)</strong> fue fundada en la <strong class="text-white font-semibold">Universidad Nacional de Ingeniería (UNI)</strong> en Lima, Perú. Nacimos de la visión compartida de un grupo de estudiantes e investigadores apasionados por el potencial transformador de la Inteligencia Artificial.
-				</p>
-				<p>
-					Desde nuestros inicios, nos hemos dedicado a construir una comunidad interdisciplinaria enfocada en la excelencia académica, la investigación de vanguardia y el desarrollo de soluciones tecnológicas que impacten positivamente en la sociedad latinoamericana y global.
-				</p>
+				<!-- Párrafos descriptivos con clases exactas de Home -->
+				<div class="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed">
+					<p>
+						La <strong class="text-white font-semibold">Artificial Intelligence Society (AIS)</strong> fue fundada en la <strong class="text-white font-semibold">Universidad Nacional de Ingeniería (UNI)</strong> en Lima, Perú. Nacimos de la visión compartida de un grupo de estudiantes e investigadores apasionados por el potencial transformador de la Inteligencia Artificial.
+					</p>
+					<p>
+						Desde nuestros inicios, nos hemos dedicado a construir una comunidad interdisciplinaria enfocada en la excelencia académica, la investigación de vanguardia y el desarrollo de soluciones tecnológicas que impacten positivamente en la sociedad latinoamericana y global.
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>

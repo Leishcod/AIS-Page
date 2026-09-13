@@ -15,23 +15,23 @@ const valoresFila2 = [
 ];
 ---
 
-<section class="mb-20 relative z-10">
+<section class="mb-24 md:mb-32 relative z-10">
 	<!-- Título de Sección -->
-	<h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-10 tracking-tight">
+	<h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-12 md:mb-16 tracking-tight">
 		<span class="text-blue-300 text-glow-blue">
 			Valores constitucionales
 		</span>
 	</h2>
 
-	<!-- Grid de Valores: Fila 1 (4 columnas en Desktop) -->
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+	<!-- Grid de Valores: Fila 1 (4 columnas en Desktop) con separación amplia -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
 		{valoresFila1.map((valor) => (
 			<ValorCard title={valor.title} icon={valor.icon} />
 		))}
 	</div>
 
-	<!-- Grid de Valores: Fila 2 (3 columnas centradas en Desktop) -->
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+	<!-- Grid de Valores: Fila 2 (3 columnas centradas en Desktop) con separación amplia -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
 		{valoresFila2.map((valor) => (
 			<ValorCard title={valor.title} icon={valor.icon} />
 		))}
