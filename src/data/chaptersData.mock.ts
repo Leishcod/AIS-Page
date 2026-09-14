@@ -26,10 +26,10 @@ export const mockChapters: Chapter[] = [
       }
     ],
     socialLinks: {
-      linkedin: 'https://linkedin.com/company/ais-uni',
-      instagram: 'https://instagram.com/ais.uni',
-      discord: 'https://discord.gg/ais-uni',
-      github: 'https://github.com/ais-uni'
+      linkedin: 'https://www.linkedin.com/company/the-aisociety/',
+      instagram: 'https://www.instagram.com/ais_uni_/',
+      //discord: 'https://discord.gg/',
+      //github: 'https://github.com/'
     },
     gallery: [
       'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
