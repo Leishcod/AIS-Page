@@ -18,15 +18,15 @@
 	>
 	</div>
 
-	<!-- Modal Dialog Window -->
+	<!-- Modal Dialog Window (Auto-height fitted to content) -->
 	<div
 		id="founder-modal-dialog"
-		class="relative rounded-2xl border border-gray-800 shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_50px_rgba(30,67,113,0.35)] overflow-hidden transform scale-95 transition-all duration-300"
-		style="position: relative; z-index: 10; background-color: #0B0F19; opacity: 1; width: 92%; max-width: 780px; height: 86vh; max-height: 800px; min-height: 500px; display: flex; flex-direction: column; margin: auto;"
+		class="relative rounded-xl sm:rounded-2xl border border-gray-800 shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_50px_rgba(30,67,113,0.35)] overflow-hidden transform scale-95 transition-all duration-300"
+		style="position: relative; z-index: 10; background-color: #0B0F19; opacity: 1; width: 92%; max-width: 720px; max-height: 90vh; display: flex; flex-direction: column; margin: auto;"
 	>
 		<!-- Modal Header -->
 		<div
-			class="relative px-6 py-5 sm:px-8 sm:py-6 border-b border-gray-800 shrink-0"
+			class="relative px-6 py-4 sm:px-7 sm:py-5 border-b border-gray-800 shrink-0"
 			style="background-color: #0F1423;"
 		>
 			<div class="flex items-center justify-between">
@@ -43,29 +43,28 @@
 					</p>
 				</div>
 
-				<!-- Close Button -->
+				<!-- Close Button (Clean X without box/border) -->
 				<button
 					id="founder-modal-close-btn"
-					class="w-10 h-10 rounded-xl border border-gray-800 text-gray-400 hover:text-white flex items-center justify-center transition-all cursor-pointer hover:border-blue-400/50"
-					style="background-color: #0B0F19;"
+					class="p-1.5 text-gray-400 hover:text-white transition-colors cursor-pointer shrink-0 flex items-center justify-center"
 					aria-label="Cerrar modal"
 				>
-					<svg class="w-5 h-5 shrink-0" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg class="w-6 h-6 shrink-0" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
 					</svg>
 				</button>
 			</div>
 		</div>
 
-		<!-- Scrollable Body -->
+		<!-- Form Body -->
 		<div
-			class="flex-1 overflow-y-auto p-6 sm:p-8 custom-scrollbar"
+			class="p-6 sm:p-7 overflow-y-auto custom-scrollbar"
 			style="background-color: #0B0F19;"
 		>
 			<!-- FORM STATE -->
-			<form id="founder-form" class="space-y-5" novalidate>
+			<form id="founder-form" class="space-y-4 sm:space-y-4.5" novalidate>
 				<!-- Nombres y Apellidos (2 Columns) -->
-				<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
 					<!-- Nombres -->
 					<div class="space-y-1.5">
 						<label for="founder-nombres" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
@@ -76,7 +75,7 @@
 							id="founder-nombres"
 							name="nombres"
 							placeholder="Ej. Alexander"
-							class="w-full px-4 py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+							class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
 							style="background-color: #0F1423;"
 							required
 						/>
@@ -96,7 +95,7 @@
 							id="founder-apellidos"
 							name="apellidos"
 							placeholder="Ej. Huamán Silva"
-							class="w-full px-4 py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+							class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
 							style="background-color: #0F1423;"
 							required
 						/>
@@ -118,7 +117,7 @@
 							id="founder-correo"
 							name="correoInstitucional"
 							placeholder="tu_usuario@universidad.edu.pe"
-							class="w-full px-4 py-3 pr-10 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+							class="w-full px-4 py-2.5 sm:py-3 pr-10 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
 							style="background-color: #0F1423;"
 							required
 						/>
@@ -144,7 +143,7 @@
 						id="founder-universidad"
 						name="universidadInstituto"
 						placeholder="Ej. Universidad Nacional de Trujillo (UNT)"
-						class="w-full px-4 py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+						class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
 						style="background-color: #0F1423;"
 						required
 					/>
@@ -155,7 +154,7 @@
 				</div>
 
 				<!-- Carrera y Ciclo (2 Columns) -->
-				<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
 					<!-- Carrera -->
 					<div class="space-y-1.5">
 						<label for="founder-carrera" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
@@ -166,7 +165,7 @@
 							id="founder-carrera"
 							name="carrera"
 							placeholder="Ej. Ing. de Sistemas / Software / Mecatrónica"
-							class="w-full px-4 py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+							class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
 							style="background-color: #0F1423;"
 							required
 						/>
@@ -184,7 +183,7 @@
 						<select
 							id="founder-ciclo"
 							name="ciclo"
-							class="w-full px-4 py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white text-sm transition-colors outline-none cursor-pointer"
+							class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white text-sm transition-colors outline-none cursor-pointer"
 							style="background-color: #0F1423;"
 							required
 						>
@@ -203,14 +202,14 @@
 				</div>
 
 				<!-- Submit Button & Spinner -->
-				<div class="pt-4">
+				<div class="pt-2">
 					<button
 						type="submit"
 						id="founder-submit-btn"
-						class="w-full py-4 px-6 text-xs font-bold tracking-widest text-gray-950 bg-blue-300 hover:bg-blue-200 transition-all transform hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(96,165,250,0.8)] uppercase rounded-none flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+						class="w-full py-3.5 px-6 text-xs font-bold tracking-widest text-gray-950 bg-blue-300 hover:bg-blue-200 transition-all transform hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(96,165,250,0.8)] uppercase rounded-none flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
 					>
 						<span id="submit-text" class="flex items-center gap-2">
-							<span>ENVIAR EXPEDIENTE DE POSTULACIÓN</span>
+							<span>ENVIAR POSTULACIÓN</span>
 							<svg class="w-4 h-4 shrink-0" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
 							</svg>
