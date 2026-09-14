@@ -1,0 +1,431 @@
+---
+// Modal and Application Form for prospective Chapter Founders (AIS Themed)
+---
+
+<div
+	id="founder-modal"
+	class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300"
+	style="z-index: 99999;"
+	role="dialog"
+	aria-modal="true"
+	aria-labelledby="founder-modal-title"
+>
+	<!-- Backdrop Overlay -->
+	<div
+		id="founder-modal-backdrop"
+		class="cursor-pointer"
+		style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(5, 8, 16, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1;"
+	>
+	</div>
+
+	<!-- Modal Dialog Window (Auto-height fitted to content) -->
+	<div
+		id="founder-modal-dialog"
+		class="relative rounded-xl sm:rounded-2xl border border-gray-800 shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_50px_rgba(30,67,113,0.35)] overflow-hidden transform scale-95 transition-all duration-300"
+		style="position: relative; z-index: 10; background-color: #0B0F19; opacity: 1; width: 92%; max-width: 720px; max-height: 90vh; display: flex; flex-direction: column; margin: auto;"
+	>
+		<!-- Modal Header -->
+		<div
+			class="relative px-6 py-4 sm:px-7 sm:py-5 border-b border-gray-800 shrink-0"
+			style="background-color: #0F1423;"
+		>
+			<div class="flex items-center justify-between">
+				<div class="space-y-1">
+					<div class="flex items-center gap-2 text-xs font-bold tracking-widest text-blue-300 uppercase">
+						<span class="w-6 h-[2px] bg-blue-300"></span>
+						LIDERAZGO ESTUDIANTIL
+					</div>
+					<h3 id="founder-modal-title" class="text-xl sm:text-2xl font-black text-white tracking-tight">
+						Postulación como Fundador
+					</h3>
+					<p class="text-xs text-gray-400 font-light">
+						Ingresa tus datos académicos para iniciar el expediente de fundación.
+					</p>
+				</div>
+
+				<!-- Close Button (Clean X without box/border) -->
+				<button
+					id="founder-modal-close-btn"
+					class="p-1.5 text-gray-400 hover:text-white transition-colors cursor-pointer shrink-0 flex items-center justify-center"
+					aria-label="Cerrar modal"
+				>
+					<svg class="w-6 h-6 shrink-0" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<!-- Form Body -->
+		<div
+			class="p-6 sm:p-7 overflow-y-auto custom-scrollbar"
+			style="background-color: #0B0F19;"
+		>
+			<!-- FORM STATE -->
+			<form id="founder-form" class="space-y-4 sm:space-y-4.5" novalidate>
+				<!-- Nombres y Apellidos (2 Columns) -->
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+					<!-- Nombres -->
+					<div class="space-y-1.5">
+						<label for="founder-nombres" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
+							Nombres <span class="text-blue-300">*</span>
+						</label>
+						<input
+							type="text"
+							id="founder-nombres"
+							name="nombres"
+							placeholder="Ej. Alexander"
+							class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+							style="background-color: #0F1423;"
+							required
+						/>
+						<p id="error-nombres" class="text-[11px] text-rose-400 font-medium hidden flex items-center gap-1">
+							<svg class="w-3 h-3 shrink-0" width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+							<span>Ingresa tus nombres completos.</span>
+						</p>
+					</div>
+
+					<!-- Apellidos -->
+					<div class="space-y-1.5">
+						<label for="founder-apellidos" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
+							Apellidos <span class="text-blue-300">*</span>
+						</label>
+						<input
+							type="text"
+							id="founder-apellidos"
+							name="apellidos"
+							placeholder="Ej. Huamán Silva"
+							class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+							style="background-color: #0F1423;"
+							required
+						/>
+						<p id="error-apellidos" class="text-[11px] text-rose-400 font-medium hidden flex items-center gap-1">
+							<svg class="w-3 h-3 shrink-0" width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+							<span>Ingresa tus apellidos completos.</span>
+						</p>
+					</div>
+				</div>
+
+				<!-- Correo Institucional -->
+				<div class="space-y-1.5">
+					<label for="founder-correo" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
+						Correo Institucional <span class="text-blue-300">*</span>
+					</label>
+					<div class="relative">
+						<input
+							type="email"
+							id="founder-correo"
+							name="correoInstitucional"
+							placeholder="tu_usuario@universidad.edu.pe"
+							class="w-full px-4 py-2.5 sm:py-3 pr-10 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+							style="background-color: #0F1423;"
+							required
+						/>
+						<div class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+							<svg class="w-4 h-4 shrink-0" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+							</svg>
+						</div>
+					</div>
+					<p id="error-correo" class="text-[11px] text-rose-400 font-medium hidden flex items-center gap-1">
+						<svg class="w-3 h-3 shrink-0" width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+						<span>Ingresa un correo institucional válido (de preferencia con dominio académico .edu).</span>
+					</p>
+				</div>
+
+				<!-- Universidad / Instituto -->
+				<div class="space-y-1.5">
+					<label for="founder-universidad" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
+						Universidad / Instituto <span class="text-blue-300">*</span>
+					</label>
+					<input
+						type="text"
+						id="founder-universidad"
+						name="universidadInstituto"
+						placeholder="Ej. Universidad Nacional de Trujillo (UNT)"
+						class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+						style="background-color: #0F1423;"
+						required
+					/>
+					<p id="error-universidad" class="text-[11px] text-rose-400 font-medium hidden flex items-center gap-1">
+						<svg class="w-3 h-3 shrink-0" width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+						<span>Indica el nombre de tu institución de estudios.</span>
+					</p>
+				</div>
+
+				<!-- Carrera y Ciclo (2 Columns) -->
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+					<!-- Carrera -->
+					<div class="space-y-1.5">
+						<label for="founder-carrera" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
+							Carrera <span class="text-blue-300">*</span>
+						</label>
+						<input
+							type="text"
+							id="founder-carrera"
+							name="carrera"
+							placeholder="Ej. Ing. de Sistemas / Software / Mecatrónica"
+							class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white placeholder-gray-500 text-sm transition-colors outline-none"
+							style="background-color: #0F1423;"
+							required
+						/>
+						<p id="error-carrera" class="text-[11px] text-rose-400 font-medium hidden flex items-center gap-1">
+							<svg class="w-3 h-3 shrink-0" width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+							<span>Indica tu carrera profesional.</span>
+						</p>
+					</div>
+
+					<!-- Ciclo -->
+					<div class="space-y-1.5">
+						<label for="founder-ciclo" class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
+							Ciclo Académico <span class="text-blue-300">*</span>
+						</label>
+						<select
+							id="founder-ciclo"
+							name="ciclo"
+							class="w-full px-4 py-2.5 sm:py-3 rounded-none border border-gray-800 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 text-white text-sm transition-colors outline-none cursor-pointer"
+							style="background-color: #0F1423;"
+							required
+						>
+							<option value="" disabled selected class="text-gray-500">Selecciona tu ciclo...</option>
+							<option value="Ciclo 1 - 3 (Inicios)">Ciclo 1 al 3 (Inicios)</option>
+							<option value="Ciclo 4 - 6 (Intermedio)">Ciclo 4 al 6 (Intermedio)</option>
+							<option value="Ciclo 7 - 8 (Avanzado)">Ciclo 7 al 8 (Avanzado)</option>
+							<option value="Ciclo 9 - 10 (Últimos ciclos)">Ciclo 9 al 10 (Últimos ciclos)</option>
+							<option value="Egresado / Posgrado">Egresado / Posgrado</option>
+						</select>
+						<p id="error-ciclo" class="text-[11px] text-rose-400 font-medium hidden flex items-center gap-1">
+							<svg class="w-3 h-3 shrink-0" width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+							<span>Selecciona tu ciclo actual.</span>
+						</p>
+					</div>
+				</div>
+
+				<!-- Submit Button & Spinner -->
+				<div class="pt-2">
+					<button
+						type="submit"
+						id="founder-submit-btn"
+						class="w-full py-3.5 px-6 text-xs font-bold tracking-widest text-gray-950 bg-blue-300 hover:bg-blue-200 transition-all transform hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(96,165,250,0.8)] uppercase rounded-none flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+					>
+						<span id="submit-text" class="flex items-center gap-2">
+							<span>ENVIAR POSTULACIÓN</span>
+							<svg class="w-4 h-4 shrink-0" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+							</svg>
+						</span>
+
+						<span id="submit-spinner" class="hidden items-center gap-2">
+							<svg class="w-4 h-4 shrink-0 animate-spin text-gray-950" width="16" height="16" fill="none" viewBox="0 0 24 24">
+								<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+								<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+							</svg>
+							<span>PROCESANDO POSTULACIÓN...</span>
+						</span>
+					</button>
+				</div>
+			</form>
+
+			<!-- SUCCESS STATE -->
+			<div id="founder-success-view" class="hidden py-8 px-4 text-center space-y-6">
+				<div class="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-blue-300 mx-auto flex items-center justify-center shadow-[0_0_30px_rgba(96,165,250,0.3)]">
+					<svg class="w-8 h-8 shrink-0" width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+					</svg>
+				</div>
+
+				<div class="space-y-2">
+					<h4 class="text-2xl font-black text-white">Postulación Registrada</h4>
+					<p class="text-sm text-gray-300 max-w-md mx-auto leading-relaxed font-light">
+						Gracias por tu interés, <span id="success-applicant-name" class="text-blue-300 font-semibold">Postulante</span>. El Comité de Capítulos de AIS evaluará tu solicitud para <span id="success-applicant-uni" class="text-blue-300 font-semibold">tu universidad</span>.
+					</p>
+				</div>
+
+				<div class="p-4 rounded-xl border border-gray-800 text-left max-w-md mx-auto text-xs space-y-2" style="background-color: #0F1423;">
+					<div class="flex items-center justify-between text-gray-400">
+						<span>Estado del trámite:</span>
+						<span class="text-blue-300 font-semibold flex items-center gap-1.5">
+							<span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+							Recepción conforme
+						</span>
+					</div>
+					<div class="flex items-center justify-between text-gray-400">
+						<span>Próximo contacto:</span>
+						<span class="text-gray-200 font-mono">48 a 72 hrs hábiles</span>
+					</div>
+				</div>
+
+				<div>
+					<button
+						id="founder-success-close-btn"
+						type="button"
+						class="px-8 py-3 text-xs font-bold tracking-widest text-gray-950 bg-blue-300 hover:bg-blue-200 rounded-none uppercase transition-all cursor-pointer"
+					>
+						ENTENDIDO
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	import type { FounderFormData } from '../../types/chapters';
+
+	function initFounderModal() {
+		const modal = document.getElementById('founder-modal');
+		const dialog = document.getElementById('founder-modal-dialog');
+		const backdrop = document.getElementById('founder-modal-backdrop');
+		const closeBtn = document.getElementById('founder-modal-close-btn');
+		const openBtn = document.getElementById('open-founder-form-btn');
+		const successCloseBtn = document.getElementById('founder-success-close-btn');
+		const form = document.getElementById('founder-form') as HTMLFormElement | null;
+		const submitBtn = document.getElementById('founder-submit-btn') as HTMLButtonElement | null;
+		const submitText = document.getElementById('submit-text');
+		const submitSpinner = document.getElementById('submit-spinner');
+		const successView = document.getElementById('founder-success-view');
+
+		if (!modal || !dialog) return;
+
+		function openModal() {
+			if (form && successView) {
+				form.classList.remove('hidden');
+				successView.classList.add('hidden');
+			}
+
+			modal!.classList.remove('opacity-0', 'pointer-events-none');
+			modal!.classList.add('opacity-100', 'pointer-events-auto');
+			dialog!.classList.remove('scale-95');
+			dialog!.classList.add('scale-100');
+
+			document.body.style.overflow = 'hidden';
+
+			setTimeout(() => {
+				const firstInput = document.getElementById('founder-nombres') as HTMLInputElement | null;
+				firstInput?.focus();
+			}, 100);
+		}
+
+		function closeModal() {
+			modal!.classList.remove('opacity-100', 'pointer-events-auto');
+			modal!.classList.add('opacity-0', 'pointer-events-none');
+			dialog!.classList.remove('scale-100');
+			dialog!.classList.add('scale-95');
+
+			document.body.style.overflow = '';
+		}
+
+		openBtn?.addEventListener('click', openModal);
+		closeBtn?.addEventListener('click', closeModal);
+		backdrop?.addEventListener('click', closeModal);
+		successCloseBtn?.addEventListener('click', closeModal);
+
+		window.addEventListener('keydown', (e: KeyboardEvent) => {
+			if (e.key === 'Escape' && modal.classList.contains('opacity-100')) {
+				closeModal();
+			}
+		});
+
+		const inputs = {
+			nombres: document.getElementById('founder-nombres') as HTMLInputElement | null,
+			apellidos: document.getElementById('founder-apellidos') as HTMLInputElement | null,
+			correo: document.getElementById('founder-correo') as HTMLInputElement | null,
+			universidad: document.getElementById('founder-universidad') as HTMLInputElement | null,
+			carrera: document.getElementById('founder-carrera') as HTMLInputElement | null,
+			ciclo: document.getElementById('founder-ciclo') as HTMLSelectElement | null,
+		};
+
+		const errors = {
+			nombres: document.getElementById('error-nombres'),
+			apellidos: document.getElementById('error-apellidos'),
+			correo: document.getElementById('error-correo'),
+			universidad: document.getElementById('error-universidad'),
+			carrera: document.getElementById('error-carrera'),
+			ciclo: document.getElementById('error-ciclo'),
+		};
+
+		function validateField(fieldKey: keyof typeof inputs): boolean {
+			const input = inputs[fieldKey];
+			const errorEl = errors[fieldKey];
+			if (!input || !errorEl) return true;
+
+			const val = input.value.trim();
+			let isValid = true;
+
+			if (fieldKey === 'correo') {
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				isValid = emailRegex.test(val);
+			} else {
+				isValid = val.length > 0;
+			}
+
+			if (!isValid) {
+				input.classList.add('border-rose-500/80', 'focus:border-rose-500', 'focus:ring-rose-500');
+				input.classList.remove('border-gray-800', 'focus:border-blue-400', 'focus:ring-blue-400');
+				errorEl.classList.remove('hidden');
+			} else {
+				input.classList.remove('border-rose-500/80', 'focus:border-rose-500', 'focus:ring-rose-500');
+				input.classList.add('border-gray-800', 'focus:border-blue-400', 'focus:ring-blue-400');
+				errorEl.classList.add('hidden');
+			}
+
+			return isValid;
+		}
+
+		Object.keys(inputs).forEach((key) => {
+			const fieldKey = key as keyof typeof inputs;
+			const el = inputs[fieldKey];
+			if (el) {
+				el.addEventListener('input', () => validateField(fieldKey));
+				el.addEventListener('blur', () => validateField(fieldKey));
+			}
+		});
+
+		if (form) {
+			form.addEventListener('submit', (e: Event) => {
+				e.preventDefault();
+
+				let allValid = true;
+				(Object.keys(inputs) as (keyof typeof inputs)[]).forEach((fieldKey) => {
+					const valid = validateField(fieldKey);
+					if (!valid) allValid = false;
+				});
+
+				if (!allValid) return;
+
+				const formData: FounderFormData = {
+					nombres: inputs.nombres?.value.trim() || '',
+					apellidos: inputs.apellidos?.value.trim() || '',
+					correoInstitucional: inputs.correo?.value.trim() || '',
+					universidadInstituto: inputs.universidad?.value.trim() || '',
+					carrera: inputs.carrera?.value.trim() || '',
+					ciclo: inputs.ciclo?.value.trim() || '',
+				};
+
+				if (submitBtn) submitBtn.disabled = true;
+				submitText?.classList.add('hidden');
+				submitSpinner?.classList.remove('hidden');
+				submitSpinner?.classList.add('flex');
+
+				setTimeout(() => {
+					if (submitBtn) submitBtn.disabled = false;
+					submitText?.classList.remove('hidden');
+					submitSpinner?.classList.add('hidden');
+					submitSpinner?.classList.remove('flex');
+
+					const nameEl = document.getElementById('success-applicant-name');
+					const uniEl = document.getElementById('success-applicant-uni');
+					if (nameEl) nameEl.textContent = `${formData.nombres} ${formData.apellidos}`;
+					if (uniEl) uniEl.textContent = formData.universidadInstituto;
+
+					form.reset();
+					form.classList.add('hidden');
+					successView?.classList.remove('hidden');
+				}, 1200);
+			});
+		}
+	}
+
+	initFounderModal();
+	document.addEventListener('astro:after-swap', initFounderModal);
+</script>

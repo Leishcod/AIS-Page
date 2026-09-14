@@ -1,0 +1,46 @@
+---
+import heroBg from '../../assets/Home/hero-bg.webp';
+---
+
+<section
+	class="relative pt-12 pb-2 md:pt-16 md:pb-4 overflow-hidden"
+>
+	<!-- Background Image with Overlay -->
+	<div class="absolute inset-0 z-0 pointer-events-none">
+		<img
+			src={heroBg.src}
+			alt="AIS Workspace Background"
+			class="w-full h-full object-cover opacity-15"
+		/>
+		<div
+			class="absolute inset-0 bg-gradient-to-b from-[#0B0F19]/90 via-[#0B0F19]/95 to-[#0B0F19]"
+		>
+		</div>
+	</div>
+
+	<!-- Ambient Backlight Center Glow -->
+	<div
+		class="absolute w-[600px] h-[300px] bg-[#1E4371] opacity-30 rounded-full blur-[140px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+	>
+	</div>
+
+	<!-- Content Container Centered -->
+	<div
+		class="max-w-4xl mx-auto px-4 relative z-10 w-full flex flex-col items-center justify-center text-center space-y-2"
+	>
+		<!-- Main Hero Title Centered -->
+		<h1
+			class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight font-['Outfit'] flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 leading-tight"
+		>
+			<span>Nodos de la</span>
+			<span class="text-blue-300 text-glow-blue">Red Universitaria</span>
+		</h1>
+
+		<!-- Description Centered -->
+		<p
+			class="text-gray-400 text-xs sm:text-sm md:text-base font-light leading-relaxed max-w-2xl mx-auto"
+		>
+			Capítulos estudiantiles constituidos en las principales casas de estudio del Perú como polos de investigación científica y talento de élite en Inteligencia Artificial.
+		</p>
+	</div>
+</section>

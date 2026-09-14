@@ -1,0 +1,119 @@
+---
+import type { Chapter } from '../../types/chapters';
+
+interface Props {
+	chapter: Chapter;
+}
+
+const { chapter } = Astro.props as Props;
+
+// Helper to extract clean initials from institution name
+const getInitials = (name: string): string => {
+	const words = name
+		.split(' ')
+		.filter((w) => !['de', 'la', 'del', 'y', 'el', 'los', 'las', 'en', 'para'].includes(w.toLowerCase()));
+	if (words.length >= 2) {
+		return (words[0][0] + words[1][0] + (words[2] ? words[2][0] : '')).toUpperCase();
+	}
+	return name.slice(0, 3).toUpperCase();
+};
+
+const initials = getInitials(chapter.institutionName);
+---
+
+<article
+	class="p-6 rounded-2xl bg-[#0F1423]/20 hover:bg-blue-500/10 border border-gray-800/80 hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(96,165,250,0.15)] group flex flex-col justify-between h-full cursor-pointer chapter-card"
+	data-chapter-id={chapter.id}
+	tabindex="0"
+	role="button"
+	aria-label={`Ver detalles del capítulo ${chapter.chapterName} en ${chapter.institutionName}`}
+>
+	<div class="space-y-4">
+		<!-- Card Top Row: Logo & City Location (Clean, badges removed as requested) -->
+		<div class="flex items-start justify-between gap-3">
+			<!-- Logo Box (Fixed compact 48x48) -->
+			<div
+				class="w-12 h-12 rounded-xl bg-blue-500/5 group-hover:bg-blue-500/20 border border-blue-500/20 group-hover:border-blue-500/40 flex items-center justify-center p-1.5 text-blue-300/80 group-hover:text-blue-200 shrink-0 transition-all duration-300 overflow-hidden relative"
+				style="width: 48px; height: 48px; min-width: 48px; min-height: 48px;"
+			>
+				{
+					chapter.logoUrl ? (
+						<img
+							src={chapter.logoUrl}
+							class="w-full h-full object-contain absolute inset-0 p-1.5"
+							loading="lazy"
+							onerror="this.remove();"
+						/>
+					) : null
+				}
+
+				<!-- Default Fallback Badge with AIS Monogram -->
+				<div
+					class="w-full h-full flex flex-col items-center justify-center font-bold text-center select-none"
+				>
+					<span class="text-[11px] tracking-wider leading-none text-blue-300">{initials}</span>
+					<span class="text-[7px] text-blue-400/80 tracking-widest uppercase leading-none mt-0.5">AIS</span>
+				</div>
+			</div>
+
+			<!-- City Location -->
+			<span class="flex items-center gap-1.5 text-xs text-gray-400 font-semibold pt-1">
+				<svg
+					class="w-3.5 h-3.5 text-blue-400 shrink-0"
+					width="14"
+					height="14"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+					></path>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+					></path>
+				</svg>
+				{chapter.city}
+			</span>
+		</div>
+
+		<!-- Card Content: Names & Bio -->
+		<div class="space-y-1.5">
+			<h3
+				class="text-lg md:text-xl font-bold text-white group-hover:text-blue-300 transition-colors"
+			>
+				{chapter.chapterName}
+			</h3>
+			<p class="text-[11px] font-bold tracking-widest text-blue-300/70 uppercase line-clamp-1">
+				{chapter.institutionName}
+			</p>
+			<p class="text-gray-400 text-xs sm:text-sm font-light leading-relaxed line-clamp-3 pt-0.5">
+				{chapter.shortDescription}
+			</p>
+		</div>
+	</div>
+
+	<!-- Bottom Action Bar with fixed sized SVG -->
+	<div
+		class="pt-4 mt-5 border-t border-gray-800/80 flex items-center justify-between text-xs font-bold tracking-widest text-blue-300 uppercase group-hover:text-blue-200 transition-colors"
+	>
+		<span>VER MÁS</span>
+		<svg
+			class="w-4 h-4 shrink-0 transform group-hover:translate-x-1 transition-transform inline-block"
+			width="16"
+			height="16"
+			style="width: 16px; height: 16px; max-width: 16px; max-height: 16px;"
+			fill="none"
+			stroke="currentColor"
+			viewBox="0 0 24 24"
+		>
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+		</svg>
+	</div>
+</article>
