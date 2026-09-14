@@ -1,0 +1,623 @@
+---
+import type { Chapter } from '../../types/chapters';
+
+interface Props {
+	chapters: Chapter[];
+}
+
+const { chapters } = Astro.props as Props;
+
+// Helper to extract clean initials
+const KNOWN_ACRONYMS: Record<string, string> = {
+	'ais-uni': 'UNI',
+	'ais-pucp': 'PUCP',
+	'ais-utec': 'UTEC',
+	'ais-unmsm': 'UNMSM',
+	'ais-upc': 'UPC',
+	'ais-unsa': 'UNSA',
+	'ais-unt': 'UNT',
+};
+
+const getInitials = (id: string, name: string): string => {
+	if (KNOWN_ACRONYMS[id]) return KNOWN_ACRONYMS[id];
+	const words = name
+		.split(' ')
+		.filter((w) => !['de', 'la', 'del', 'y', 'el', 'los', 'las', 'en', 'para'].includes(w.toLowerCase()));
+	if (words.length >= 2) {
+		return (words[0][0] + words[1][0] + (words[2] ? words[2][0] : '')).toUpperCase();
+	}
+	return name.slice(0, 4).toUpperCase();
+};
+
+const findChapter = (id: string) => chapters.find((c) => c.id === id) || chapters[0];
+
+const uni = findChapter('ais-uni');
+---
+
+<section id="red-universitaria" class="relative z-10 w-full pt-2 pb-12 md:pt-4 md:pb-16 select-none flex flex-col items-center justify-center overflow-x-hidden">
+	<!-- Seamless Ambient Backlight Center Glows (Symmetric & Centered) -->
+	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[720px] bg-blue-600/15 rounded-full blur-[180px] pointer-events-none"></div>
+	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[520px] bg-cyan-500/12 rounded-full blur-[140px] pointer-events-none"></div>
+
+	<!-- Integrated Seamless Hero Header (100% Centered, Overline Removed as Requested) -->
+	<div class="max-w-4xl mx-auto px-4 relative z-10 w-full flex flex-col items-center justify-center text-center mb-4 md:mb-6">
+		<h1 class="text-[36px] sm:text-[46px] md:text-[52px] font-black text-white leading-tight tracking-tighter mb-3">
+			Nodos de la <span class="text-blue-300 text-glow-blue">Red Universitaria</span>
+		</h1>
+		<p class="text-gray-400 text-sm md:text-base font-light leading-relaxed max-w-2xl mx-auto">
+			Capítulos estudiantiles constituidos en universidades e institutos del Perú como polos de investigación científica, formación y transferencia tecnológica en Inteligencia Artificial.
+		</p>
+	</div>
+
+	<!-- Main Wide Neural Network Canvas (Direct Vector Container with Absolute Center Geometry) -->
+	<div class="relative w-full max-w-[1240px] mx-auto px-3 sm:px-6 flex items-center justify-center">
+		
+		<!-- Unified SVG Canvas (All paths, junctions and interactive nodes share the EXACT same coordinate system) -->
+		<svg
+			id="neural-svg"
+			class="w-full h-auto max-h-[720px] overflow-visible select-none"
+			viewBox="0 0 1000 580"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<defs>
+				<!-- Neon Cyan/Blue Synaptic Gradients -->
+				<linearGradient id="synapticGradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" stop-color="#38BDF8" stop-opacity="0.85" />
+					<stop offset="50%" stop-color="#06B6D4" stop-opacity="0.7" />
+					<stop offset="100%" stop-color="#60A5FA" stop-opacity="0.85" />
+				</linearGradient>
+
+				<linearGradient id="synapticGradSecondary" x1="0%" y1="100%" x2="100%" y2="0%">
+					<stop offset="0%" stop-color="#60A5FA" stop-opacity="0.6" />
+					<stop offset="50%" stop-color="#06B6D4" stop-opacity="0.8" />
+					<stop offset="100%" stop-color="#38BDF8" stop-opacity="0.6" />
+				</linearGradient>
+
+				<!-- Glow Filters for Axon Pathways -->
+				<filter id="axonGlow" x="-30%" y="-30%" width="160%" height="160%">
+					<feGaussianBlur stdDeviation="3" result="blur" />
+					<feComposite in="SourceGraphic" in2="blur" operator="over" />
+				</filter>
+
+				<filter id="junctionGlow" x="-50%" y="-50%" width="200%" height="200%">
+					<feGaussianBlur stdDeviation="5" result="blur" />
+					<feComposite in="SourceGraphic" in2="blur" operator="over" />
+				</filter>
+
+				<filter id="hexGlow" x="-40%" y="-40%" width="180%" height="180%">
+					<feGaussianBlur stdDeviation="4" result="blur" />
+					<feComposite in="SourceGraphic" in2="blur" operator="over" />
+				</filter>
+			</defs>
+
+			<!-- ==================== BACKGROUND NEURAL CONSTELLATION MESH ==================== -->
+			<g opacity="0.2" stroke="#38BDF8" stroke-width="0.8" class="ambient-mesh">
+				<line x1="250" y1="130" x2="500" y2="25" stroke-dasharray="3,3" />
+				<line x1="750" y1="130" x2="500" y2="25" stroke-dasharray="3,3" />
+				<line x1="130" y1="290" x2="30" y2="190" stroke-dasharray="3,3" />
+				<line x1="130" y1="290" x2="30" y2="390" stroke-dasharray="3,3" />
+				<line x1="870" y1="290" x2="970" y2="190" stroke-dasharray="3,3" />
+				<line x1="870" y1="290" x2="970" y2="390" stroke-dasharray="3,3" />
+				<line x1="250" y1="450" x2="500" y2="555" stroke-dasharray="3,3" />
+				<line x1="750" y1="450" x2="500" y2="555" stroke-dasharray="3,3" />
+
+				<circle cx="500" cy="25" r="3" fill="#38BDF8" class="constellation-dot" />
+				<circle cx="30" cy="190" r="2.5" fill="#06B6D4" class="constellation-dot" />
+				<circle cx="30" cy="390" r="2.5" fill="#06B6D4" class="constellation-dot" />
+				<circle cx="970" cy="190" r="2.5" fill="#06B6D4" class="constellation-dot" />
+				<circle cx="970" cy="390" r="2.5" fill="#06B6D4" class="constellation-dot" />
+				<circle cx="500" cy="555" r="3" fill="#38BDF8" class="constellation-dot" />
+			</g>
+
+			<!-- ==================== PRIMARY SYNAPTIC PATHWAYS ==================== -->
+			<!-- Top connection: UNI (250, 130) -> [Junction (500, 70)] -> PUCP (750, 130) -->
+			<path class="pathway-line path-uni path-pucp" d="M 250 130 L 500 70 L 750 130" stroke="url(#synapticGradPrimary)" stroke-width="2.5" filter="url(#axonGlow)" />
+			
+			<!-- Left connection: UNI (250, 130) -> [Junction (330, 190)] -> UTEC (130, 290) -> [Junction (330, 390)] -> UNSA (250, 450) -->
+			<path class="pathway-line path-uni path-utec path-unsa" d="M 250 130 L 330 190 L 130 290 L 330 390 L 250 450" stroke="url(#synapticGradPrimary)" stroke-width="2.5" filter="url(#axonGlow)" />
+
+			<!-- Right connection: PUCP (750, 130) -> [Junction (670, 190)] -> UNMSM (870, 290) -> [Junction (670, 390)] -> UNT (750, 450) -->
+			<path class="pathway-line path-pucp path-unmsm path-unt" d="M 750 130 L 670 190 L 870 290 L 670 390 L 750 450" stroke="url(#synapticGradPrimary)" stroke-width="2.5" filter="url(#axonGlow)" />
+
+			<!-- Bottom connection: UNSA (250, 450) -> [Junction (500, 510)] -> UNT (750, 450) -->
+			<path class="pathway-line path-unsa path-unt" d="M 250 450 L 500 510 L 750 450" stroke="url(#synapticGradPrimary)" stroke-width="2.5" filter="url(#axonGlow)" />
+
+			<!-- Center Core Synapses: Horizontal UTEC (130, 290) -> UPC (500, 290) -> UNMSM (870, 290) -->
+			<path class="pathway-line path-utec path-upc path-unmsm" d="M 130 290 L 500 290 L 870 290" stroke="url(#synapticGradSecondary)" stroke-width="3" filter="url(#axonGlow)" />
+
+			<!-- Diagonal Synaptic Bridges intersecting EXACTLY at UPC Center (500, 290) -->
+			<path class="pathway-line path-uni path-upc" d="M 250 130 L 500 290" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
+			<path class="pathway-line path-pucp path-upc" d="M 750 130 L 500 290" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
+			<path class="pathway-line path-unsa path-upc" d="M 250 450 L 500 290" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
+			<path class="pathway-line path-unt path-upc" d="M 750 450 L 500 290" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
+
+			<!-- Cross Axon Fibers for Deep Mesh Feel -->
+			<path class="pathway-line path-cross" d="M 330 190 L 670 190" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="2,4" opacity="0.45" />
+			<path class="pathway-line path-cross" d="M 330 390 L 670 390" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="2,4" opacity="0.45" />
+
+
+			<!-- ==================== SYNAPTIC JUNCTION EXPANDING RIPPLE RINGS ==================== -->
+			<!-- Top Junction -->
+			<g transform="translate(500, 70)">
+				<circle class="ripple-ring ripple-1" r="14" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
+				<circle class="ripple-ring ripple-2" r="14" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
+				<circle r="8" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlow)" />
+				<circle r="3.5" fill="#06B6D4" filter="url(#axonGlow)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+
+			<!-- Left-Top Junction -->
+			<g transform="translate(330, 190)">
+				<circle class="ripple-ring ripple-1" r="12" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
+				<circle r="7" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlow)" />
+				<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+
+			<!-- Right-Top Junction -->
+			<g transform="translate(670, 190)">
+				<circle class="ripple-ring ripple-2" r="12" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
+				<circle r="7" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlow)" />
+				<circle r="3" fill="#06B6D4" filter="url(#axonGlow)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+
+			<!-- Left-Bottom Junction -->
+			<g transform="translate(330, 390)">
+				<circle class="ripple-ring ripple-2" r="12" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
+				<circle r="7" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlow)" />
+				<circle r="3" fill="#06B6D4" filter="url(#axonGlow)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+
+			<!-- Right-Bottom Junction -->
+			<g transform="translate(670, 390)">
+				<circle class="ripple-ring ripple-1" r="12" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
+				<circle r="7" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlow)" />
+				<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+
+			<!-- Bottom Junction -->
+			<g transform="translate(500, 510)">
+				<circle class="ripple-ring ripple-1" r="14" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
+				<circle class="ripple-ring ripple-2" r="14" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
+				<circle r="8" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlow)" />
+				<circle r="3.5" fill="#38BDF8" filter="url(#axonGlow)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+
+
+			<!-- ==================== FLOWING PHOTON ENERGY PULSES ==================== -->
+			<circle r="3.5" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 250 130 L 500 70 L 750 130" dur="2.6s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 750 130 L 500 70 L 250 130" dur="3s" repeatCount="indefinite" />
+			</circle>
+
+			<circle r="4" fill="#67E8F9" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 130 290 L 500 290 L 870 290" dur="2.4s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3.5" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 870 290 L 500 290 L 130 290" dur="2.4s" repeatCount="indefinite" />
+			</circle>
+
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 250 450 L 500 510 L 750 450" dur="2.8s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 750 450 L 500 510 L 250 450" dur="3.2s" repeatCount="indefinite" />
+			</circle>
+
+			<circle r="3" fill="#67E8F9" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 250 130 L 330 190 L 130 290 L 330 390 L 250 450" dur="3.6s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 750 130 L 670 190 L 870 290 L 670 390 L 750 450" dur="3.8s" repeatCount="indefinite" />
+			</circle>
+
+			<circle r="2.8" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 250 130 L 500 290" dur="2.2s" repeatCount="indefinite" />
+			</circle>
+			<circle r="2.8" fill="#67E8F9" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 750 130 L 500 290" dur="2.3s" repeatCount="indefinite" />
+			</circle>
+			<circle r="2.8" fill="#38BDF8" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 250 450 L 500 290" dur="2.2s" repeatCount="indefinite" />
+			</circle>
+			<circle r="2.8" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+				<animateMotion path="M 750 450 L 500 290" dur="2.4s" repeatCount="indefinite" />
+			</circle>
+
+
+			<!-- ==================== CHAPTER HEXAGONAL NODES ==================== -->
+
+			<!-- 1. TOP LEFT: LOCKED MINIMALIST NODE (250, 130) -->
+			<g transform="translate(250, 130)">
+				<g
+					class="locked-node float-node-1 select-none"
+					role="img"
+					aria-label="Nodo bloqueado"
+					style="pointer-events: none;"
+				>
+					<polygon
+						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
+						fill="#080D1A"
+						stroke="rgba(56, 189, 248, 0.18)"
+						stroke-width="1.5"
+						class="locked-poly"
+					/>
+					<polygon
+						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
+						fill="rgba(15, 23, 42, 0.4)"
+						stroke="rgba(71, 85, 105, 0.2)"
+						stroke-width="1"
+					/>
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+
+			<!-- 2. TOP RIGHT: LOCKED MINIMALIST NODE (750, 130) -->
+			<g transform="translate(750, 130)">
+				<g
+					class="locked-node float-node-2 select-none"
+					role="img"
+					aria-label="Nodo bloqueado"
+					style="pointer-events: none;"
+				>
+					<polygon
+						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
+						fill="#080D1A"
+						stroke="rgba(56, 189, 248, 0.18)"
+						stroke-width="1.5"
+						class="locked-poly"
+					/>
+					<polygon
+						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
+						fill="rgba(15, 23, 42, 0.4)"
+						stroke="rgba(71, 85, 105, 0.2)"
+						stroke-width="1"
+					/>
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+
+			<!-- 3. MID LEFT: LOCKED MINIMALIST NODE (130, 290) -->
+			<g transform="translate(130, 290)">
+				<g
+					class="locked-node float-node-3 select-none"
+					role="img"
+					aria-label="Nodo bloqueado"
+					style="pointer-events: none;"
+				>
+					<polygon
+						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
+						fill="#080D1A"
+						stroke="rgba(56, 189, 248, 0.18)"
+						stroke-width="1.5"
+						class="locked-poly"
+					/>
+					<polygon
+						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
+						fill="rgba(15, 23, 42, 0.4)"
+						stroke="rgba(71, 85, 105, 0.2)"
+						stroke-width="1"
+					/>
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+
+			<!-- 4. CENTER NODE: ACTIVE AIS UNI (500, 290) -> PROMINENT ACTIVE CORE HUB -->
+			<g transform="translate(500, 290)">
+				<g
+					class="chapter-node float-node-center group cursor-pointer"
+					data-chapter-id={uni.id}
+					role="button"
+					tabindex="0"
+					aria-label={`Ver información detallada de ${uni.chapterName}`}
+					onclick={`window.openChapterModal ? window.openChapterModal('${uni.id}') : window.dispatchEvent(new CustomEvent('open-chapter-modal', {detail:{chapterId:'${uni.id}'}}))`}
+					style="cursor: pointer; pointer-events: auto;"
+				>
+					<!-- Center Active Node Backlight Glow -->
+					<circle r="85" fill="rgba(6, 182, 212, 0.2)" filter="url(#junctionGlow)" class="animate-pulse" />
+
+					<!-- Outer Hexagon Polygon (Active Neon Core) -->
+					<polygon
+						points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40"
+						fill="#0B132B"
+						stroke="#38BDF8"
+						stroke-width="3"
+						filter="url(#hexGlow)"
+						class="hex-poly group-hover:stroke-cyan-300 transition-colors"
+					/>
+					<!-- Inner Pulsing Dashed Hexagon -->
+					<polygon
+						points="0 -65, 56 -33, 56 33, 0 65, -56 33, -56 -33"
+						fill="rgba(6, 182, 212, 0.2)"
+						stroke="#06B6D4"
+						stroke-width="1.5"
+						stroke-dasharray="3,3"
+						class="hex-inner-pulse"
+					/>
+					<!-- HTML Content Inside Center Node (Centered Logo + Title) -->
+					<foreignObject x="-66" y="-62" width="132" height="124" style="pointer-events: none;">
+						<div class="w-full h-full flex flex-col items-center justify-center text-center px-1" style="pointer-events: none;">
+							<img
+								src="/logos/uni_logo.png"
+								class="w-12 h-12 object-contain mb-1.5 drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] select-none"
+								alt="Logo UNI"
+								loading="eager"
+							/>
+							<span class="block text-[14px] sm:text-[15px] font-black text-white group-hover:text-cyan-300 transition-colors tracking-tight leading-tight">
+								{uni.chapterName}
+							</span>
+						</div>
+					</foreignObject>
+					<!-- Top Click Hit Target -->
+					<polygon
+						points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40"
+						fill="rgba(0,0,0,0.001)"
+						style="cursor: pointer; pointer-events: auto;"
+					/>
+				</g>
+			</g>
+
+
+			<!-- 5. MID RIGHT: LOCKED MINIMALIST NODE (870, 290) -->
+			<g transform="translate(870, 290)">
+				<g
+					class="locked-node float-node-4 select-none"
+					role="img"
+					aria-label="Nodo bloqueado"
+					style="pointer-events: none;"
+				>
+					<polygon
+						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
+						fill="#080D1A"
+						stroke="rgba(56, 189, 248, 0.18)"
+						stroke-width="1.5"
+						class="locked-poly"
+					/>
+					<polygon
+						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
+						fill="rgba(15, 23, 42, 0.4)"
+						stroke="rgba(71, 85, 105, 0.2)"
+						stroke-width="1"
+					/>
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+
+			<!-- 6. BOTTOM LEFT: LOCKED MINIMALIST NODE (250, 450) -->
+			<g transform="translate(250, 450)">
+				<g
+					class="locked-node float-node-5 select-none"
+					role="img"
+					aria-label="Nodo bloqueado"
+					style="pointer-events: none;"
+				>
+					<polygon
+						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
+						fill="#080D1A"
+						stroke="rgba(56, 189, 248, 0.18)"
+						stroke-width="1.5"
+						class="locked-poly"
+					/>
+					<polygon
+						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
+						fill="rgba(15, 23, 42, 0.4)"
+						stroke="rgba(71, 85, 105, 0.2)"
+						stroke-width="1"
+					/>
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+
+			<!-- 7. BOTTOM RIGHT: LOCKED MINIMALIST NODE (750, 450) -->
+			<g transform="translate(750, 450)">
+				<g
+					class="locked-node float-node-6 select-none"
+					role="img"
+					aria-label="Nodo bloqueado"
+					style="pointer-events: none;"
+				>
+					<polygon
+						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
+						fill="#080D1A"
+						stroke="rgba(56, 189, 248, 0.18)"
+						stroke-width="1.5"
+						class="locked-poly"
+					/>
+					<polygon
+						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
+						fill="rgba(15, 23, 42, 0.4)"
+						stroke="rgba(71, 85, 105, 0.2)"
+						stroke-width="1"
+					/>
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+		</svg>
+	</div>
+</section>
+
+<!-- Client Script for Interactive Synaptic Resonance on Hover and Modal Invocation -->
+<script>
+	function initSynapticResonance() {
+		const nodes = document.querySelectorAll('.chapter-node');
+		const pathways = document.querySelectorAll('.pathway-line');
+
+		nodes.forEach((nodeEl) => {
+			const chapterId = nodeEl.getAttribute('data-chapter-id');
+			if (!chapterId) return;
+
+			nodeEl.addEventListener('mouseenter', () => {
+				pathways.forEach((p) => {
+					const pathEl = p as SVGPathElement;
+					pathEl.classList.add('synapse-overload');
+				});
+			});
+
+			nodeEl.addEventListener('mouseleave', () => {
+				pathways.forEach((p) => {
+					const pathEl = p as SVGPathElement;
+					pathEl.classList.remove('synapse-overload');
+				});
+			});
+
+			// Direct Click & Keyboard interactions to open chapter detail modal
+			const triggerOpen = (e: Event) => {
+				e.preventDefault();
+				e.stopPropagation();
+				if ((window as any).openChapterModal) {
+					(window as any).openChapterModal(chapterId);
+				} else {
+					window.dispatchEvent(new CustomEvent('open-chapter-modal', { detail: { chapterId } }));
+				}
+			};
+
+			nodeEl.addEventListener('click', triggerOpen);
+
+			nodeEl.addEventListener('keydown', (e: any) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					triggerOpen(e);
+				}
+			});
+		});
+	}
+
+	initSynapticResonance();
+	document.addEventListener('astro:after-swap', initSynapticResonance);
+</script>
+
+<style>
+	/* Interactive Active Node Hover Physics */
+	.chapter-node {
+		transform-box: fill-box;
+		transform-origin: center;
+		transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+		outline: none;
+	}
+
+	.chapter-node:hover {
+		transform: scale(1.08);
+		filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.6));
+	}
+
+	/* Dark Locked Mystery Nodes (Minimalist flat aesthetic) */
+	.locked-node {
+		opacity: 0.55;
+		transition: opacity 0.3s ease;
+	}
+
+	.locked-poly {
+		filter: drop-shadow(0 0 3px rgba(6, 182, 212, 0.08));
+	}
+
+	.locked-qmark {
+		user-select: none;
+		pointer-events: none;
+		dominant-baseline: central;
+		letter-spacing: normal;
+	}
+
+	/* Subtle Harmonic Organic Levitations (GPU Accelerated) */
+	.float-node-1 { animation: floatSlow1 4.2s ease-in-out infinite alternate; }
+	.float-node-2 { animation: floatSlow2 4.6s ease-in-out infinite alternate; animation-delay: -1.2s; }
+	.float-node-3 { animation: floatSlow1 4.8s ease-in-out infinite alternate; animation-delay: -2.4s; }
+	.float-node-center { animation: floatCenter 3.8s ease-in-out infinite alternate; }
+	.float-node-4 { animation: floatSlow2 4.4s ease-in-out infinite alternate; animation-delay: -0.6s; }
+	.float-node-5 { animation: floatSlow1 4.5s ease-in-out infinite alternate; animation-delay: -3.1s; }
+	.float-node-6 { animation: floatSlow2 4.7s ease-in-out infinite alternate; animation-delay: -1.8s; }
+
+	@keyframes floatSlow1 {
+		0% { transform: translateY(-3px); }
+		100% { transform: translateY(3px); }
+	}
+
+	@keyframes floatSlow2 {
+		0% { transform: translateY(2.5px); }
+		100% { transform: translateY(-2.5px); }
+	}
+
+	@keyframes floatCenter {
+		0% { transform: translateY(-1.5px); }
+		100% { transform: translateY(1.5px); }
+	}
+
+	/* Hexagon Inner Breathing Pulse */
+	.hex-inner-pulse {
+		animation: hexPulse 3.5s ease-in-out infinite alternate;
+	}
+
+	@keyframes hexPulse {
+		0% { opacity: 0.15; stroke-opacity: 0.5; }
+		100% { opacity: 0.35; stroke-opacity: 0.95; }
+	}
+
+	/* Synaptic Line Normal Idle Pulse */
+	.pathway-line {
+		transition: stroke-width 0.4s ease, opacity 0.4s ease, stroke 0.4s ease, filter 0.4s ease;
+		animation: pulsePathway 4s ease-in-out infinite alternate;
+	}
+
+	@keyframes pulsePathway {
+		0% { opacity: 0.4; }
+		50% { opacity: 0.65; }
+		100% { opacity: 0.4; }
+	}
+
+	/* Soft and Gentle Interactive Overload on Hover (Much less intense) */
+	.pathway-line.synapse-overload {
+		opacity: 0.78 !important;
+		stroke-width: 2.2px !important;
+		filter: drop-shadow(0 0 2.5px rgba(6, 182, 212, 0.35)) !important;
+	}
+
+	.pathway-line.synapse-dimmed {
+		opacity: 0.35 !important;
+	}
+
+	/* Expanding Radar Ripple Rings at Synaptic Junctions */
+	.ripple-ring {
+		transform-origin: center;
+		animation: synapseRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+	}
+	.ripple-1 { animation-delay: 0s; }
+	.ripple-2 { animation-delay: 1.8s; }
+
+	@keyframes synapseRipple {
+		0% {
+			r: 4px;
+			opacity: 0.8;
+			stroke-width: 1.5px;
+		}
+		80% {
+			r: 24px;
+			opacity: 0.12;
+			stroke-width: 0.8px;
+		}
+		100% {
+			r: 28px;
+			opacity: 0;
+			stroke-width: 0.4px;
+		}
+	}
+
+	/* Ambient Constellation Micro-Dots Sparkle */
+	.constellation-dot {
+		animation: dotSparkle 3s ease-in-out infinite alternate;
+	}
+	@keyframes dotSparkle {
+		0% { opacity: 0.3; transform: scale(0.85); }
+		100% { opacity: 0.9; transform: scale(1.15); }
+	}
+</style>
