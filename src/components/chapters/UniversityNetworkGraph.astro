@@ -34,64 +34,65 @@ const findChapter = (id: string) => chapters.find((c) => c.id === id) || chapter
 const uni = findChapter('ais-uni');
 ---
 
-<section id="red-universitaria" class="relative z-10 w-full pt-2 pb-12 md:pt-4 md:pb-16 select-none flex flex-col items-center justify-center overflow-x-hidden">
+<section id="red-universitaria" class="relative z-10 w-full pt-8 sm:pt-10 md:pt-14 pb-8 md:pb-16 select-none flex flex-col items-center justify-start overflow-x-hidden">
 	<!-- Seamless Ambient Backlight Center Glows (Symmetric & Centered) -->
-	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[720px] bg-blue-600/15 rounded-full blur-[180px] pointer-events-none"></div>
-	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[520px] bg-cyan-500/12 rounded-full blur-[140px] pointer-events-none"></div>
+	<div class="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[720px] bg-blue-600/15 rounded-full blur-[180px] pointer-events-none"></div>
+	<div class="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[520px] bg-cyan-500/12 rounded-full blur-[140px] pointer-events-none"></div>
 
-	<!-- Integrated Seamless Hero Header (100% Centered, Overline Removed as Requested) -->
-	<div class="max-w-4xl mx-auto px-4 relative z-10 w-full flex flex-col items-center justify-center text-center mb-4 md:mb-6">
-		<h1 class="text-[36px] sm:text-[46px] md:text-[52px] font-black text-white leading-tight tracking-tighter mb-3">
-			Nodos de la <span class="text-blue-300 text-glow-blue">Red Universitaria</span>
+	<!-- Integrated Seamless Hero Header (100% Centered, Mobile-fitted) -->
+	<div class="max-w-4xl mx-auto px-4 relative z-10 w-full flex flex-col items-center justify-center text-center mb-2 sm:mb-3 md:mb-4 shrink-0">
+		<h1 class="text-[36px] sm:text-[46px] md:text-[54px] font-black text-white leading-tight tracking-tight md:tracking-tighter mb-2 md:mb-3">
+			<span class="block md:inline">Nodos de la </span>
+			<span class="block md:inline text-blue-300 text-glow-blue">Red Universitaria</span>
 		</h1>
-		<p class="text-gray-400 text-sm md:text-base font-light leading-relaxed max-w-2xl mx-auto">
-			Capítulos estudiantiles constituidos en universidades e institutos del Perú como polos de investigación científica, formación y transferencia tecnológica en Inteligencia Artificial.
+		<p class="text-gray-300 text-[15.5px] sm:text-[15px] md:text-base font-normal leading-relaxed max-w-2xl mx-auto px-2 sm:px-4">
+			Capítulos estudiantiles constituidos en instituciones educativas del Perú como centros de innovación, investigación y proyectos en Inteligencia Artificial.
 		</p>
 	</div>
 
-	<!-- Main Wide Neural Network Canvas (Direct Vector Container with Absolute Center Geometry) -->
-	<div class="relative w-full max-w-[1240px] mx-auto px-3 sm:px-6 flex items-center justify-center">
+	<!-- Main Wide Neural Network Canvas (Responsive Dual-Engine: Desktop Wide vs Mobile Vertical Elongated) -->
+	<div class="relative w-full max-w-[1240px] mx-auto px-1 sm:px-6 flex items-center justify-center mt-1 sm:mt-2 md:mt-2.5">
 		
-		<!-- Unified SVG Canvas (All paths, junctions and interactive nodes share the EXACT same coordinate system) -->
+		<!-- ========================================================================= -->
+		<!-- 1. DESKTOP SVG CANVAS: WIDE LANDSCAPE (viewBox 0 0 1000 580)               -->
+		<!-- ========================================================================= -->
 		<svg
-			id="neural-svg"
-			class="w-full h-auto max-h-[720px] overflow-visible select-none"
+			id="neural-svg-desktop"
+			class="hidden md:block w-full h-auto max-h-[720px] overflow-visible select-none"
 			viewBox="0 0 1000 580"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<defs>
-				<!-- Neon Cyan/Blue Synaptic Gradients -->
-				<linearGradient id="synapticGradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+				<linearGradient id="synapticGradPrimaryDesktop" x1="0%" y1="0%" x2="100%" y2="100%">
 					<stop offset="0%" stop-color="#38BDF8" stop-opacity="0.85" />
 					<stop offset="50%" stop-color="#06B6D4" stop-opacity="0.7" />
 					<stop offset="100%" stop-color="#60A5FA" stop-opacity="0.85" />
 				</linearGradient>
 
-				<linearGradient id="synapticGradSecondary" x1="0%" y1="100%" x2="100%" y2="0%">
+				<linearGradient id="synapticGradSecondaryDesktop" x1="0%" y1="100%" x2="100%" y2="0%">
 					<stop offset="0%" stop-color="#60A5FA" stop-opacity="0.6" />
 					<stop offset="50%" stop-color="#06B6D4" stop-opacity="0.8" />
 					<stop offset="100%" stop-color="#38BDF8" stop-opacity="0.6" />
 				</linearGradient>
 
-				<!-- Glow Filters for Axon Pathways -->
-				<filter id="axonGlow" x="-30%" y="-30%" width="160%" height="160%">
+				<filter id="axonGlowDesktop" x="-30%" y="-30%" width="160%" height="160%">
 					<feGaussianBlur stdDeviation="3" result="blur" />
 					<feComposite in="SourceGraphic" in2="blur" operator="over" />
 				</filter>
 
-				<filter id="junctionGlow" x="-50%" y="-50%" width="200%" height="200%">
+				<filter id="junctionGlowDesktop" x="-50%" y="-50%" width="200%" height="200%">
 					<feGaussianBlur stdDeviation="5" result="blur" />
 					<feComposite in="SourceGraphic" in2="blur" operator="over" />
 				</filter>
 
-				<filter id="hexGlow" x="-40%" y="-40%" width="180%" height="180%">
+				<filter id="hexGlowDesktop" x="-40%" y="-40%" width="180%" height="180%">
 					<feGaussianBlur stdDeviation="4" result="blur" />
 					<feComposite in="SourceGraphic" in2="blur" operator="over" />
 				</filter>
 			</defs>
 
-			<!-- ==================== BACKGROUND NEURAL CONSTELLATION MESH ==================== -->
+			<!-- Background Mesh -->
 			<g opacity="0.2" stroke="#38BDF8" stroke-width="0.8" class="ambient-mesh">
 				<line x1="250" y1="130" x2="500" y2="25" stroke-dasharray="3,3" />
 				<line x1="750" y1="130" x2="500" y2="25" stroke-dasharray="3,3" />
@@ -110,209 +111,130 @@ const uni = findChapter('ais-uni');
 				<circle cx="500" cy="555" r="3" fill="#38BDF8" class="constellation-dot" />
 			</g>
 
-			<!-- ==================== PRIMARY SYNAPTIC PATHWAYS ==================== -->
-			<!-- Top connection: UNI (250, 130) -> [Junction (500, 70)] -> PUCP (750, 130) -->
-			<path class="pathway-line path-uni path-pucp" d="M 250 130 L 500 70 L 750 130" stroke="url(#synapticGradPrimary)" stroke-width="2.5" filter="url(#axonGlow)" />
-			
-			<!-- Left connection: UNI (250, 130) -> [Junction (330, 190)] -> UTEC (130, 290) -> [Junction (330, 390)] -> UNSA (250, 450) -->
-			<path class="pathway-line path-uni path-utec path-unsa" d="M 250 130 L 330 190 L 130 290 L 330 390 L 250 450" stroke="url(#synapticGradPrimary)" stroke-width="2.5" filter="url(#axonGlow)" />
+			<!-- Primary Synaptic Pathways -->
+			<path class="pathway-line path-uni path-pucp" d="M 250 130 L 500 70 L 750 130" stroke="url(#synapticGradPrimaryDesktop)" stroke-width="2.5" filter="url(#axonGlowDesktop)" />
+			<path class="pathway-line path-uni path-utec path-unsa" d="M 250 130 L 330 190 L 130 290 L 330 390 L 250 450" stroke="url(#synapticGradPrimaryDesktop)" stroke-width="2.5" filter="url(#axonGlowDesktop)" />
+			<path class="pathway-line path-pucp path-unmsm path-unt" d="M 750 130 L 670 190 L 870 290 L 670 390 L 750 450" stroke="url(#synapticGradPrimaryDesktop)" stroke-width="2.5" filter="url(#axonGlowDesktop)" />
+			<path class="pathway-line path-unsa path-unt" d="M 250 450 L 500 510 L 750 450" stroke="url(#synapticGradPrimaryDesktop)" stroke-width="2.5" filter="url(#axonGlowDesktop)" />
+			<path class="pathway-line path-utec path-upc path-unmsm" d="M 130 290 L 500 290 L 870 290" stroke="url(#synapticGradSecondaryDesktop)" stroke-width="3" filter="url(#axonGlowDesktop)" />
 
-			<!-- Right connection: PUCP (750, 130) -> [Junction (670, 190)] -> UNMSM (870, 290) -> [Junction (670, 390)] -> UNT (750, 450) -->
-			<path class="pathway-line path-pucp path-unmsm path-unt" d="M 750 130 L 670 190 L 870 290 L 670 390 L 750 450" stroke="url(#synapticGradPrimary)" stroke-width="2.5" filter="url(#axonGlow)" />
-
-			<!-- Bottom connection: UNSA (250, 450) -> [Junction (500, 510)] -> UNT (750, 450) -->
-			<path class="pathway-line path-unsa path-unt" d="M 250 450 L 500 510 L 750 450" stroke="url(#synapticGradPrimary)" stroke-width="2.5" filter="url(#axonGlow)" />
-
-			<!-- Center Core Synapses: Horizontal UTEC (130, 290) -> UPC (500, 290) -> UNMSM (870, 290) -->
-			<path class="pathway-line path-utec path-upc path-unmsm" d="M 130 290 L 500 290 L 870 290" stroke="url(#synapticGradSecondary)" stroke-width="3" filter="url(#axonGlow)" />
-
-			<!-- Diagonal Synaptic Bridges intersecting EXACTLY at UPC Center (500, 290) -->
+			<!-- Bridges to Center -->
 			<path class="pathway-line path-uni path-upc" d="M 250 130 L 500 290" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
 			<path class="pathway-line path-pucp path-upc" d="M 750 130 L 500 290" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
 			<path class="pathway-line path-unsa path-upc" d="M 250 450 L 500 290" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
 			<path class="pathway-line path-unt path-upc" d="M 750 450 L 500 290" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
 
-			<!-- Cross Axon Fibers for Deep Mesh Feel -->
+			<!-- Cross Axon Fibers -->
 			<path class="pathway-line path-cross" d="M 330 190 L 670 190" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="2,4" opacity="0.45" />
 			<path class="pathway-line path-cross" d="M 330 390 L 670 390" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="2,4" opacity="0.45" />
 
-
-			<!-- ==================== SYNAPTIC JUNCTION EXPANDING RIPPLE RINGS ==================== -->
-			<!-- Top Junction -->
+			<!-- Junctions -->
 			<g transform="translate(500, 70)">
 				<circle class="ripple-ring ripple-1" r="14" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
 				<circle class="ripple-ring ripple-2" r="14" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
-				<circle r="8" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlow)" />
-				<circle r="3.5" fill="#06B6D4" filter="url(#axonGlow)" />
+				<circle r="8" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlowDesktop)" />
+				<circle r="3.5" fill="#06B6D4" filter="url(#axonGlowDesktop)" />
 				<circle r="1.5" fill="#FFFFFF" />
 			</g>
-
-			<!-- Left-Top Junction -->
 			<g transform="translate(330, 190)">
 				<circle class="ripple-ring ripple-1" r="12" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
-				<circle r="7" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlow)" />
-				<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" />
+				<circle r="7" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlowDesktop)" />
+				<circle r="3" fill="#38BDF8" filter="url(#axonGlowDesktop)" />
 				<circle r="1.5" fill="#FFFFFF" />
 			</g>
-
-			<!-- Right-Top Junction -->
 			<g transform="translate(670, 190)">
 				<circle class="ripple-ring ripple-2" r="12" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
-				<circle r="7" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlow)" />
-				<circle r="3" fill="#06B6D4" filter="url(#axonGlow)" />
+				<circle r="7" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlowDesktop)" />
+				<circle r="3" fill="#06B6D4" filter="url(#axonGlowDesktop)" />
 				<circle r="1.5" fill="#FFFFFF" />
 			</g>
-
-			<!-- Left-Bottom Junction -->
 			<g transform="translate(330, 390)">
 				<circle class="ripple-ring ripple-2" r="12" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
-				<circle r="7" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlow)" />
-				<circle r="3" fill="#06B6D4" filter="url(#axonGlow)" />
+				<circle r="7" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlowDesktop)" />
+				<circle r="3" fill="#06B6D4" filter="url(#axonGlowDesktop)" />
 				<circle r="1.5" fill="#FFFFFF" />
 			</g>
-
-			<!-- Right-Bottom Junction -->
 			<g transform="translate(670, 390)">
 				<circle class="ripple-ring ripple-1" r="12" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
-				<circle r="7" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlow)" />
-				<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" />
+				<circle r="7" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlowDesktop)" />
+				<circle r="3" fill="#38BDF8" filter="url(#axonGlowDesktop)" />
 				<circle r="1.5" fill="#FFFFFF" />
 			</g>
-
-			<!-- Bottom Junction -->
 			<g transform="translate(500, 510)">
 				<circle class="ripple-ring ripple-1" r="14" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
 				<circle class="ripple-ring ripple-2" r="14" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
-				<circle r="8" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlow)" />
-				<circle r="3.5" fill="#38BDF8" filter="url(#axonGlow)" />
+				<circle r="8" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlowDesktop)" />
+				<circle r="3.5" fill="#38BDF8" filter="url(#axonGlowDesktop)" />
 				<circle r="1.5" fill="#FFFFFF" />
 			</g>
 
-
-			<!-- ==================== FLOWING PHOTON ENERGY PULSES ==================== -->
-			<circle r="3.5" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+			<!-- Photon Pulses -->
+			<circle r="3.5" fill="#FFFFFF" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 250 130 L 500 70 L 750 130" dur="2.6s" repeatCount="indefinite" />
 			</circle>
-			<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" class="photon">
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 750 130 L 500 70 L 250 130" dur="3s" repeatCount="indefinite" />
 			</circle>
-
-			<circle r="4" fill="#67E8F9" filter="url(#axonGlow)" class="photon">
+			<circle r="4" fill="#67E8F9" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 130 290 L 500 290 L 870 290" dur="2.4s" repeatCount="indefinite" />
 			</circle>
-			<circle r="3.5" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+			<circle r="3.5" fill="#FFFFFF" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 870 290 L 500 290 L 130 290" dur="2.4s" repeatCount="indefinite" />
 			</circle>
-
-			<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" class="photon">
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 250 450 L 500 510 L 750 450" dur="2.8s" repeatCount="indefinite" />
 			</circle>
-			<circle r="3" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+			<circle r="3" fill="#FFFFFF" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 750 450 L 500 510 L 250 450" dur="3.2s" repeatCount="indefinite" />
 			</circle>
-
-			<circle r="3" fill="#67E8F9" filter="url(#axonGlow)" class="photon">
+			<circle r="3" fill="#67E8F9" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 250 130 L 330 190 L 130 290 L 330 390 L 250 450" dur="3.6s" repeatCount="indefinite" />
 			</circle>
-			<circle r="3" fill="#38BDF8" filter="url(#axonGlow)" class="photon">
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 750 130 L 670 190 L 870 290 L 670 390 L 750 450" dur="3.8s" repeatCount="indefinite" />
 			</circle>
-
-			<circle r="2.8" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+			<circle r="2.8" fill="#FFFFFF" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 250 130 L 500 290" dur="2.2s" repeatCount="indefinite" />
 			</circle>
-			<circle r="2.8" fill="#67E8F9" filter="url(#axonGlow)" class="photon">
+			<circle r="2.8" fill="#67E8F9" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 750 130 L 500 290" dur="2.3s" repeatCount="indefinite" />
 			</circle>
-			<circle r="2.8" fill="#38BDF8" filter="url(#axonGlow)" class="photon">
+			<circle r="2.8" fill="#38BDF8" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 250 450 L 500 290" dur="2.2s" repeatCount="indefinite" />
 			</circle>
-			<circle r="2.8" fill="#FFFFFF" filter="url(#axonGlow)" class="photon">
+			<circle r="2.8" fill="#FFFFFF" filter="url(#axonGlowDesktop)" class="photon">
 				<animateMotion path="M 750 450 L 500 290" dur="2.4s" repeatCount="indefinite" />
 			</circle>
 
-
-			<!-- ==================== CHAPTER HEXAGONAL NODES ==================== -->
-
-			<!-- 1. TOP LEFT: LOCKED MINIMALIST NODE (250, 130) -->
+			<!-- 7 Nodes (Desktop) -->
+			<!-- 1. Top Left (250, 130) -->
 			<g transform="translate(250, 130)">
-				<g
-					class="locked-node float-node-1 select-none"
-					role="img"
-					aria-label="Nodo bloqueado"
-					style="pointer-events: none;"
-				>
-					<polygon
-						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
-						fill="#080D1A"
-						stroke="rgba(56, 189, 248, 0.18)"
-						stroke-width="1.5"
-						class="locked-poly"
-					/>
-					<polygon
-						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
-						fill="rgba(15, 23, 42, 0.4)"
-						stroke="rgba(71, 85, 105, 0.2)"
-						stroke-width="1"
-					/>
-					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				<g class="locked-node float-node-1 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40" fill="#080D1A" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1.5" class="locked-poly" />
+					<polygon points="0 -64, 55 -32, 55 32, 0 64, -55 32, -55 -32" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.2)" stroke-width="1" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="42" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
 				</g>
 			</g>
 
-
-			<!-- 2. TOP RIGHT: LOCKED MINIMALIST NODE (750, 130) -->
+			<!-- 2. Top Right (750, 130) -->
 			<g transform="translate(750, 130)">
-				<g
-					class="locked-node float-node-2 select-none"
-					role="img"
-					aria-label="Nodo bloqueado"
-					style="pointer-events: none;"
-				>
-					<polygon
-						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
-						fill="#080D1A"
-						stroke="rgba(56, 189, 248, 0.18)"
-						stroke-width="1.5"
-						class="locked-poly"
-					/>
-					<polygon
-						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
-						fill="rgba(15, 23, 42, 0.4)"
-						stroke="rgba(71, 85, 105, 0.2)"
-						stroke-width="1"
-					/>
-					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				<g class="locked-node float-node-2 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40" fill="#080D1A" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1.5" class="locked-poly" />
+					<polygon points="0 -64, 55 -32, 55 32, 0 64, -55 32, -55 -32" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.2)" stroke-width="1" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="42" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
 				</g>
 			</g>
 
-
-			<!-- 3. MID LEFT: LOCKED MINIMALIST NODE (130, 290) -->
+			<!-- 3. Mid Left (130, 290) -->
 			<g transform="translate(130, 290)">
-				<g
-					class="locked-node float-node-3 select-none"
-					role="img"
-					aria-label="Nodo bloqueado"
-					style="pointer-events: none;"
-				>
-					<polygon
-						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
-						fill="#080D1A"
-						stroke="rgba(56, 189, 248, 0.18)"
-						stroke-width="1.5"
-						class="locked-poly"
-					/>
-					<polygon
-						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
-						fill="rgba(15, 23, 42, 0.4)"
-						stroke="rgba(71, 85, 105, 0.2)"
-						stroke-width="1"
-					/>
-					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				<g class="locked-node float-node-3 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40" fill="#080D1A" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1.5" class="locked-poly" />
+					<polygon points="0 -64, 55 -32, 55 32, 0 64, -55 32, -55 -32" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.2)" stroke-width="1" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="42" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
 				</g>
 			</g>
 
-
-			<!-- 4. CENTER NODE: ACTIVE AIS UNI (500, 290) -> PROMINENT ACTIVE CORE HUB -->
+			<!-- 4. Center AIS UNI (500, 290) -->
 			<g transform="translate(500, 290)">
 				<g
 					class="chapter-node float-node-center group cursor-pointer"
@@ -323,129 +245,296 @@ const uni = findChapter('ais-uni');
 					onclick={`window.openChapterModal ? window.openChapterModal('${uni.id}') : window.dispatchEvent(new CustomEvent('open-chapter-modal', {detail:{chapterId:'${uni.id}'}}))`}
 					style="cursor: pointer; pointer-events: auto;"
 				>
-					<!-- Center Active Node Backlight Glow -->
-					<circle r="85" fill="rgba(6, 182, 212, 0.2)" filter="url(#junctionGlow)" class="animate-pulse" />
-
-					<!-- Outer Hexagon Polygon (Active Neon Core) -->
-					<polygon
-						points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40"
-						fill="#0B132B"
-						stroke="#38BDF8"
-						stroke-width="3"
-						filter="url(#hexGlow)"
-						class="hex-poly group-hover:stroke-cyan-300 transition-colors"
-					/>
-					<!-- Inner Pulsing Dashed Hexagon -->
-					<polygon
-						points="0 -65, 56 -33, 56 33, 0 65, -56 33, -56 -33"
-						fill="rgba(6, 182, 212, 0.2)"
-						stroke="#06B6D4"
-						stroke-width="1.5"
-						stroke-dasharray="3,3"
-						class="hex-inner-pulse"
-					/>
-					<!-- HTML Content Inside Center Node (Centered Logo + Title) -->
-					<foreignObject x="-66" y="-62" width="132" height="124" style="pointer-events: none;">
+					<circle r="105" fill="rgba(6, 182, 212, 0.22)" filter="url(#junctionGlowDesktop)" class="animate-pulse" />
+					<polygon points="0 -98, 85 -49, 85 49, 0 98, -85 49, -85 -49" fill="#0B132B" stroke="#38BDF8" stroke-width="3" filter="url(#hexGlowDesktop)" class="hex-poly group-hover:stroke-cyan-300 transition-colors" />
+					<polygon points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40" fill="rgba(6, 182, 212, 0.2)" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="3,3" class="hex-inner-pulse" />
+					<foreignObject x="-80" y="-76" width="160" height="152" style="pointer-events: none;">
 						<div class="w-full h-full flex flex-col items-center justify-center text-center px-1" style="pointer-events: none;">
-							<img
-								src="/logos/uni_logo.png"
-								class="w-12 h-12 object-contain mb-1.5 drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] select-none"
-								alt="Logo UNI"
-								loading="eager"
-							/>
-							<span class="block text-[14px] sm:text-[15px] font-black text-white group-hover:text-cyan-300 transition-colors tracking-tight leading-tight">
-								{uni.chapterName}
-							</span>
+							<img src="/logos/uni_logo.png" class="w-14 h-14 object-contain mb-1.5 drop-shadow-[0_0_8px_rgba(255,255,255,0.25)] select-none" alt="Logo UNI" loading="eager" />
+							<span class="block text-[15px] sm:text-[16px] font-black text-white group-hover:text-cyan-300 transition-colors tracking-tight leading-tight">{uni.chapterName}</span>
 						</div>
 					</foreignObject>
-					<!-- Top Click Hit Target -->
-					<polygon
-						points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40"
-						fill="rgba(0,0,0,0.001)"
-						style="cursor: pointer; pointer-events: auto;"
-					/>
+					<polygon points="0 -98, 85 -49, 85 49, 0 98, -85 49, -85 -49" fill="rgba(0,0,0,0.001)" style="cursor: pointer; pointer-events: auto;" />
 				</g>
 			</g>
 
-
-			<!-- 5. MID RIGHT: LOCKED MINIMALIST NODE (870, 290) -->
+			<!-- 5. Mid Right (870, 290) -->
 			<g transform="translate(870, 290)">
-				<g
-					class="locked-node float-node-4 select-none"
-					role="img"
-					aria-label="Nodo bloqueado"
-					style="pointer-events: none;"
-				>
-					<polygon
-						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
-						fill="#080D1A"
-						stroke="rgba(56, 189, 248, 0.18)"
-						stroke-width="1.5"
-						class="locked-poly"
-					/>
-					<polygon
-						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
-						fill="rgba(15, 23, 42, 0.4)"
-						stroke="rgba(71, 85, 105, 0.2)"
-						stroke-width="1"
-					/>
-					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				<g class="locked-node float-node-4 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40" fill="#080D1A" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1.5" class="locked-poly" />
+					<polygon points="0 -64, 55 -32, 55 32, 0 64, -55 32, -55 -32" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.2)" stroke-width="1" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="42" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
 				</g>
 			</g>
 
-
-			<!-- 6. BOTTOM LEFT: LOCKED MINIMALIST NODE (250, 450) -->
+			<!-- 6. Bottom Left (250, 450) -->
 			<g transform="translate(250, 450)">
-				<g
-					class="locked-node float-node-5 select-none"
-					role="img"
-					aria-label="Nodo bloqueado"
-					style="pointer-events: none;"
-				>
-					<polygon
-						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
-						fill="#080D1A"
-						stroke="rgba(56, 189, 248, 0.18)"
-						stroke-width="1.5"
-						class="locked-poly"
-					/>
-					<polygon
-						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
-						fill="rgba(15, 23, 42, 0.4)"
-						stroke="rgba(71, 85, 105, 0.2)"
-						stroke-width="1"
-					/>
-					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				<g class="locked-node float-node-5 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40" fill="#080D1A" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1.5" class="locked-poly" />
+					<polygon points="0 -64, 55 -32, 55 32, 0 64, -55 32, -55 -32" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.2)" stroke-width="1" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="42" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
 				</g>
 			</g>
 
-
-			<!-- 7. BOTTOM RIGHT: LOCKED MINIMALIST NODE (750, 450) -->
+			<!-- 7. Bottom Right (750, 450) -->
 			<g transform="translate(750, 450)">
-				<g
-					class="locked-node float-node-6 select-none"
-					role="img"
-					aria-label="Nodo bloqueado"
-					style="pointer-events: none;"
-				>
-					<polygon
-						points="0 -68, 59 -34, 59 34, 0 68, -59 34, -59 -34"
-						fill="#080D1A"
-						stroke="rgba(56, 189, 248, 0.18)"
-						stroke-width="1.5"
-						class="locked-poly"
-					/>
-					<polygon
-						points="0 -55, 48 -28, 48 28, 0 55, -48 28, -48 -28"
-						fill="rgba(15, 23, 42, 0.4)"
-						stroke="rgba(71, 85, 105, 0.2)"
-						stroke-width="1"
-					/>
-					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="34" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				<g class="locked-node float-node-6 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -80, 69 -40, 69 40, 0 80, -69 40, -69 -40" fill="#080D1A" stroke="rgba(56, 189, 248, 0.18)" stroke-width="1.5" class="locked-poly" />
+					<polygon points="0 -64, 55 -32, 55 32, 0 64, -55 32, -55 -32" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.2)" stroke-width="1" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="42" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+		</svg>
+
+
+		<!-- ========================================================================= -->
+		<!-- 2. MOBILE SVG CANVAS: VERTICAL TALL ELONGATED (viewBox 0 0 600 800)       -->
+		<!-- ========================================================================= -->
+		<svg
+			id="neural-svg-mobile"
+			class="block md:hidden w-full max-w-[480px] h-auto max-h-[66vh] overflow-visible select-none"
+			viewBox="0 0 600 800"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<defs>
+				<linearGradient id="synapticGradPrimaryMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" stop-color="#38BDF8" stop-opacity="0.85" />
+					<stop offset="50%" stop-color="#06B6D4" stop-opacity="0.7" />
+					<stop offset="100%" stop-color="#60A5FA" stop-opacity="0.85" />
+				</linearGradient>
+
+				<linearGradient id="synapticGradSecondaryMobile" x1="0%" y1="100%" x2="100%" y2="0%">
+					<stop offset="0%" stop-color="#60A5FA" stop-opacity="0.6" />
+					<stop offset="50%" stop-color="#06B6D4" stop-opacity="0.8" />
+					<stop offset="100%" stop-color="#38BDF8" stop-opacity="0.6" />
+				</linearGradient>
+
+				<filter id="axonGlowMobile" x="-30%" y="-30%" width="160%" height="160%">
+					<feGaussianBlur stdDeviation="3" result="blur" />
+					<feComposite in="SourceGraphic" in2="blur" operator="over" />
+				</filter>
+
+				<filter id="junctionGlowMobile" x="-50%" y="-50%" width="200%" height="200%">
+					<feGaussianBlur stdDeviation="5" result="blur" />
+					<feComposite in="SourceGraphic" in2="blur" operator="over" />
+				</filter>
+
+				<filter id="hexGlowMobile" x="-40%" y="-40%" width="180%" height="180%">
+					<feGaussianBlur stdDeviation="4" result="blur" />
+					<feComposite in="SourceGraphic" in2="blur" operator="over" />
+				</filter>
+			</defs>
+
+			<!-- Ambient Mobile Constellation Mesh -->
+			<g opacity="0.2" stroke="#38BDF8" stroke-width="0.8" class="ambient-mesh">
+				<line x1="155" y1="190" x2="300" y2="25" stroke-dasharray="3,3" />
+				<line x1="445" y1="190" x2="300" y2="25" stroke-dasharray="3,3" />
+				<line x1="68" y1="400" x2="15" y2="270" stroke-dasharray="3,3" />
+				<line x1="68" y1="400" x2="15" y2="530" stroke-dasharray="3,3" />
+				<line x1="532" y1="400" x2="585" y2="270" stroke-dasharray="3,3" />
+				<line x1="532" y1="400" x2="585" y2="530" stroke-dasharray="3,3" />
+				<line x1="155" y1="610" x2="300" y2="775" stroke-dasharray="3,3" />
+				<line x1="445" y1="610" x2="300" y2="775" stroke-dasharray="3,3" />
+
+				<circle cx="300" cy="25" r="3" fill="#38BDF8" class="constellation-dot" />
+				<circle cx="15" cy="270" r="2.5" fill="#06B6D4" class="constellation-dot" />
+				<circle cx="15" cy="530" r="2.5" fill="#06B6D4" class="constellation-dot" />
+				<circle cx="585" cy="270" r="2.5" fill="#06B6D4" class="constellation-dot" />
+				<circle cx="585" cy="530" r="2.5" fill="#06B6D4" class="constellation-dot" />
+				<circle cx="300" cy="775" r="3" fill="#38BDF8" class="constellation-dot" />
+			</g>
+
+			<!-- Primary Synaptic Pathways (Tall Vertical Mobile Layout) -->
+			<!-- Top Pointed Connection: UNI (155, 190) -> Junction (300, 75) -> PUCP (445, 190) -->
+			<path class="pathway-line path-uni path-pucp" d="M 155 190 L 300 75 L 445 190" stroke="url(#synapticGradPrimaryMobile)" stroke-width="2.5" filter="url(#axonGlowMobile)" />
+			
+			<!-- Left Perimeter Connection: UNI (155, 190) -> (220, 285) -> UTEC (68, 400) -> (220, 515) -> UNSA (155, 610) -->
+			<path class="pathway-line path-uni path-utec path-unsa" d="M 155 190 L 220 285 L 68 400 L 220 515 L 155 610" stroke="url(#synapticGradPrimaryMobile)" stroke-width="2.5" filter="url(#axonGlowMobile)" />
+
+			<!-- Right Perimeter Connection: PUCP (445, 190) -> (380, 285) -> UNMSM (532, 400) -> (380, 515) -> UNT (445, 610) -->
+			<path class="pathway-line path-pucp path-unmsm path-unt" d="M 445 190 L 380 285 L 532 400 L 380 515 L 445 610" stroke="url(#synapticGradPrimaryMobile)" stroke-width="2.5" filter="url(#axonGlowMobile)" />
+
+			<!-- Bottom Pointed Connection: UNSA (155, 610) -> Junction (300, 725) -> UNT (445, 610) -->
+			<path class="pathway-line path-unsa path-unt" d="M 155 610 L 300 725 L 445 610" stroke="url(#synapticGradPrimaryMobile)" stroke-width="2.5" filter="url(#axonGlowMobile)" />
+
+			<!-- Center Horizontal Connection: UTEC (68, 400) -> AIS UNI (300, 400) -> UNMSM (532, 400) -->
+			<path class="pathway-line path-utec path-upc path-unmsm" d="M 68 400 L 300 400 L 532 400" stroke="url(#synapticGradSecondaryMobile)" stroke-width="3" filter="url(#axonGlowMobile)" />
+
+			<!-- Diagonal Bridges to Center (300, 400) -->
+			<path class="pathway-line path-uni path-upc" d="M 155 190 L 300 400" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
+			<path class="pathway-line path-pucp path-upc" d="M 445 190 L 300 400" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
+			<path class="pathway-line path-unsa path-upc" d="M 155 610 L 300 400" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
+			<path class="pathway-line path-unt path-upc" d="M 445 610 L 300 400" stroke="#06B6D4" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.65" />
+
+			<!-- Cross Axon Fibers -->
+			<path class="pathway-line path-cross" d="M 220 285 L 380 285" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="2,4" opacity="0.45" />
+			<path class="pathway-line path-cross" d="M 220 515 L 380 515" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="2,4" opacity="0.45" />
+
+			<!-- Synaptic Junctions (Mobile) -->
+			<!-- Top Junction (300, 75) -->
+			<g transform="translate(300, 75)">
+				<circle class="ripple-ring ripple-1" r="14" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
+				<circle class="ripple-ring ripple-2" r="14" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
+				<circle r="8" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlowMobile)" />
+				<circle r="3.5" fill="#06B6D4" filter="url(#axonGlowMobile)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+			<!-- Intermediate Left-Top (220, 285) -->
+			<g transform="translate(220, 285)">
+				<circle class="ripple-ring ripple-1" r="12" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
+				<circle r="7" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlowMobile)" />
+				<circle r="3" fill="#38BDF8" filter="url(#axonGlowMobile)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+			<!-- Intermediate Right-Top (380, 285) -->
+			<g transform="translate(380, 285)">
+				<circle class="ripple-ring ripple-2" r="12" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
+				<circle r="7" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlowMobile)" />
+				<circle r="3" fill="#06B6D4" filter="url(#axonGlowMobile)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+			<!-- Intermediate Left-Bottom (220, 515) -->
+			<g transform="translate(220, 515)">
+				<circle class="ripple-ring ripple-2" r="12" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
+				<circle r="7" fill="rgba(6,182,212,0.25)" filter="url(#junctionGlowMobile)" />
+				<circle r="3" fill="#06B6D4" filter="url(#axonGlowMobile)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+			<!-- Intermediate Right-Bottom (380, 515) -->
+			<g transform="translate(380, 515)">
+				<circle class="ripple-ring ripple-1" r="12" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
+				<circle r="7" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlowMobile)" />
+				<circle r="3" fill="#38BDF8" filter="url(#axonGlowMobile)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+			<!-- Bottom Junction (300, 725) -->
+			<g transform="translate(300, 725)">
+				<circle class="ripple-ring ripple-1" r="14" stroke="#38BDF8" stroke-width="1" fill="none" opacity="0" />
+				<circle class="ripple-ring ripple-2" r="14" stroke="#06B6D4" stroke-width="1" fill="none" opacity="0" />
+				<circle r="8" fill="rgba(56,189,248,0.25)" filter="url(#junctionGlowMobile)" />
+				<circle r="3.5" fill="#38BDF8" filter="url(#axonGlowMobile)" />
+				<circle r="1.5" fill="#FFFFFF" />
+			</g>
+
+			<!-- Mobile Photon Energy Pulses -->
+			<circle r="3.5" fill="#FFFFFF" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 155 190 L 300 75 L 445 190" dur="2.6s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 445 190 L 300 75 L 155 190" dur="3s" repeatCount="indefinite" />
+			</circle>
+			<circle r="4" fill="#67E8F9" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 68 400 L 300 400 L 532 400" dur="2.4s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3.5" fill="#FFFFFF" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 532 400 L 300 400 L 68 400" dur="2.4s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 155 610 L 300 725 L 445 610" dur="2.8s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3" fill="#FFFFFF" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 445 610 L 300 725 L 155 610" dur="3.2s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3" fill="#67E8F9" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 155 190 L 220 285 L 68 400 L 220 515 L 155 610" dur="3.6s" repeatCount="indefinite" />
+			</circle>
+			<circle r="3" fill="#38BDF8" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 445 190 L 380 285 L 532 400 L 380 515 L 445 610" dur="3.8s" repeatCount="indefinite" />
+			</circle>
+			<circle r="2.8" fill="#FFFFFF" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 155 190 L 300 400" dur="2.2s" repeatCount="indefinite" />
+			</circle>
+			<circle r="2.8" fill="#67E8F9" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 445 190 L 300 400" dur="2.3s" repeatCount="indefinite" />
+			</circle>
+			<circle r="2.8" fill="#38BDF8" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 155 610 L 300 400" dur="2.2s" repeatCount="indefinite" />
+			</circle>
+			<circle r="2.8" fill="#FFFFFF" filter="url(#axonGlowMobile)" class="photon">
+				<animateMotion path="M 445 610 L 300 400" dur="2.4s" repeatCount="indefinite" />
+			</circle>
+
+			<!-- 7 Nodes (Mobile Coordinates) -->
+			<!-- 1. Top Left: (155, 190) -->
+			<g transform="translate(155, 190)">
+				<g class="locked-node float-node-1 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -78, 68 -39, 68 39, 0 78, -68 39, -68 -39" fill="#080D1A" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1.8" class="locked-poly" />
+					<polygon points="0 -62, 54 -31, 54 31, 0 62, -54 31, -54 -31" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.25)" stroke-width="1.2" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="44" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
 				</g>
 			</g>
 
+			<!-- 2. Top Right: (445, 190) -->
+			<g transform="translate(445, 190)">
+				<g class="locked-node float-node-2 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -78, 68 -39, 68 39, 0 78, -68 39, -68 -39" fill="#080D1A" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1.8" class="locked-poly" />
+					<polygon points="0 -62, 54 -31, 54 31, 0 62, -54 31, -54 -31" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.25)" stroke-width="1.2" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="44" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+			<!-- 3. Mid Left: (68, 400) -->
+			<g transform="translate(68, 400)">
+				<g class="locked-node float-node-3 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -78, 68 -39, 68 39, 0 78, -68 39, -68 -39" fill="#080D1A" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1.8" class="locked-poly" />
+					<polygon points="0 -62, 54 -31, 54 31, 0 62, -54 31, -54 -31" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.25)" stroke-width="1.2" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="44" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+			<!-- 4. Center AIS UNI: (300, 400) -->
+			<g transform="translate(300, 400)">
+				<g
+					class="chapter-node float-node-center group cursor-pointer"
+					data-chapter-id={uni.id}
+					role="button"
+					tabindex="0"
+					aria-label={`Ver información detallada de ${uni.chapterName}`}
+					onclick={`window.openChapterModal ? window.openChapterModal('${uni.id}') : window.dispatchEvent(new CustomEvent('open-chapter-modal', {detail:{chapterId:'${uni.id}'}}))`}
+					style="cursor: pointer; pointer-events: auto;"
+				>
+					<circle r="115" fill="rgba(6, 182, 212, 0.24)" filter="url(#junctionGlowMobile)" class="animate-pulse" />
+					<polygon points="0 -102, 88 -51, 88 51, 0 102, -88 51, -88 -51" fill="#0B132B" stroke="#38BDF8" stroke-width="3.2" filter="url(#hexGlowMobile)" class="hex-poly group-hover:stroke-cyan-300 transition-colors" />
+					<polygon points="0 -84, 73 -42, 73 42, 0 84, -73 42, -73 -42" fill="rgba(6, 182, 212, 0.2)" stroke="#06B6D4" stroke-width="1.6" stroke-dasharray="3,3" class="hex-inner-pulse" />
+					<foreignObject x="-85" y="-80" width="170" height="160" style="pointer-events: none;">
+						<div class="w-full h-full flex flex-col items-center justify-center text-center px-1" style="pointer-events: none;">
+							<img src="/logos/uni_logo.png" class="w-14 h-14 object-contain mb-1 drop-shadow-[0_0_8px_rgba(56,189,248,0.4)] select-none" alt="Logo UNI" loading="eager" />
+							<span class="block text-[15px] font-black text-white group-hover:text-cyan-300 transition-colors tracking-tight leading-tight">{uni.chapterName}</span>
+						</div>
+					</foreignObject>
+					<polygon points="0 -102, 88 -51, 88 51, 0 102, -88 51, -88 -51" fill="rgba(0,0,0,0.001)" style="cursor: pointer; pointer-events: auto;" />
+				</g>
+			</g>
+
+			<!-- 5. Mid Right: (532, 400) -->
+			<g transform="translate(532, 400)">
+				<g class="locked-node float-node-4 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -78, 68 -39, 68 39, 0 78, -68 39, -68 -39" fill="#080D1A" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1.8" class="locked-poly" />
+					<polygon points="0 -62, 54 -31, 54 31, 0 62, -54 31, -54 -31" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.25)" stroke-width="1.2" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="44" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+			<!-- 6. Bottom Left: (155, 610) -->
+			<g transform="translate(155, 610)">
+				<g class="locked-node float-node-5 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -78, 68 -39, 68 39, 0 78, -68 39, -68 -39" fill="#080D1A" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1.8" class="locked-poly" />
+					<polygon points="0 -62, 54 -31, 54 31, 0 62, -54 31, -54 -31" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.25)" stroke-width="1.2" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="44" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
+
+			<!-- 7. Bottom Right: (445, 610) -->
+			<g transform="translate(445, 610)">
+				<g class="locked-node float-node-6 select-none" role="img" aria-label="Nodo bloqueado" style="pointer-events: none;">
+					<polygon points="0 -78, 68 -39, 68 39, 0 78, -68 39, -68 -39" fill="#080D1A" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1.8" class="locked-poly" />
+					<polygon points="0 -62, 54 -31, 54 31, 0 62, -54 31, -54 -31" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(71, 85, 105, 0.25)" stroke-width="1.2" />
+					<text x="0" y="0" text-anchor="middle" dominant-baseline="central" fill="#64748B" font-size="44" font-weight="800" font-family="system-ui, -apple-system, sans-serif" class="locked-qmark">?</text>
+				</g>
+			</g>
 		</svg>
+
 	</div>
 </section>
 
@@ -575,7 +664,7 @@ const uni = findChapter('ais-uni');
 		100% { opacity: 0.4; }
 	}
 
-	/* Soft and Gentle Interactive Overload on Hover (Much less intense) */
+	/* Soft and Gentle Interactive Overload on Hover */
 	.pathway-line.synapse-overload {
 		opacity: 0.78 !important;
 		stroke-width: 2.2px !important;

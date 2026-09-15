@@ -17,11 +17,11 @@ const { chapters } = Astro.props as Props;
 	aria-modal="true"
 	aria-labelledby="modal-chapter-title"
 >
-	<!-- Floating Dialog Card (Prominent Tall 86vh Height, 1160px Width, Subtle Sharp Corner Radius) -->
+	<!-- Floating Dialog Card (Tall responsive height, max-width, subtle sharp corner radius) -->
 	<div
 		id="chapter-modal-dialog"
 		class="relative rounded-md sm:rounded-lg border border-gray-800 shadow-[0_25px_60px_rgba(0,0,0,0.85),0_0_50px_rgba(30,67,113,0.3)] overflow-hidden"
-		style="background-color: #0F1423; width: 95%; max-width: 1160px; height: 86vh; max-height: 850px; min-height: 650px; display: flex; flex-direction: column; margin: auto;"
+		style="background-color: #0F1423; width: 95%; max-width: 1160px; height: 92vh; max-height: 880px; display: flex; flex-direction: column; margin: auto;"
 	>
 		<!-- Modal Header (Fixed height) -->
 		<div
@@ -74,58 +74,83 @@ const { chapters } = Astro.props as Props;
 			</button>
 		</div>
 
-		<!-- Modal Body (Optimized natural flow without empty gap) -->
+		<!-- Modal Body (Responsive layout with seamless photo containers filling width & height) -->
 		<div
-			class="flex-1 p-6 sm:p-7 md:p-8 flex flex-col gap-4 sm:gap-5 overflow-hidden custom-scrollbar"
+			class="flex-1 p-4 sm:p-6 md:p-8 flex flex-col overflow-y-auto custom-scrollbar gap-4 sm:gap-5 md:gap-6"
 			style="background-color: #0F1423;"
 		>
-			<!-- TOP ROW: Info on Left / Compact Junta Directiva on Right -->
-			<div class="flex flex-col md:flex-row md:items-start gap-8 sm:gap-10 md:gap-12 shrink-0">
-				<!-- Top Left: Sobre el Capítulo + Canales Oficiales -->
-				<div class="flex-1 min-w-0 space-y-3 sm:space-y-3.5">
-					<!-- Section 1: Descripción (Justified Text) -->
-					<section class="space-y-1.5">
-						<div class="flex items-center gap-3">
+			<!-- TOP & MIDDLE WRAPPER -->
+			<div class="flex flex-col gap-4 sm:gap-5 md:gap-6 shrink-0">
+				<!-- TOP ROW: Info on Left / Compact Junta Directiva on Right on Desktop -->
+				<div class="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6 md:gap-12 shrink-0">
+					<!-- Top Left: Sobre el Capítulo + Canales Oficiales -->
+					<div class="flex-1 min-w-0 space-y-3 sm:space-y-3.5">
+						<!-- Section 1: Descripción (Justified Text) -->
+						<section class="space-y-1.5">
+							<div class="flex items-center gap-3">
+								<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
+									Sobre el Capítulo
+								</h4>
+							</div>
+							<p
+								id="modal-chapter-description"
+								class="text-sm sm:text-base text-gray-200 leading-relaxed font-light text-justify"
+								style="text-align: justify; text-justify: inter-word;"
+							>
+								Descripción...
+							</p>
+						</section>
+
+						<!-- Section 2: Redes y Canales Oficiales -->
+						<section id="modal-socials-section" class="space-y-1.5 pt-0.5">
 							<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
-								Sobre el Capítulo
+								Canales Oficiales
+							</h4>
+							<div id="modal-socials-container" class="flex flex-wrap items-center gap-2">
+								<!-- Rendered dynamically -->
+							</div>
+						</section>
+					</div>
+
+					<!-- Middle Row on Mobile / Top Right on Desktop: Junta Directiva + Mobile Alternating Photos Box -->
+					<section id="modal-board-section" class="shrink-0 flex flex-col space-y-2.5">
+						<div class="flex items-center">
+							<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
+								Junta Directiva
 							</h4>
 						</div>
-						<p
-							id="modal-chapter-description"
-							class="text-sm sm:text-base text-gray-200 leading-relaxed font-light text-justify"
-							style="text-align: justify; text-justify: inter-word;"
-						>
-							Descripción...
-						</p>
-					</section>
 
-					<!-- Section 2: Redes y Canales Oficiales -->
-					<section id="modal-socials-section" class="space-y-1.5 pt-0.5">
-						<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
-							Canales Oficiales
-						</h4>
-						<div id="modal-socials-container" class="flex flex-wrap items-center gap-2">
-							<!-- Rendered dynamically -->
+						<div class="flex items-stretch justify-start gap-3 sm:gap-5 md:gap-8 w-full pt-1 pb-1">
+							<!-- Presidents container (circles on left) -->
+							<div id="modal-board-container" class="flex items-start gap-3 sm:gap-5 md:gap-6 shrink-0">
+								<!-- Rendered dynamically as circular avatar items -->
+							</div>
+
+							<!-- Alternating 2-Images Box (Adapts flexibly to full remaining width and height) -->
+							<div
+								id="mobile-alt-photo-box"
+								class="flex md:hidden relative flex-1 min-w-0 self-stretch rounded-xl sm:rounded-2xl border border-blue-400/20 overflow-hidden bg-[#090D16] shadow-xl shadow-blue-500/5 select-none min-h-[140px] sm:min-h-[150px]"
+							>
+								<img
+									id="mobile-alt-img-0"
+									src=""
+									alt="Actividad 1"
+									class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 select-none opacity-100"
+								/>
+								<img
+									id="mobile-alt-img-1"
+									src=""
+									alt="Actividad 2"
+									class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 select-none opacity-0"
+								/>
+							</div>
 						</div>
 					</section>
 				</div>
-
-				<!-- Top Right: Junta Directiva -->
-				<section id="modal-board-section" class="shrink-0 flex flex-col space-y-2.5">
-					<div class="flex items-center">
-						<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
-							Junta Directiva
-						</h4>
-					</div>
-
-					<div id="modal-board-container" class="flex flex-wrap items-start gap-5 sm:gap-6 pt-1">
-						<!-- Rendered dynamically as circular avatar items -->
-					</div>
-				</section>
 			</div>
 
-			<!-- BOTTOM ROW: Galería de Actividades (2 fotos fijas izquierda + gran carrusel derecha) -->
-			<section id="modal-gallery-section" class="space-y-2 flex-1 flex flex-col min-h-0 pt-1">
+			<!-- BOTTOM ROW: Galería de Actividades (Fills available vertical space seamlessly) -->
+			<section id="modal-gallery-section" class="space-y-2 flex flex-col flex-1 min-h-0 pt-0 pb-1 md:pb-0">
 				<div class="flex items-center justify-between w-full shrink-0">
 					<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
 						Galería de Actividades
@@ -135,10 +160,10 @@ const { chapters } = Astro.props as Props;
 					</div>
 				</div>
 
-				<!-- Grid Layout: Fills remaining height comfortably -->
-				<div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 items-stretch flex-1 min-h-[220px]">
-					<!-- LEFT COLUMN: 2 Stacked Fixed Photos (4 cols) -->
-					<div class="md:col-span-4 flex flex-col gap-3 h-full min-h-0">
+				<!-- Grid Layout: Responsive layout filling bottom height -->
+				<div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 items-stretch flex-1 min-h-[190px] md:min-h-[220px]">
+					<!-- LEFT COLUMN: 2 Stacked Fixed Photos (Desktop only, 4 cols) -->
+					<div class="hidden md:flex md:col-span-4 flex-col gap-3 h-full min-h-0">
 						<!-- Left Photo 1 (Fixed) -->
 						<div
 							id="gallery-thumb-0"
@@ -166,10 +191,10 @@ const { chapters } = Astro.props as Props;
 						</div>
 					</div>
 
-					<!-- RIGHT COLUMN: 1 Large Main Carousel with distinct photos (8 cols) -->
+					<!-- RIGHT COLUMN (Desktop 8 cols / Full Width on Mobile): Large Main Carousel -->
 					<div
 						id="carousel-frame"
-						class="md:col-span-8 relative rounded-xl border border-gray-800 overflow-hidden group/carousel bg-[#090D16] shadow-lg flex flex-col justify-center h-full min-h-0"
+						class="col-span-1 md:col-span-8 relative rounded-xl border border-gray-800 overflow-hidden group/carousel bg-[#090D16] shadow-lg flex flex-col justify-center flex-1 h-full min-h-[190px] md:min-h-[220px] w-full"
 					>
 						<div
 							id="carousel-slides-wrapper"
@@ -218,6 +243,9 @@ const { chapters } = Astro.props as Props;
 <script define:vars={{ chapters }}>
 	let currentGalleryIndex = 0;
 	let activeChapterGallery = [];
+	let autoSlideTimer = null;
+	let mobileAltTimer = null;
+	let mobileAltIndex = 0;
 
 	function initModalEngine() {
 		const modal = document.getElementById('chapter-detail-modal');
@@ -261,6 +289,8 @@ const { chapters } = Astro.props as Props;
 		function closeModal() {
 			modal.style.display = 'none';
 			document.body.style.overflow = '';
+			stopAutoSlide();
+			stopMobileAltCycle();
 		}
 
 		function populateModal(chapter) {
@@ -399,8 +429,8 @@ const { chapters } = Astro.props as Props;
 
 			if (presidents.length === 0) {
 				container.innerHTML = `
-					<div class="py-4 px-3 rounded-xl bg-[#0B0F19] border border-gray-800 text-center">
-						<p class="text-xs text-gray-400">Presidencia en fase de conformación.</p>
+					<div class="py-3 px-3 rounded-xl bg-[#0B0F19] border border-gray-800 text-center">
+						<p class="text-xs text-gray-400">Presidencia en conformación.</p>
 					</div>
 				`;
 				return;
@@ -408,19 +438,19 @@ const { chapters } = Astro.props as Props;
 
 			presidents.forEach((member) => {
 				const memberEl = document.createElement('div');
-				memberEl.className = 'flex flex-col items-center text-center space-y-2.5 group';
+				memberEl.className = 'flex flex-col items-center text-center space-y-1 sm:space-y-1.5 md:space-y-2.5 group min-w-0';
 
-				const personSvgIcon = `<svg class="w-8 h-8 text-blue-300/80 group-hover:text-blue-200 transition-colors" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>`;
+				const personSvgIcon = `<svg class="w-10 h-10 sm:w-11 sm:h-11 text-blue-300/80 group-hover:text-blue-200 transition-colors" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>`;
 
 				const avatarHtml = member.photoUrl
 					? `
-					<div class="rounded-full overflow-hidden border border-blue-400/30 bg-[#0E1626] flex items-center justify-center relative shadow-[0_0_15px_rgba(96,165,250,0.15)] group-hover:border-blue-400/80 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] transition-all duration-300" style="width: 74px; height: 74px; min-width: 74px; min-height: 74px;">
+					<div class="rounded-full overflow-hidden border border-blue-400/30 bg-[#0E1626] flex items-center justify-center relative shadow-[0_0_15px_rgba(96,165,250,0.15)] group-hover:border-blue-400/80 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] transition-all duration-300 w-[82px] h-[82px] sm:w-[88px] sm:h-[88px] md:w-[76px] md:h-[76px] shrink-0">
 						<img src="${member.photoUrl}" alt="" class="w-full h-full object-cover rounded-full select-none" loading="lazy" onerror="this.remove();" />
 						<div class="w-full h-full rounded-full bg-[#0E1626] text-blue-300 flex items-center justify-center absolute inset-0 -z-10">${personSvgIcon}</div>
 					</div>
 				`
 					: `
-					<div class="rounded-full bg-gradient-to-br from-[#131D30] to-[#0A101C] border border-blue-500/25 text-blue-300 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(96,165,250,0.15)] group-hover:border-blue-400/70 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] transition-all duration-300" style="width: 74px; height: 74px; min-width: 74px; min-height: 74px;">
+					<div class="rounded-full bg-gradient-to-br from-[#131D30] to-[#0A101C] border border-blue-500/25 text-blue-300 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(96,165,250,0.15)] group-hover:border-blue-400/70 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] transition-all duration-300 w-[82px] h-[82px] sm:w-[88px] sm:h-[88px] md:w-[76px] md:h-[76px]">
 						${personSvgIcon}
 					</div>
 				`;
@@ -435,16 +465,14 @@ const { chapters } = Astro.props as Props;
 
 				memberEl.innerHTML = `
 					${avatarHtml}
-					<div class="max-w-[145px] sm:max-w-[165px] min-w-0 space-y-1">
-						<h5 class="text-[15px] sm:text-[16px] font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight leading-snug">${nameHtml}</h5>
-						<p class="text-xs sm:text-[13px] text-blue-300/85 font-medium">${member.role}</p>
+					<div class="max-w-[98px] sm:max-w-[115px] md:max-w-[165px] min-w-0 space-y-0.5">
+						<h5 class="text-[13px] sm:text-[14px] md:text-[15px] font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight leading-tight truncate md:whitespace-normal">${nameHtml}</h5>
+						<p class="text-[10.5px] sm:text-[11.5px] md:text-xs text-blue-300/85 font-medium truncate">${member.role}</p>
 					</div>
 				`;
 				container.appendChild(memberEl);
 			});
 		}
-
-		let autoSlideTimer = null;
 
 		function startAutoSlide() {
 			stopAutoSlide();
@@ -459,6 +487,50 @@ const { chapters } = Astro.props as Props;
 			if (autoSlideTimer) {
 				clearInterval(autoSlideTimer);
 				autoSlideTimer = null;
+			}
+		}
+
+		function startMobileAltCycle(gallery) {
+			stopMobileAltCycle();
+			const box = document.getElementById('mobile-alt-photo-box');
+			const img0 = document.getElementById('mobile-alt-img-0');
+			const img1 = document.getElementById('mobile-alt-img-1');
+			if (!img0 || !img1) return;
+
+			if (!gallery || gallery.length === 0) {
+				if (box) box.classList.add('hidden');
+				return;
+			}
+			if (box) box.classList.remove('hidden');
+
+			const p0 = gallery[0] || '';
+			const p1 = gallery[1] || p0;
+
+			img0.src = p0;
+			img1.src = p1;
+
+			mobileAltIndex = 0;
+			img0.style.opacity = '1';
+			img1.style.opacity = '0';
+
+			if (p0 && p1 && p0 !== p1) {
+				mobileAltTimer = setInterval(() => {
+					mobileAltIndex = mobileAltIndex === 0 ? 1 : 0;
+					if (mobileAltIndex === 0) {
+						img0.style.opacity = '1';
+						img1.style.opacity = '0';
+					} else {
+						img0.style.opacity = '0';
+						img1.style.opacity = '1';
+					}
+				}, 5000);
+			}
+		}
+
+		function stopMobileAltCycle() {
+			if (mobileAltTimer) {
+				clearInterval(mobileAltTimer);
+				mobileAltTimer = null;
 			}
 		}
 
@@ -477,6 +549,7 @@ const { chapters } = Astro.props as Props;
 			if (!gallery || gallery.length === 0) {
 				section.classList.add('hidden');
 				stopAutoSlide();
+				stopMobileAltCycle();
 				return;
 			}
 
@@ -485,7 +558,7 @@ const { chapters } = Astro.props as Props;
 			wrapper.innerHTML = '';
 			bullets.innerHTML = '';
 
-			// 1. Left Fixed Photos (Always fixed images 0 and 1)
+			// 1. Desktop Left Fixed Photos (Always fixed images 0 and 1)
 			const fixedPhotos = gallery.slice(0, 2);
 			if (thumbImg0) {
 				thumbImg0.src = fixedPhotos[0] || '';
@@ -494,7 +567,10 @@ const { chapters } = Astro.props as Props;
 				thumbImg1.src = fixedPhotos[1] || fixedPhotos[0] || '';
 			}
 
-			// 2. Right Carousel Photos (Distinct photos from index 2 onwards, or all if 1-2 photos)
+			// 2. Mobile Alternating Photo Box Cycle (Starts 5s alternating cycle)
+			startMobileAltCycle(gallery);
+
+			// 3. Right Carousel Photos (Distinct photos from index 2 onwards, or all if 1-2 photos)
 			const carouselPhotos = gallery.length > 2 ? gallery.slice(2) : gallery;
 			activeChapterGallery = carouselPhotos;
 
