@@ -7,6 +7,7 @@ import EventSponsors from "../components/events/EventSponsors.astro";
 import UpcomingEvents from "../components/events/UpcomingEvents.astro";
 import EventDirectory from "../components/events/EventDirectory.astro";
 import type { Event } from "../types/events";
+import joelVeraImg from "../assets/Eventos/JoelVera.webp"; //momentáneamente usaremos esta práctica
 
 const eventsData: Event[] = [
   {
@@ -21,7 +22,7 @@ const eventsData: Event[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCln1DvlLjYf41OS6j0e46Oh0mQ8MNdnLYpjJFnB3a4efEAtb49V2s9y3QRmoKt_JUY5l-ZaHW36s-erv15tJ2W1XrtgDD1ZMFwqwFUP7OtHcrH_5kzitJ00Z--MqqKl0jM1SY5APxkJkbZNjwbZoGuP1iMPunAzeHJqvHnez7AOJ2sD2xjr5zojsNh1eFWf8nhOGEWkAyrxG7PjLqy9Cd5RPacrHisKia6sqNPSKTDyOEdKoCd7YBe",
     imageAlt:
       "Abstract visualization of a neural network with glowing blue nodes and connections in a dark void. Represents the cutting edge of AI research. High contrast, technical aesthetic.",
-    status: "upcoming",
+    status: "past",
     link: "https://ejemplo.com/registro-ai-summit",
   },
   {
@@ -34,7 +35,7 @@ const eventsData: Event[] = [
     tags: ["TALLER", "NLP"],
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuA1faK_p-MasmfBzxh2ruXtYrLMLVrZJfJtQnNrx6xuelyf9QtAyoRuLd5QR2aioAPIQ7-9CYtAPcCUAXTsOxbBAJAYj1BN-CvNaCPSmAMxtafhwgUNOB4hzqp3JcEwf0ZHOBgODKwRU94dG_X5JDSlFB4VmLCQAN5CQYBdip1rxcGaq0VyXGdKbNQtmIPxrHl-II879uRmYUg7RaLz7G1Xoo-Tgo956CSj-b6ZM6YnEyM9fmb3AnvH",
-    imageAlt: "NOERROR :V",
+    imageAlt: "Taller de procesamiento de lenguaje natural",
     status: "past",
     link: "https://ejemplo.com/info-taller",
   },
@@ -51,7 +52,19 @@ const eventsData: Event[] = [
     imageAlt:
       "A robotic arm assembling a delicate component in a sterile, high-tech lab environment. Clinical white and cyan lighting. Focus on precision and automation.",
     status: "past",
-    // Este evento no tiene link, por lo tanto no mostrará botón
+  },
+  {
+    id: "4",
+    title: "AWS y la Inteligencia Artificial",
+    description:
+      "Ponencia de Joel Vera, country manager de AWS en Perú, Ecuador y Bolivia, sobre su trayectoria profesional y liderazgo de AWS",
+    date: "Jueves, 17 de setiembre del 2026",
+    time: "9:30 am",
+    tags: ["AWS", "CONFERENCIA"],
+    imageUrl: joelVeraImg.src, //momentáneamente usaremos esta práctica
+    imageAlt: "Banner del evento",
+    status: "upcoming",
+    link: "https://luma.com/aenmebnb",
   },
 ];
 ---
@@ -62,8 +75,18 @@ const eventsData: Event[] = [
     <section
       class="flex flex-col items-center text-center space-y-4 relative z-10 max-w-7xl mx-auto px-6 pt-20"
     >
+      <!-- Seamless Ambient Backlight Center Glows -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[720px] bg-blue-600/15 rounded-full blur-[180px] pointer-events-none"
+      >
+      </div>
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[520px] bg-cyan-500/12 rounded-full blur-[140px] pointer-events-none"
+      >
+      </div>
+
       <h1
-        class="text-[50px] md:text-[62px] lg:text-[74px] font-black text-white leading-[1.1] tracking-tighter text-glow-blue mb-8"
+        class="text-[70px] md:text-[85px] lg:text-[100px] font-black text-white leading-[1.1] tracking-tighter text-glow-blue mb-8 relative z-10"
       >
         Eventos
       </h1>

@@ -6,16 +6,16 @@ export const mainProject: Project = {
   status: 'En desarrollo',
   shortDescription: 'La dirección de Tecnología e Investigación se encarga de la creación y mantenimiento de la página web institucional.',
   fullDescription: 'La dirección de Tecnología e Investigación se encarga de la creación y mantenimiento de la página web institucional. Esta Landing Page tiene por objetivo mostrar información acerca de AIS. El equipo de Tecnología e Investigación actualizará la información siempre que haya información nueva. Este proyecto de software inicialmente solo contendrá frontend, pero más adelante se espera contar con un CMS para automatizar muchas funciones.',
-  startDate: '5 de Agosto del 2026',
+  startDate: '17 de julio del 2026',
   members: [
-      { name: 'Leonel Cruzado', role: 'Líder de Proyecto' },
-      { name: 'Jeanpier Robles', role: 'Sublíder de proyecto' },
-      { name: 'John Tucto', role: 'Miembro' },
-      { name: 'Joaquín Berrospi', role: 'Miembro' },
-      { name: 'Diego Pinedo', role: 'Miembro' },
-      { name: 'Alejandro Velarde', role: 'Miembro' },
-      { name: 'Jeferson Yataco', role: 'Miembro' }
-    ]
+    { name: 'Leonel Cruzado', role: 'Líder de Proyecto' },
+    { name: 'Jeanpier Robles', role: 'Sublíder de proyecto' },
+    { name: 'John Tucto', role: 'Miembro' },
+    { name: 'Joaquín Berrospi', role: 'Miembro' },
+    { name: 'Diego Pinedo', role: 'Miembro' },
+    { name: 'Alejandro Velarde', role: 'Miembro' },
+    { name: 'Jeferson Yataco', role: 'Miembro' }
+  ]
 };
 
 export const projectsList: Project[] = [
@@ -25,7 +25,7 @@ export const projectsList: Project[] = [
     status: 'En desarrollo',
     shortDescription: 'La dirección de Tecnología e Investigación se encarga de la creación y mantenimiento de la página web institucional.',
     fullDescription: 'La dirección de Tecnología e Investigación se encarga de la creación y mantenimiento de la página web institucional. Esta Landing Page tiene por objetivo mostrar información acerca de AIS. El equipo de Tecnología e Investigación actualizará la información siempre que haya información nueva. Este proyecto de software inicialmente solo contendrá frontend, pero más adelante se espera contar con un CMS para automatizar muchas funciones.',
-    startDate: '5 de Agosto del 2026',
+    startDate: '17 de julio del 2026',
     members: [
       { name: 'Leonel Cruzado', role: 'Líder de Proyecto' },
       { name: 'Jeanpier Robles', role: 'Sublíder de proyecto' },
