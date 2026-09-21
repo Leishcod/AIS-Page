@@ -80,6 +80,44 @@ import { callAreas, benefits, processSteps, requirements } from "../data/call";
       </div>
     </section>
 
+    <!-- REQUIREMENTS -->
+    <section
+      class="max-w-7xl mx-auto px-6 py-20 md:py-28 border-b border-gray-900"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <div class="lg:col-span-5">
+          <div
+            class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
+          >
+            <span class="w-8 h-[2px] bg-blue-300"></span>
+            ANTES DE POSTULAR
+          </div>
+
+          <h2
+            class="mt-6 text-[36px] md:text-[50px] font-black text-white leading-tight tracking-tighter"
+          >
+            ¿Es AIS para
+            <span class="text-blue-300 text-glow-blue"> ti? </span>
+          </h2>
+
+          <p class="mt-5 text-gray-400 leading-relaxed">
+            No buscamos únicamente experiencia técnica. Valoramos especialmente
+            la curiosidad, iniciativa y ganas de aprender.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7">
+          <ul class="space-y-5">
+            {
+              requirements.map((requirement) => (
+                <RequirementItem text={requirement} />
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- PROCESS -->
     <section
       class="max-w-7xl mx-auto px-6 py-20 md:py-28 border-b border-gray-900"
@@ -151,44 +189,6 @@ import { callAreas, benefits, processSteps, requirements } from "../data/call";
             />
           ))
         }
-      </div>
-    </section>
-
-    <!-- REQUIREMENTS -->
-    <section
-      class="max-w-7xl mx-auto px-6 py-20 md:py-28 border-b border-gray-900"
-    >
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-        <div class="lg:col-span-5">
-          <div
-            class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase"
-          >
-            <span class="w-8 h-[2px] bg-blue-300"></span>
-            ANTES DE POSTULAR
-          </div>
-
-          <h2
-            class="mt-6 text-[36px] md:text-[50px] font-black text-white leading-tight tracking-tighter"
-          >
-            ¿Es AIS para
-            <span class="text-blue-300 text-glow-blue"> ti? </span>
-          </h2>
-
-          <p class="mt-5 text-gray-400 leading-relaxed">
-            No buscamos únicamente experiencia técnica. Valoramos especialmente
-            la curiosidad, iniciativa y ganas de aprender.
-          </p>
-        </div>
-
-        <div class="lg:col-span-7">
-          <ul class="space-y-5">
-            {
-              requirements.map((requirement) => (
-                <RequirementItem text={requirement} />
-              ))
-            }
-          </ul>
-        </div>
       </div>
     </section>
 
