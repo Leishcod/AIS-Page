@@ -1,0 +1,30 @@
+---
+import type { Chapter } from '../../types/chapters';
+import { mockChapters } from '../../data/chaptersData.mock';
+import UniversityNetworkGraph from './UniversityNetworkGraph.astro';
+import ChapterDetailModal from './ChapterDetailModal.astro';
+import FounderCallToAction from './FounderCallToAction.astro';
+import FounderModalForm from './FounderModalForm.astro';
+
+// Strict alphabetical sort by institution name (RF1)
+const sortedChapters: Chapter[] = [...mockChapters].sort((a, b) =>
+	a.institutionName.localeCompare(b.institutionName, 'es', { sensitivity: 'base' })
+);
+---
+
+<main class="relative overflow-hidden bg-[#0B0F19] text-[#E2E8F0]">
+	<!-- Interactive Neural Network Visualization: Nodos de la Red Universitaria -->
+	<UniversityNetworkGraph chapters={sortedChapters} />
+
+	<!-- Section Separator (Exact Home Style) -->
+	<hr class="border-t border-gray-800/80 w-full" />
+
+	<!-- RF4: Promotional Call To Action (Centered Layout) -->
+	<FounderCallToAction />
+
+	<!-- RF2 & RF3: Detail Modal -->
+	<ChapterDetailModal chapters={sortedChapters} />
+
+	<!-- RF5: Founder Application Modal Form -->
+	<FounderModalForm />
+</main>

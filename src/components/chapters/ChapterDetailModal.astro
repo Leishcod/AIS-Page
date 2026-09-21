@@ -1,0 +1,644 @@
+---
+import type { Chapter } from '../../types/chapters';
+
+interface Props {
+	chapters: Chapter[];
+}
+
+const { chapters } = Astro.props as Props;
+---
+
+<!-- Chapters Detail Modal (Centered Floating Card Window - Tall & Spacious) -->
+<div
+	id="chapter-detail-modal"
+	class="p-2 sm:p-4 md:p-6"
+	style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; background-color: rgba(0, 0, 0, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center;"
+	role="dialog"
+	aria-modal="true"
+	aria-labelledby="modal-chapter-title"
+>
+	<!-- Floating Dialog Card (Prominent Tall 86vh Height, 1160px Width, Subtle Sharp Corner Radius) -->
+	<div
+		id="chapter-modal-dialog"
+		class="relative rounded-md sm:rounded-lg border border-gray-800 shadow-[0_25px_60px_rgba(0,0,0,0.85),0_0_50px_rgba(30,67,113,0.3)] overflow-hidden"
+		style="background-color: #0F1423; width: 95%; max-width: 1160px; height: 86vh; max-height: 850px; min-height: 650px; display: flex; flex-direction: column; margin: auto;"
+	>
+		<!-- Modal Header (Fixed height) -->
+		<div
+			class="relative px-6 sm:px-8 py-4 flex items-center justify-between border-b border-gray-800 shrink-0"
+			style="background-color: #0B0F19;"
+		>
+			<div class="flex items-center gap-4 min-w-0 pr-4">
+				<!-- Clean Transparent Logo (No box / border) -->
+				<div
+					class="shrink-0 flex items-center justify-center"
+					style="width: 46px; height: 46px; min-width: 46px; min-height: 46px;"
+				>
+					<img
+						id="modal-chapter-logo"
+						class="w-full h-full object-contain hidden select-none"
+						alt="Logo del capítulo"
+					/>
+					<div
+						id="modal-chapter-logo-fallback"
+						class="w-full h-full flex flex-col items-center justify-center text-blue-300 font-bold select-none"
+					>
+						<span id="modal-fallback-initials" class="text-xs leading-none font-bold">UNI</span>
+						<span class="text-[7px] text-blue-400/80 uppercase tracking-widest leading-none mt-0.5">AIS</span>
+					</div>
+				</div>
+
+				<!-- Titles -->
+				<div class="min-w-0 space-y-0.5">
+					<h2
+						id="modal-chapter-title"
+						class="text-xl sm:text-2xl font-black text-white truncate tracking-tight"
+					>
+						AIS UNI
+					</h2>
+					<p id="modal-chapter-institution" class="text-xs sm:text-sm text-blue-300/80 font-medium truncate">
+						Universidad Nacional de Ingeniería
+					</p>
+				</div>
+			</div>
+
+			<!-- Close Button (Clean X without box border) -->
+			<button
+				id="chapter-modal-close-btn"
+				class="p-1.5 text-gray-400 hover:text-white transition-colors cursor-pointer shrink-0 flex items-center justify-center"
+				aria-label="Cerrar modal"
+			>
+				<svg class="w-6 h-6 shrink-0" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Modal Body (Optimized natural flow without empty gap) -->
+		<div
+			class="flex-1 p-6 sm:p-7 md:p-8 flex flex-col gap-4 sm:gap-5 overflow-hidden custom-scrollbar"
+			style="background-color: #0F1423;"
+		>
+			<!-- TOP ROW: Info on Left / Compact Junta Directiva on Right -->
+			<div class="flex flex-col md:flex-row md:items-start gap-8 sm:gap-10 md:gap-12 shrink-0">
+				<!-- Top Left: Sobre el Capítulo + Canales Oficiales -->
+				<div class="flex-1 min-w-0 space-y-3 sm:space-y-3.5">
+					<!-- Section 1: Descripción (Justified Text) -->
+					<section class="space-y-1.5">
+						<div class="flex items-center gap-3">
+							<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
+								Sobre el Capítulo
+							</h4>
+						</div>
+						<p
+							id="modal-chapter-description"
+							class="text-sm sm:text-base text-gray-200 leading-relaxed font-light text-justify"
+							style="text-align: justify; text-justify: inter-word;"
+						>
+							Descripción...
+						</p>
+					</section>
+
+					<!-- Section 2: Redes y Canales Oficiales -->
+					<section id="modal-socials-section" class="space-y-1.5 pt-0.5">
+						<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
+							Canales Oficiales
+						</h4>
+						<div id="modal-socials-container" class="flex flex-wrap items-center gap-2">
+							<!-- Rendered dynamically -->
+						</div>
+					</section>
+				</div>
+
+				<!-- Top Right: Junta Directiva -->
+				<section id="modal-board-section" class="shrink-0 flex flex-col space-y-2.5">
+					<div class="flex items-center">
+						<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
+							Junta Directiva
+						</h4>
+					</div>
+
+					<div id="modal-board-container" class="flex flex-wrap items-start gap-5 sm:gap-6 pt-1">
+						<!-- Rendered dynamically as circular avatar items -->
+					</div>
+				</section>
+			</div>
+
+			<!-- BOTTOM ROW: Galería de Actividades (2 fotos fijas izquierda + gran carrusel derecha) -->
+			<section id="modal-gallery-section" class="space-y-2 flex-1 flex flex-col min-h-0 pt-1">
+				<div class="flex items-center justify-between w-full shrink-0">
+					<h4 class="text-xs font-bold tracking-widest text-blue-300 uppercase">
+						Galería de Actividades
+					</h4>
+					<div class="flex items-center gap-1.5 text-xs font-mono text-gray-400">
+						<span id="gallery-current-index">1</span> / <span id="gallery-total-count">3</span>
+					</div>
+				</div>
+
+				<!-- Grid Layout: Fills remaining height comfortably -->
+				<div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 items-stretch flex-1 min-h-[220px]">
+					<!-- LEFT COLUMN: 2 Stacked Fixed Photos (4 cols) -->
+					<div class="md:col-span-4 flex flex-col gap-3 h-full min-h-0">
+						<!-- Left Photo 1 (Fixed) -->
+						<div
+							id="gallery-thumb-0"
+							class="relative flex-1 rounded-xl border border-gray-800 overflow-hidden bg-[#090D16] shadow-md select-none min-h-0"
+						>
+							<img
+								id="gallery-thumb-img-0"
+								src=""
+								alt=""
+								class="w-full h-full object-cover select-none"
+							/>
+						</div>
+
+						<!-- Left Photo 2 (Fixed) -->
+						<div
+							id="gallery-thumb-1"
+							class="relative flex-1 rounded-xl border border-gray-800 overflow-hidden bg-[#090D16] shadow-md select-none min-h-0"
+						>
+							<img
+								id="gallery-thumb-img-1"
+								src=""
+								alt=""
+								class="w-full h-full object-cover select-none"
+							/>
+						</div>
+					</div>
+
+					<!-- RIGHT COLUMN: 1 Large Main Carousel with distinct photos (8 cols) -->
+					<div
+						id="carousel-frame"
+						class="md:col-span-8 relative rounded-xl border border-gray-800 overflow-hidden group/carousel bg-[#090D16] shadow-lg flex flex-col justify-center h-full min-h-0"
+					>
+						<div
+							id="carousel-slides-wrapper"
+							class="flex w-full h-full"
+							style="transition: transform 700ms cubic-bezier(0.25, 1, 0.5, 1); will-change: transform;"
+						>
+							<!-- Dynamic smooth sliding slides -->
+						</div>
+
+						<!-- Carousel Navigation Buttons -->
+						<button
+							id="carousel-prev-btn"
+							class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg border border-gray-700 text-white flex items-center justify-center transition-all cursor-pointer z-20 hover:border-blue-400/60 shadow-lg opacity-80 hover:opacity-100"
+							style="background-color: rgba(11, 15, 25, 0.85);"
+							aria-label="Foto anterior"
+						>
+							<svg class="w-4 h-4 shrink-0" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+							</svg>
+						</button>
+						<button
+							id="carousel-next-btn"
+							class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg border border-gray-700 text-white flex items-center justify-center transition-all cursor-pointer z-20 hover:border-blue-400/60 shadow-lg opacity-80 hover:opacity-100"
+							style="background-color: rgba(11, 15, 25, 0.85);"
+							aria-label="Foto siguiente"
+						>
+							<svg class="w-4 h-4 shrink-0" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</button>
+
+						<!-- Carousel Bullets -->
+						<div
+							id="carousel-bullets"
+							class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full border border-gray-800 z-20 shadow-md"
+							style="background-color: rgba(11, 15, 25, 0.85);"
+						>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+<script define:vars={{ chapters }}>
+	let currentGalleryIndex = 0;
+	let activeChapterGallery = [];
+
+	function initModalEngine() {
+		const modal = document.getElementById('chapter-detail-modal');
+		const closeBtn = document.getElementById('chapter-modal-close-btn');
+
+		if (!modal) return;
+
+		const chaptersMap = {};
+		if (Array.isArray(chapters)) {
+			chapters.forEach((ch) => {
+				if (ch && ch.id) chaptersMap[ch.id] = ch;
+			});
+		}
+
+		function openModal(chapterId) {
+			const chapter = chaptersMap[chapterId] || (Array.isArray(chapters) ? chapters.find((c) => c && c.id === chapterId) : null);
+			if (!chapter || !modal) return;
+
+			modal.style.display = 'flex';
+			document.body.style.overflow = 'hidden';
+
+			try {
+				populateModal(chapter);
+			} catch (err) {
+				console.error('Error populating chapter modal:', err);
+			}
+
+			closeBtn?.focus();
+		}
+
+		// Expose globally
+		window.openChapterModal = openModal;
+
+		// Listen for global custom event
+		window.addEventListener('open-chapter-modal', (e) => {
+			if (e.detail && e.detail.chapterId) {
+				openModal(e.detail.chapterId);
+			}
+		});
+
+		function closeModal() {
+			modal.style.display = 'none';
+			document.body.style.overflow = '';
+		}
+
+		function populateModal(chapter) {
+			// Text Information
+			const titleEl = document.getElementById('modal-chapter-title');
+			const institutionEl = document.getElementById('modal-chapter-institution');
+			const descEl = document.getElementById('modal-chapter-description');
+			const statusTextEl = document.getElementById('modal-chapter-status-text');
+			const statusPillEl = document.getElementById('modal-chapter-status-pill');
+
+			if (titleEl) titleEl.textContent = chapter.chapterName || '';
+			if (institutionEl) institutionEl.textContent = chapter.institutionName || '';
+			if (descEl) descEl.textContent = chapter.fullDescription || chapter.shortDescription || '';
+
+			if (statusTextEl && statusPillEl) {
+				const isForming = chapter.status === 'En Formación';
+				statusTextEl.textContent = chapter.status || 'Activo';
+				if (isForming) {
+					statusPillEl.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20';
+				} else {
+					statusPillEl.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/20';
+				}
+			}
+
+			// Logo & Fallback
+			const logoImg = document.getElementById('modal-chapter-logo');
+			const logoFallback = document.getElementById('modal-chapter-logo-fallback');
+			const fallbackInitials = document.getElementById('modal-fallback-initials');
+
+			const instName = chapter.institutionName || chapter.chapterName || 'AIS';
+			const words = instName
+				.split(' ')
+				.filter((w) => !['de', 'la', 'del', 'y', 'el', 'los', 'las', 'en', 'para'].includes(w.toLowerCase()));
+			const inits =
+				words.length >= 2
+					? (words[0][0] + words[1][0] + (words[2] ? words[2][0] : '')).toUpperCase()
+					: instName.slice(0, 3).toUpperCase();
+
+			if (fallbackInitials) fallbackInitials.textContent = inits;
+
+			if (logoImg && logoFallback) {
+				if (chapter.logoUrl) {
+					logoImg.src = chapter.logoUrl;
+					logoImg.onload = () => {
+						logoImg.classList.remove('hidden');
+						logoFallback.classList.add('hidden');
+					};
+					logoImg.onerror = () => {
+						logoImg.classList.add('hidden');
+						logoFallback.classList.remove('hidden');
+					};
+				} else {
+					logoImg.src = '';
+					logoImg.classList.add('hidden');
+					logoFallback.classList.remove('hidden');
+				}
+			}
+
+			// Social Links
+			renderSocials(chapter.socialLinks);
+
+			// Executive Board
+			renderBoard(chapter.executiveBoard);
+
+			// Gallery
+			activeChapterGallery = chapter.gallery || [];
+			renderGallery(activeChapterGallery);
+		}
+
+		function renderSocials(socials) {
+			const section = document.getElementById('modal-socials-section');
+			const container = document.getElementById('modal-socials-container');
+			if (!section || !container) return;
+
+			container.innerHTML = '';
+
+			if (!socials || Object.keys(socials).length === 0) {
+				section.classList.add('hidden');
+				return;
+			}
+
+			section.classList.remove('hidden');
+
+			const channels = [
+				{
+					key: 'linkedin',
+					label: 'LinkedIn',
+					icon: '<svg class="w-3.5 h-3.5 shrink-0 inline-block" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>',
+				},
+				{
+					key: 'instagram',
+					label: 'Instagram',
+					icon: '<svg class="w-3.5 h-3.5 shrink-0 inline-block" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>',
+				},
+				{
+					key: 'discord',
+					label: 'Discord',
+					icon: '<svg class="w-3.5 h-3.5 shrink-0 inline-block" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>',
+				},
+				{
+					key: 'github',
+					label: 'GitHub',
+					icon: '<svg class="w-3.5 h-3.5 shrink-0 inline-block" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>',
+				},
+				{
+					key: 'website',
+					label: 'Sitio Web',
+					icon: '<svg class="w-3.5 h-3.5 shrink-0 inline-block" width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>',
+				},
+			];
+
+			channels.forEach((ch) => {
+				const url = socials[ch.key];
+				if (url) {
+					const a = document.createElement('a');
+					a.href = url;
+					a.target = '_blank';
+					a.rel = 'noopener noreferrer';
+					a.className =
+						'inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#0B0F19] hover:bg-blue-500/10 text-gray-300 hover:text-blue-300 border border-gray-800 hover:border-blue-500/30 text-xs sm:text-sm font-medium transition-all';
+					a.innerHTML = `${ch.icon}<span>${ch.label}</span>`;
+					container.appendChild(a);
+				}
+			});
+		}
+
+		function renderBoard(board) {
+			const section = document.getElementById('modal-board-section');
+			const container = document.getElementById('modal-board-container');
+			if (!section || !container) return;
+
+			container.innerHTML = '';
+			section.classList.remove('hidden');
+
+			const presidents = Array.isArray(board) ? board.slice(0, 2) : [];
+
+			if (presidents.length === 0) {
+				container.innerHTML = `
+					<div class="py-4 px-3 rounded-xl bg-[#0B0F19] border border-gray-800 text-center">
+						<p class="text-xs text-gray-400">Presidencia en fase de conformación.</p>
+					</div>
+				`;
+				return;
+			}
+
+			presidents.forEach((member) => {
+				const memberEl = document.createElement('div');
+				memberEl.className = 'flex flex-col items-center text-center space-y-2.5 group';
+
+				const personSvgIcon = `<svg class="w-8 h-8 text-blue-300/80 group-hover:text-blue-200 transition-colors" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>`;
+
+				const avatarHtml = member.photoUrl
+					? `
+					<div class="rounded-full overflow-hidden border border-blue-400/30 bg-[#0E1626] flex items-center justify-center relative shadow-[0_0_15px_rgba(96,165,250,0.15)] group-hover:border-blue-400/80 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] transition-all duration-300" style="width: 74px; height: 74px; min-width: 74px; min-height: 74px;">
+						<img src="${member.photoUrl}" alt="" class="w-full h-full object-cover rounded-full select-none" loading="lazy" onerror="this.remove();" />
+						<div class="w-full h-full rounded-full bg-[#0E1626] text-blue-300 flex items-center justify-center absolute inset-0 -z-10">${personSvgIcon}</div>
+					</div>
+				`
+					: `
+					<div class="rounded-full bg-gradient-to-br from-[#131D30] to-[#0A101C] border border-blue-500/25 text-blue-300 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(96,165,250,0.15)] group-hover:border-blue-400/70 group-hover:shadow-[0_0_20px_rgba(96,165,250,0.35)] transition-all duration-300" style="width: 74px; height: 74px; min-width: 74px; min-height: 74px;">
+						${personSvgIcon}
+					</div>
+				`;
+
+				let nameHtml = member.name;
+				const parts = (member.name || '').trim().split(' ');
+				if (parts.length >= 2) {
+					const firstName = parts[0];
+					const lastName = parts.slice(1).join(' ');
+					nameHtml = `<span class="block">${firstName}</span><span class="block">${lastName}</span>`;
+				}
+
+				memberEl.innerHTML = `
+					${avatarHtml}
+					<div class="max-w-[145px] sm:max-w-[165px] min-w-0 space-y-1">
+						<h5 class="text-[15px] sm:text-[16px] font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight leading-snug">${nameHtml}</h5>
+						<p class="text-xs sm:text-[13px] text-blue-300/85 font-medium">${member.role}</p>
+					</div>
+				`;
+				container.appendChild(memberEl);
+			});
+		}
+
+		let autoSlideTimer = null;
+
+		function startAutoSlide() {
+			stopAutoSlide();
+			if (activeChapterGallery.length > 1) {
+				autoSlideTimer = setInterval(() => {
+					goToSlide(currentGalleryIndex + 1);
+				}, 3000);
+			}
+		}
+
+		function stopAutoSlide() {
+			if (autoSlideTimer) {
+				clearInterval(autoSlideTimer);
+				autoSlideTimer = null;
+			}
+		}
+
+		function renderGallery(gallery) {
+			const section = document.getElementById('modal-gallery-section');
+			const wrapper = document.getElementById('carousel-slides-wrapper');
+			const bullets = document.getElementById('carousel-bullets');
+			const currentIdxEl = document.getElementById('gallery-current-index');
+			const totalCountEl = document.getElementById('gallery-total-count');
+
+			const thumbImg0 = document.getElementById('gallery-thumb-img-0');
+			const thumbImg1 = document.getElementById('gallery-thumb-img-1');
+
+			if (!section || !wrapper || !bullets) return;
+
+			if (!gallery || gallery.length === 0) {
+				section.classList.add('hidden');
+				stopAutoSlide();
+				return;
+			}
+
+			section.classList.remove('hidden');
+			currentGalleryIndex = 0;
+			wrapper.innerHTML = '';
+			bullets.innerHTML = '';
+
+			// 1. Left Fixed Photos (Always fixed images 0 and 1)
+			const fixedPhotos = gallery.slice(0, 2);
+			if (thumbImg0) {
+				thumbImg0.src = fixedPhotos[0] || '';
+			}
+			if (thumbImg1) {
+				thumbImg1.src = fixedPhotos[1] || fixedPhotos[0] || '';
+			}
+
+			// 2. Right Carousel Photos (Distinct photos from index 2 onwards, or all if 1-2 photos)
+			const carouselPhotos = gallery.length > 2 ? gallery.slice(2) : gallery;
+			activeChapterGallery = carouselPhotos;
+
+			if (totalCountEl) totalCountEl.textContent = carouselPhotos.length.toString();
+
+			carouselPhotos.forEach((imgUrl, idx) => {
+				const slide = document.createElement('div');
+				slide.className = 'w-full h-full shrink-0 flex-none relative overflow-hidden';
+				slide.style.minWidth = '100%';
+				slide.style.width = '100%';
+				slide.style.height = '100%';
+				slide.innerHTML = `<img src="${imgUrl}" alt="Actividad del capítulo ${idx + 1}" class="w-full h-full object-cover select-none" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center bg-[#090D16] text-gray-500 text-xs\\'>Imagen no disponible</div>'" />`;
+				wrapper.appendChild(slide);
+
+				const bullet = document.createElement('button');
+				bullet.className = `w-1.5 h-1.5 rounded-full transition-all ${idx === 0 ? 'bg-blue-300 w-3.5' : 'bg-gray-600 hover:bg-gray-400'}`;
+				bullet.id = `gallery-bullet-${idx}`;
+				bullet.setAttribute('aria-label', `Ir a diapositiva ${idx + 1}`);
+				bullet.onclick = () => {
+					goToSlide(idx);
+					startAutoSlide();
+				};
+				bullets.appendChild(bullet);
+			});
+
+			wrapper.style.transform = 'translateX(0%)';
+			updateGalleryBulletsAndCounter();
+			startAutoSlide();
+		}
+
+		function goToSlide(index) {
+			const wrapper = document.getElementById('carousel-slides-wrapper');
+			if (activeChapterGallery.length === 0 || !wrapper) return;
+			currentGalleryIndex = (index + activeChapterGallery.length) % activeChapterGallery.length;
+			wrapper.style.transform = `translateX(-${currentGalleryIndex * 100}%)`;
+			updateGalleryBulletsAndCounter();
+		}
+
+		function updateGalleryBulletsAndCounter() {
+			activeChapterGallery.forEach((_, idx) => {
+				const bullet = document.getElementById(`gallery-bullet-${idx}`);
+				if (bullet) {
+					if (idx === currentGalleryIndex) {
+						bullet.className = 'w-3.5 h-1.5 rounded-full bg-blue-300 transition-all';
+					} else {
+						bullet.className = 'w-1.5 h-1.5 rounded-full bg-gray-600 hover:bg-gray-400 transition-all';
+					}
+				}
+			});
+
+			const currentIdxEl = document.getElementById('gallery-current-index');
+			if (currentIdxEl) currentIdxEl.textContent = (currentGalleryIndex + 1).toString();
+		}
+
+		const prevBtn = document.getElementById('carousel-prev-btn');
+		const nextBtn = document.getElementById('carousel-next-btn');
+		const carouselFrame = document.getElementById('carousel-frame');
+
+		if (prevBtn) {
+			prevBtn.onclick = () => {
+				goToSlide(currentGalleryIndex - 1);
+				startAutoSlide();
+			};
+		}
+		if (nextBtn) {
+			nextBtn.onclick = () => {
+				goToSlide(currentGalleryIndex + 1);
+				startAutoSlide();
+			};
+		}
+
+		if (carouselFrame) {
+			carouselFrame.addEventListener('mouseenter', stopAutoSlide);
+			carouselFrame.addEventListener('mouseleave', startAutoSlide);
+		}
+
+		closeBtn?.addEventListener('click', closeModal);
+
+		// Click on backdrop outside dialog card closes modal
+		modal.addEventListener('click', (e) => {
+			if (e.target === modal) {
+				closeModal();
+			}
+		});
+
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && modal.style.display !== 'none') {
+				closeModal();
+			}
+		});
+
+		// Global delegated click listener for cards, nodes, and action buttons
+		document.addEventListener('click', (e) => {
+			const target = e.target;
+			if (!target || !target.closest) return;
+			
+			const openBtn = target.closest('[data-open-chapter]');
+			if (openBtn) {
+				const chapterId = openBtn.getAttribute('data-open-chapter');
+				if (chapterId) {
+					openModal(chapterId);
+					return;
+				}
+			}
+
+			const cardOrNode = target.closest('.chapter-card, .chapter-node, [data-chapter-id]');
+			if (cardOrNode) {
+				const chapterId = cardOrNode.getAttribute('data-chapter-id');
+				if (chapterId) openModal(chapterId);
+			}
+		});
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Enter' || e.key === ' ') {
+				const target = e.target;
+				if (target && target.closest) {
+					const cardOrNode = target.closest('.chapter-card, .chapter-node, [data-chapter-id]');
+					if (cardOrNode) {
+						e.preventDefault();
+						const chapterId = cardOrNode.getAttribute('data-chapter-id');
+						if (chapterId) openModal(chapterId);
+					}
+				}
+			}
+		});
+	}
+
+	initModalEngine();
+	document.addEventListener('astro:after-swap', initModalEngine);
+</script>
+
+<style>
+	.custom-scrollbar::-webkit-scrollbar {
+		width: 6px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-track {
+		background: #0B0F19;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		background: rgba(96, 165, 250, 0.35);
+		border-radius: 9999px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+		background: rgba(96, 165, 250, 0.6);
+	}
+</style>
+

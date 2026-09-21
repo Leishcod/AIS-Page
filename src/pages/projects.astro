@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import HeroProject from '../components/proyectos/HeroProject.astro';
+import ProjectsGrid from '../components/proyectos/ProjectsGrid.astro';
+import FaqAccordion from '../components/proyectos/FaqAccordion.astro';
+import ProjectDrawer from '../components/proyectos/ProjectDrawer.astro';
+
+import { mainProject, projectsList, faqList } from '../data/proyectosData';
+---
+
+<Layout title="Proyectos | Artificial Intelligence Society">
+  <Navbar />
+  
+  <main class="min-h-screen pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto flex flex-col gap-24">
+    
+    <section>
+      <div class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase mb-6">
+        <span class="w-8 h-[2px] bg-blue-300"></span>
+        CONOCE NUESTROS PROYECTOS
+      </div>
+      <HeroProject project={mainProject} />
+    </section>
+
+    <section id="grilla-proyectos" class="scroll-mt-32">
+      <div class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase mb-8">
+        <span class="w-8 h-[2px] bg-blue-300"></span>
+        NUESTROS PROYECTOS
+      </div>
+      <ProjectsGrid projects={projectsList} />
+    </section>
+
+    <section class="w-full">
+      <div class="flex items-center gap-3 text-sm font-bold tracking-widest text-blue-300 uppercase mb-8">
+        <span class="w-8 h-[2px] bg-blue-300"></span>
+        PREGUNTAS FRECUENTES
+      </div>
+      <div class="max-w-4xl mx-auto w-full">
+        <FaqAccordion faqs={faqList} />
+      </div>
+    </section>
+
+  </main>
+  
+  <Footer />
+
+  <ProjectDrawer projects={[mainProject, ...projectsList]} />
+</Layout>

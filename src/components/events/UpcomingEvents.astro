@@ -1,0 +1,25 @@
+---
+import type { Event } from "../../types/events";
+import EventCard from "./EventCard.astro";
+
+interface Props {
+  events: Event[];
+}
+
+const { events } = Astro.props;
+const upcomingEvents = events.filter(e => e.status === 'upcoming');
+---
+
+{upcomingEvents.length > 0 && (
+  <section class="flex flex-col space-y-8 mt-16 relative z-10 w-full max-w-7xl mx-auto px-6">
+    <div class="flex flex-col justify-between items-start mb-4 border-b border-gray-800 pb-4 w-full">
+      <h2 class="text-[32px] md:text-[40px] font-black text-white">Próximos Eventos</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {upcomingEvents.map(event => (
+        <EventCard event={event} />
+      ))}
+    </div>
+  </section>
+)}
