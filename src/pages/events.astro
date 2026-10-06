@@ -28,26 +28,45 @@ const eventsData: Event[] = [
 
 <Layout title="Eventos - AIS">
   <Navbar />
-  <main class="relative overflow-hidden w-full flex flex-col pt-12 pb-24">
-    <section
-      class="flex flex-col items-center text-center space-y-4 relative z-10 max-w-7xl mx-auto px-6 pt-20"
+  <main
+    class="relative overflow-hidden w-full flex flex-col pt-24 md:pt-28 pb-24"
+  >
+    <!-- Decoración de fondo premium estilo Áreas -->
+    <div
+      class="absolute top-[120px] md:top-[160px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none"
     >
-      <!-- Seamless Ambient Backlight Center Glows -->
-      <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[720px] bg-blue-600/15 rounded-full blur-[180px] pointer-events-none"
-      >
-      </div>
-      <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[520px] bg-cyan-500/12 rounded-full blur-[140px] pointer-events-none"
-      >
+    </div>
+
+    <!-- Hero Header estilo Navbar (Conócenos / Áreas / Proyectos) -->
+    <section class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+      <div class="text-left mb-10 md:mb-14">
+        <!-- Eyebrow / Overline -->
+        <div
+          class="flex items-center gap-3 text-[14px] font-bold tracking-widest text-blue-300 uppercase mb-4"
+        >
+          <span class="w-8 h-[2px] bg-blue-300"></span>
+          EVENTOS AIS
+        </div>
+
+        <!-- Título Principal -->
+        <h1
+          class="text-[44px] md:text-[58px] lg:text-[70px] font-black text-white leading-[1.08] tracking-tighter mb-5 max-w-4xl"
+        >
+          Conecta y Participa en <span class="text-blue-300 text-glow-blue"
+            >IA</span
+          >
+        </h1>
+
+        <!-- Descripción -->
+        <p
+          class="text-gray-400 text-base md:text-lg font-light leading-relaxed max-w-2xl"
+        >
+          Charlas, talleres y más para estudiantes y profesionales. Todos
+          nuestros eventos están abiertos a la comunidad.
+        </p>
       </div>
 
-      <h1
-        class="text-[70px] md:text-[85px] lg:text-[100px] font-black text-white leading-[1.1] tracking-tighter text-glow-blue mb-8 relative z-10"
-      >
-        Eventos
-      </h1>
-
+      <!-- Cifras de eventos abajo -->
       <EventStatsBanner />
     </section>
 
