@@ -74,8 +74,8 @@ export const areasData: AreaInfo[] = [
 	},
 	{
 		id: "tecnologia",
-		title: "Tecnología e Infraestructura",
-		subtitle: "Dirección de Tecnología e Infraestructura",
+		title: "Investigación y Desarrollo",
+		subtitle: "Dirección de Investigación y Desarrollo",
 		mission:
 			"Administrar y desarrollar la infraestructura tecnológica de la AIS, incluyendo plataformas digitales, servidores y herramientas internas.",
 		iconName: "tecnologia",
