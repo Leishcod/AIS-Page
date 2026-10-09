@@ -2,7 +2,7 @@ import type { Project, FAQ } from '../types/proyectos';
 
 export const mainProject: Project = {
   id: 'landing-page-de-ais',
-  title: 'Landing Page de nuestro Centro Cultural',
+  title: 'Landing Page Institucional de la AIS',
   status: 'En desarrollo',
   shortDescription: 'La dirección de Tecnología e Investigación se encarga de la creación y mantenimiento de la página web institucional.',
   fullDescription: 'La dirección de Tecnología e Investigación se encarga de la creación y mantenimiento de la página web institucional. Esta Landing Page tiene por objetivo mostrar información acerca de AIS. El equipo de Tecnología e Investigación actualizará la información siempre que haya información nueva. Este proyecto de software inicialmente solo contendrá frontend, pero más adelante se espera contar con un CMS para automatizar muchas funciones.',
@@ -21,7 +21,7 @@ export const mainProject: Project = {
 export const projectsList: Project[] = [
   {
     id: 'landing-page-de-ais',
-    title: 'Landing Page de nuestro Centro Cultural',
+    title: 'Landing Page Institucional de la AIS',
     status: 'En desarrollo',
     shortDescription: 'La dirección de Tecnología e Investigación se encarga de la creación y mantenimiento de la página web institucional.',
     fullDescription: 'La dirección de Tecnología e Investigación se encarga de la creación y mantenimiento de la página web institucional. Esta Landing Page tiene por objetivo mostrar información acerca de AIS. El equipo de Tecnología e Investigación actualizará la información siempre que haya información nueva. Este proyecto de software inicialmente solo contendrá frontend, pero más adelante se espera contar con un CMS para automatizar muchas funciones.',
@@ -52,6 +52,6 @@ export const faqList: FAQ[] = [
   {
     id: 'faq-3',
     question: '¿Cómo puedo proponer un proyecto nuevo?',
-    answer: 'Puedes contactarnos a través del formulario en la sección de Conócenos para evaluar tu propuesta técnica.'
+    answer: 'Puedes contactarnos en nuestras redes sociales para mantenerte en contacto con nosotros.'
   }
 ];
