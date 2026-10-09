@@ -3,12 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
-import AreaCard from "../components/call/AreaCard.astro";
 import BenefitCard from "../components/call/BenefitCard.astro";
 import ProcessStep from "../components/call/ProcessStep.astro";
 import RequirementItem from "../components/call/RequirementItem.astro";
 
-import { callAreas, benefits, processSteps, requirements } from "../data/call";
+import { benefits, processSteps, requirements } from "../data/call";
 ---
 
 <Layout
@@ -249,47 +248,4 @@ import { callAreas, benefits, processSteps, requirements } from "../data/call";
   <Footer />
 </Layout>
 
-<script define:vars={{ callAreas }}>
-  const cards = document.querySelectorAll(".area-card");
 
-  const title = document.getElementById("detail-title");
-  const description = document.getElementById("detail-description");
-  const activities = document.getElementById("detail-activities");
-  const profile = document.getElementById("detail-profile");
-
-  function renderList(container, values) {
-    if (!container) return;
-
-    container.innerHTML = values
-      .map(
-        (value) => `
-					<li class="flex gap-3 text-gray-400">
-						<span class="text-blue-300">→</span>
-						${value}
-					</li>
-				`,
-      )
-      .join("");
-  }
-
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const id = card.dataset.area;
-      const area = callAreas.find((item) => item.id === id);
-
-      if (!area) return;
-
-      title.textContent = area.name;
-      description.textContent = area.description;
-
-      renderList(activities, area.activities);
-      renderList(profile, area.profile);
-
-      cards.forEach((item) => {
-        item.classList.remove("border-blue-400/50", "bg-blue-500/10");
-      });
-
-      card.classList.add("border-blue-400/50", "bg-blue-500/10");
-    });
-  });
-</script>
