@@ -15,9 +15,9 @@ const allTags = Array.from(new Set(events.flatMap(e => e.tags)));
     <h2 class="text-[32px] md:text-[40px] font-black text-white">Nuestros eventos</h2>
     
     <div class="flex items-center gap-4 mt-6 md:mt-0">
-      <label class="font-medium text-sm text-gray-400 tracking-wider">Filtrar por etiquetas:</label>
+      <label class="font-medium text-[14px] text-gray-400 tracking-wider">Filtrar por etiquetas:</label>
       <div class="relative">
-        <select id="event-tag-filter" class="appearance-none bg-[#172033] border border-gray-700 text-white font-medium py-2 pl-4 pr-10 rounded-md focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors cursor-pointer text-sm">
+        <select id="event-tag-filter" class="appearance-none bg-[#172033] border border-gray-700 text-white font-medium py-2 pl-4 pr-10 rounded-md focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors cursor-pointer text-[14px]">
           <option value="all">Seleccionar</option>
           {allTags.map(tag => (
             <option value={tag}>{tag}</option>
@@ -37,7 +37,7 @@ const allTags = Array.from(new Set(events.flatMap(e => e.tags)));
   </div>
   
   <div id="no-events-msg" class="hidden flex flex-col items-center justify-center py-12 text-on-surface-variant">
-    <span class="material-symbols-outlined text-4xl mb-4 opacity-50">search_off</span>
+    <span class="material-symbols-outlined text-[36px] mb-4 opacity-50">search_off</span>
     <p class="font-body-md">No se encontraron eventos con la etiqueta seleccionada.</p>
   </div>
 </section>

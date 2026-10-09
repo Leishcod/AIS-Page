@@ -22,7 +22,7 @@ const { projects } = Astro.props;
   <div
     class="p-6 md:p-8 flex justify-between items-center border-b border-slate-800/50 bg-slate-900/50"
   >
-    <h2 class="text-xl md:text-2xl font-bold font-outfit text-white">
+    <h2 class="text-[20px] md:text-[24px] font-bold font-outfit text-white">
       Detalle del Proyecto
     </h2>
     <button
@@ -96,7 +96,7 @@ const { projects } = Astro.props;
     if (status === "Culminado")
       colorClass = "bg-emerald-900/50 text-emerald-300 border-emerald-700/50";
 
-    return `<span class="inline-block border text-xs px-3 py-1.5 rounded-full font-medium ${colorClass}">${status}</span>`;
+    return `<span class="inline-block border text-[12px] px-3 py-1.5 rounded-full font-medium ${colorClass}">${status}</span>`;
   }
 
   function openDrawer(projectId: string) {
@@ -107,7 +107,7 @@ const { projects } = Astro.props;
       let html = `
         <div class="flex flex-col gap-2 mb-2">
           ${getStatusBadge(project.status)}
-          <h3 class="text-3xl font-bold font-outfit text-white mt-2">${project.title}</h3>
+          <h3 class="text-[30px] font-bold font-outfit text-white mt-2">${project.title}</h3>
         </div>
       `;
 
@@ -117,7 +117,7 @@ const { projects } = Astro.props;
 
       html += `
         <div class="h-px w-full bg-slate-800/80 my-2"></div>
-        <div class="text-slate-300 leading-relaxed text-lg">
+        <div class="text-slate-300 leading-relaxed text-[18px]">
           ${project.fullDescription || project.shortDescription}
         </div>
       `;
@@ -125,7 +125,7 @@ const { projects } = Astro.props;
       if (project.members && project.members.length > 0) {
         html += `
           <div class="mt-6">
-            <h4 class="text-lg font-semibold text-white mb-4 uppercase tracking-wider text-sm">Miembros del Proyecto</h4>
+            <h4 class="text-[18px] font-semibold text-white mb-4 uppercase tracking-wider text-[14px]">Miembros del Proyecto</h4>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         `;
 
@@ -133,7 +133,7 @@ const { projects } = Astro.props;
           html += `
             <div class="flex flex-col p-3 rounded-lg bg-slate-900/50 border border-slate-800/80">
               <span class="text-white font-medium">${member.name}</span>
-              <span class="text-slate-400 text-sm">${member.role}</span>
+              <span class="text-slate-400 text-[14px]">${member.role}</span>
             </div>
           `;
         });
