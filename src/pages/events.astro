@@ -7,7 +7,8 @@ import EventSponsors from "../components/events/EventSponsors.astro";
 import UpcomingEvents from "../components/events/UpcomingEvents.astro";
 import EventDirectory from "../components/events/EventDirectory.astro";
 import type { Event } from "../types/events";
-import joelVeraImg from "../assets/Eventos/JoelVera.webp"; //momentáneamente usaremos esta práctica
+import DefaultLogo from "../assets/Eventos/DefaultLogo.webp"; //que siempre se importe esto al no tener imagen
+import joelVeraImg from "../assets/Eventos/JoelVera.webp";
 
 const eventsData: Event[] = [
   {
@@ -18,10 +19,25 @@ const eventsData: Event[] = [
     date: "Jueves, 17 de setiembre del 2026",
     time: "9:30 am",
     tags: ["AWS", "CONFERENCIA"],
-    imageUrl: joelVeraImg.src, //momentáneamente usaremos esta práctica
+    imageUrl: joelVeraImg.src,
     imageAlt: "Banner del evento",
     status: "past",
+    actionLabel: "VER RECAP",
     link: "https://www.instagram.com/p/DeDrmErjpbW/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNjQ2YQ==",
+  },
+  {
+    id: "2",
+    title: "Workshop: Python para IA y Análisis de Datos",
+    description:
+      "Taller práctico en el que los participantes dan sus primeros pasos con Python, trabajando directamente en el navegador con Colab.",
+    date: "Sábado, 31 de octubre del 2026",
+    time: "2:00 pm",
+    tags: ["WORKSHOP", "PYTHON", "DATA SCIENCE"],
+    imageUrl: DefaultLogo.src,
+    imageAlt: "Banner de Workshop IA",
+    status: "upcoming",
+    actionLabel: "PRÓXIMAMENTE",
+    link: "#",
   },
 ];
 ---
