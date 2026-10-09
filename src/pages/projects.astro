@@ -14,8 +14,15 @@ import { mainProject, projectsList, faqList } from "../data/proyectosData";
   <Navbar />
 
   <main
-    class="min-h-screen pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto flex flex-col gap-24"
+    class="relative min-h-screen pt-28 md:pt-[120px] pb-24 overflow-hidden w-full flex flex-col"
   >
+    <!-- Decoración de fondo premium estilo Áreas y Eventos -->
+    <div
+      class="absolute top-[80px] md:top-[120px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 w-full flex flex-col gap-24 relative z-10">
     <section>
       <div
         class="flex items-center gap-3 text-[14px] font-bold tracking-widest text-blue-300 uppercase mb-6"
@@ -47,6 +54,7 @@ import { mainProject, projectsList, faqList } from "../data/proyectosData";
         <FaqAccordion faqs={faqList} />
       </div>
     </section>
+  </div>
   </main>
 
   <Footer />
