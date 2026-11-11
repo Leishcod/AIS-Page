@@ -9,6 +9,7 @@ import EventDirectory from "../components/events/EventDirectory.astro";
 import type { Event } from "../types/events";
 import DefaultLogo from "../assets/Eventos/DefaultLogo.webp"; //que siempre se importe esto al no tener imagen
 import joelVeraImg from "../assets/Eventos/JoelVera.webp";
+import IAPython from "../assets/Eventos/IAPython.webp"; 
 
 const eventsData: Event[] = [
   {
@@ -33,11 +34,11 @@ const eventsData: Event[] = [
     date: "Sábado, 31 de octubre del 2026",
     time: "2:00 pm",
     tags: ["WORKSHOP", "PYTHON", "DATA SCIENCE"],
-    imageUrl: DefaultLogo.src,
+    imageUrl: IAPython.src,
     imageAlt: "Banner de Workshop IA",
     status: "upcoming",
-    actionLabel: "PRÓXIMAMENTE",
-    link: "#",
+    actionLabel: "INSCRIBIRSE",
+    link: " https://forms.gle/ovPFTXfCPvifTac39",
   },
 ];
 ---
